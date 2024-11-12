@@ -56,4 +56,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
+    // coil
+    implementation (libs.coil.compose)
+
+    // navigation
+    implementation (libs.androidx.navigation.compose)
+
+    // system ui controller
+    implementation (libs.accompanist.systemuicontroller)
 }
