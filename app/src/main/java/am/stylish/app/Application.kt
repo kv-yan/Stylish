@@ -1,5 +1,6 @@
 package am.stylish.app
 
+import am.stylish.app.landing.presentation.di.landingPresentationModule
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -10,7 +11,9 @@ class Application : Application() {
 
         startKoin {
             androidContext(this@Application)
-            modules()
+            modules(
+                landingPresentationModule,
+            )
         }
     }
 }

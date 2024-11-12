@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Stylish</string>
+    <string name="skip">Skip</string>
+    <string name="prev">Prev</string>
+    <string name="get_started">"Get Started "</string>
+    <string name="next">Next</string>
+    <string name="empty_string">"     "</string>
 </resources>
