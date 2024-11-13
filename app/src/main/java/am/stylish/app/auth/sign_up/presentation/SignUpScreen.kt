@@ -52,7 +52,7 @@ fun SignUpScreen(
 }
 
 @Composable
-fun SignUpScreenContent(
+private fun SignUpScreenContent(
     modifier: Modifier = Modifier,
     navigateToSignIn: () -> Unit = {},
     navigateToMain: () -> Unit = {},

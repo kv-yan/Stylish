@@ -12,6 +12,7 @@
     <string name="hide_password">Hide password</string>
     <string name="show_password">Show password</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password_title">Forgot \nPassword?</string>
     <string name="logIn">Login</string>
     <string name="or_continue_with">- OR Continue with -</string>
     <string name="create_an_account">Create An Account</string>
@@ -22,4 +23,8 @@
     <string name="button_you_agree_to_the_public_offer">" button, you agree to the public offer"</string>
     <string name="create_account">Create Account</string>
     <string name="i_already_have_an_account">I Already Have an Account</string>
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="we_will_send_you_a_message_to_set_or_reset_your_new_password">We will send you a message to set or reset your new password</string>
+    <string name="star_symbol">*</string>
+    <string name="submit">Submit</string>
 </resources>

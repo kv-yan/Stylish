@@ -1,5 +1,6 @@
 package am.stylish.app.auth.navigation
 
+import am.stylish.app.auth.forgot_password.presentation.ForgotPasswordScreen
 import am.stylish.app.auth.sign_in.presentation.SignInScreen
 import am.stylish.app.auth.sign_up.presentation.SignUpScreen
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,7 +21,7 @@ fun AuthMainScreen(modifier: Modifier = Modifier, navigateToMain: () -> Unit) {
             .fillMaxSize()
             .padding(32.dp),
         navController = navController,
-        startDestination = AuthDestination.SignUp
+        startDestination = AuthDestination.SignIn
     ) {
         composable<AuthDestination.SignIn> {
             SignInScreen(navigateToSignUp = {
@@ -40,6 +41,10 @@ fun AuthMainScreen(modifier: Modifier = Modifier, navigateToMain: () -> Unit) {
             )
         }
 
-        composable<AuthDestination.ForgotPassword> {}
+        composable<AuthDestination.ForgotPassword> {
+            ForgotPasswordScreen {
+                navController.navigate(AuthDestination.SignIn)
+            }
+        }
     }
 }
