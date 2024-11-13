@@ -1,6 +1,7 @@
 package am.stylish.app.auth.authwithsection
 
 import am.stylish.app.R
+import am.stylish.app.common_presentation.ui.theme.LightGrayText
 import am.stylish.app.common_presentation.ui.theme.RoseRed
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -41,7 +42,7 @@ fun AuthWithSection(modifier: Modifier = Modifier, bottomSectionText: @Composabl
                 fontSize = 12.sp,
                 fontFamily = FontFamily(Font(R.font.montserrat_regular)),
                 fontWeight = FontWeight.W500,
-                color = Color(0xFF575757),
+                color = LightGrayText,
                 textAlign = TextAlign.Center,
             ),
         )

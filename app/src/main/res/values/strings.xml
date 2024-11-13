@@ -8,11 +8,18 @@
     <string name="welcome_back">Welcome \nBack!</string>
     <string name="username_or_email">Username or Email</string>
     <string name="password">Password</string>
+    <string name="confirm_password">ConfirmPassword</string>
     <string name="hide_password">Hide password</string>
     <string name="show_password">Show password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="logIn">Login</string>
     <string name="or_continue_with">- OR Continue with -</string>
     <string name="create_an_account">Create An Account</string>
+    <string name="create_an_account_capitalize">Create an \naccount</string>
     <string name="sign_up">Sign Up</string>
+    <string name="by_clicking_the">"By clicking the "</string>
+    <string name="register">Register</string>
+    <string name="button_you_agree_to_the_public_offer">" button, you agree to the public offer"</string>
+    <string name="create_account">Create Account</string>
+    <string name="i_already_have_an_account">I Already Have an Account</string>
 </resources>
