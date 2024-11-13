@@ -9,6 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.view.WindowInsetsControllerCompat
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,13 +17,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val activity = LocalContext.current as Activity
+            val window = WindowInsetsControllerCompat(
+                activity.window,
+                activity.window.decorView
+            )
+
+            window.isAppearanceLightStatusBars = true
+            window.isAppearanceLightNavigationBars = true
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 activity.window.isNavigationBarContrastEnforced = false
-                activity.window.isStatusBarContrastEnforced = false
             }
 
-            AppNavigation(startDestination = AppDestination.Landing)
-
+            AppNavigation(startDestination = AppDestination.Auth)
         }
     }
 }
