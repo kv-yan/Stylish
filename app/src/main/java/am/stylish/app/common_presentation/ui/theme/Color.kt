@@ -15,4 +15,8 @@ val RoseRed = Color(0xFFF83758)
 val LightGray = Color(0xFFC4C4C4)
 val DarkBlue = Color(0xFF17223B)
 val TransparentGreen = Color(0x33223B33)
-val LightGrayish = Color(0xFFA8A8A9)
+val LightGrayBackground = Color(0xFFF3F3F3)
+val MediumGrayBorder = Color(0xFFA8A8A9)
+val DarkGrayText = Color(0xFF626262)
+
+

@@ -1,10 +1,12 @@
 package am.stylish.app.navigation
 
+import am.stylish.app.auth.navigation.AuthMainScreen
 import am.stylish.app.landing.presentation.LandingScreens
 import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,7 +42,17 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 exitTransition = { null },
                 popEnterTransition = { null },
             ) {
+                AuthMainScreen {
+                    navController.navigate(AppDestination.Main)
+                }
+            }
 
+            composable<AppDestination.Main>(
+                enterTransition = { null },
+                exitTransition = { null },
+                popEnterTransition = { null },
+            ) {
+                Text(text = "Main")
             }
         }
     }
