@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
             var showSplashScreen by remember { mutableStateOf(true) }
 
             LaunchedEffect(Unit) {
-                delay(2500)
+                delay(700)
                 showSplashScreen = false
             }
 
