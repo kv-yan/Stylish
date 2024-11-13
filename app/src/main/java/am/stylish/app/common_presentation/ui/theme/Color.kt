@@ -18,5 +18,5 @@ val TransparentGreen = Color(0x33223B33)
 val LightGrayBackground = Color(0xFFF3F3F3)
 val MediumGrayBorder = Color(0xFFA8A8A9)
 val DarkGrayText = Color(0xFF626262)
-
+val LightGrayText = Color(0xFF575757)
 

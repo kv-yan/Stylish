@@ -13,14 +13,14 @@ import androidx.compose.ui.unit.sp
 val RegularTextStyle = TextStyle(
     fontSize = 18.sp,
     fontFamily = FontFamily(Font(R.font.montserrat_regular)),
-    fontWeight = FontWeight(600),
+    fontWeight = FontWeight.W600,
 )
 
 val RegularDescriptionTextStyle = TextStyle(
     fontSize = 14.sp,
     lineHeight = 24.sp,
     fontFamily = FontFamily(Font(R.font.montserrat_regular)),
-    fontWeight = FontWeight(600),
+    fontWeight = FontWeight.W600,
     color = descriptionColor,
     textAlign = TextAlign.Center,
     letterSpacing = 0.28.sp,

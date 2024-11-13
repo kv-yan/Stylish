@@ -1,4 +1,4 @@
-package am.stylish.app.auth.sign_in.presentation
+package am.stylish.app.auth.sign_up.presentation
 
 import am.stylish.app.R
 import am.stylish.app.auth.authwithsection.AuthWithSection
@@ -27,47 +27,46 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SignInScreen(
+fun SignUpScreen(
     modifier: Modifier = Modifier,
-    navigateToForgotPassword: () -> Unit = {},
-    navigateToSignUp: () -> Unit = {},
+    navigateToSignIn: () -> Unit = {},
     navigateToMain: () -> Unit = {},
 ) {
-    SignInContent(
-        modifier = modifier.fillMaxSize(),
-        navigateToForgotPassword = navigateToForgotPassword,
-        navigateToSignUp = navigateToSignUp,
-        navigateToMain = navigateToMain,
+    SignUpScreenContent(
+        modifier = modifier, navigateToSignIn = navigateToSignIn, navigateToMain = navigateToMain
     )
 }
 
 @Composable
-private fun SignInContent(
+fun SignUpScreenContent(
     modifier: Modifier = Modifier,
-    navigateToForgotPassword: () -> Unit = {},
-    navigateToSignUp: () -> Unit = {},
-    navigateToMain: () -> Unit = {}
+    navigateToSignIn: () -> Unit = {},
+    navigateToMain: () -> Unit = {},
 ) {
     val verticalScroll = rememberScrollState()
     Column(
         modifier = modifier
+            .verticalScroll(verticalScroll)
             .fillMaxSize()
             .imePadding()
-            .verticalScroll(verticalScroll)
     ) {
         AuthTitle(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(R.string.welcome_back),
+            title = stringResource(R.string.create_an_account_capitalize),
         )
 
         AuthTextField(modifier = Modifier
@@ -93,20 +92,34 @@ private fun SignInContent(
                 )
             })
 
+        AuthTextField(modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 32.dp),
+            text = stringResource(R.string.confirm_password),
+            isPasswordField = true,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.Lock, contentDescription = null, tint = DarkGrayText
+                )
+            })
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 52.dp, top = 8.dp),
-            contentAlignment = Alignment.TopEnd
+                .padding(bottom = 38.dp, top = 18.dp),
         ) {
             Text(
-                modifier = Modifier.clickable { navigateToForgotPassword() },
-                text = stringResource(R.string.forgot_password),
-                style = TextStyle(
+                text = buildAnnotatedString {
+                    append(stringResource(R.string.by_clicking_the))
+                    withStyle(style = SpanStyle(color = RoseRed)) {
+                        append(stringResource(R.string.register))
+                    }
+                    append(stringResource(R.string.button_you_agree_to_the_public_offer))
+                }, style = TextStyle(
                     fontSize = 12.sp,
                     fontFamily = FontFamily(Font(R.font.montserrat_regular)),
                     fontWeight = FontWeight.W400,
-                    color = RoseRed,
+                    color = Color(0xFF676767)
                 )
             )
         }
@@ -114,22 +127,21 @@ private fun SignInContent(
         SolidButton(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 72.dp),
-            text = stringResource(R.string.logIn)
+                .padding(bottom = 40.dp),
+            text = stringResource(R.string.create_account)
         ) {
             navigateToMain()
         }
 
         AuthWithSection(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.Top,
             ) {
                 Text(
-                    text = stringResource(R.string.create_an_account),
+                    text = stringResource(R.string.i_already_have_an_account),
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontFamily = FontFamily(Font(R.font.montserrat_regular)),
@@ -139,7 +151,7 @@ private fun SignInContent(
                 )
 
                 Text(
-                    text = stringResource(R.string.sign_up),
+                    text = stringResource(R.string.logIn),
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontFamily = FontFamily(Font(R.font.montserrat_bold)),
@@ -148,10 +160,11 @@ private fun SignInContent(
                         textDecoration = TextDecoration.Underline,
                     ),
                     modifier = Modifier.clickable {
-                        navigateToSignUp()
+                        navigateToSignIn()
                     },
                 )
             }
         }
     }
+
 }
