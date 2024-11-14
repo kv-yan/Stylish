@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,14 +28,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestination) -> Unit) {
-    val systemUiController = rememberSystemUiController()
-    LaunchedEffect(Unit) {
-        systemUiController.isSystemBarsVisible = false
-    }
     val gradientColors = listOf(
         Color.Transparent,
         Color.Black.copy(alpha = 0.5f),
@@ -51,7 +45,7 @@ fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestinat
             modifier = Modifier
                 .fillMaxSize()
                 .clip(RectangleShape),
-            painter = painterResource(id = R.drawable.get_started),
+            painter = painterResource(id = R.drawable.bg_get_started),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
         )
@@ -101,10 +95,8 @@ fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestinat
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun GetStartedPreview() {
     GetStarted {}
 }
-
