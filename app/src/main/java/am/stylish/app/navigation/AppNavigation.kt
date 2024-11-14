@@ -2,6 +2,7 @@ package am.stylish.app.navigation
 
 import am.stylish.app.auth.navigation.AuthMainScreen
 import am.stylish.app.landing.presentation.LandingScreens
+import am.stylish.app.main.get_started.GetStarted
 import am.stylish.app.main.navigation.presentation.component.MainScreenNavigation
 import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.background
@@ -21,8 +22,7 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         NavHost(
-            modifier = modifier
-                .background(Color.White),
+            modifier = modifier.background(Color.White),
             navController = navController,
             startDestination = startDestination,
         ) {
@@ -43,7 +43,7 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 popEnterTransition = { null },
             ) {
                 AuthMainScreen(Modifier.padding(innerPadding)) {
-                    navController.navigate(AppDestination.Main)
+                    navController.navigate(AppDestination.GetStarted)
                 }
             }
 
@@ -53,6 +53,16 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 popEnterTransition = { null },
             ) {
                 MainScreenNavigation()
+            }
+
+            composable<AppDestination.GetStarted>(
+                enterTransition = { null },
+                exitTransition = { null },
+                popEnterTransition = { null },
+            ) {
+                GetStarted{
+                    navController.navigate(it)
+                }
             }
         }
     }
