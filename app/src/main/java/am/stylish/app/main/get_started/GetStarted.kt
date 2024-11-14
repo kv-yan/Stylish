@@ -4,12 +4,12 @@ import am.stylish.app.R
 import am.stylish.app.common_presentation.components.button.SolidButton
 import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,6 +17,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
@@ -36,37 +37,41 @@ fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestinat
     LaunchedEffect(Unit) {
         systemUiController.isSystemBarsVisible = false
     }
-
+    val gradientColors = listOf(
+        Color.Transparent,
+        Color.Black.copy(alpha = 0.5f),
+        Color.Black.copy(alpha = 0.7f),
+        Color.Black.copy(alpha = 0.7f),
+        Color.Black.copy(alpha = 0.7f),
+        Color.Black.copy(alpha = 0.8f),
+    )
     Box(modifier = modifier.fillMaxSize()) {
+        //background image
         Image(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RectangleShape),
             painter = painterResource(id = R.drawable.get_started),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
-            modifier = Modifier
-                .fillMaxSize()
-                .clip(RectangleShape)
         )
         Box(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.BottomCenter
         ) {
-
-            Box(modifier = Modifier.wrapContentSize()) {
-                Image(
-                    painter = painterResource(id = R.drawable.get_started_shadow),
-                    contentDescription = null,
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .matchParentSize()
-                )
+            Box(
+                modifier = Modifier
+                    .wrapContentSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = gradientColors //shadow
+                        )
+                    )
+            ) {
                 Column(
-                    modifier = Modifier
-                        .wrapContentSize()
-                        .padding(50.dp, 30.dp),
+                    modifier = Modifier.padding(50.dp, 30.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
-
-                    ) {
+                ) {
                     Text(
                         stringResource(R.string.you_want_authentic_here_you_go),
                         color = Color.White,
@@ -75,26 +80,24 @@ fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestinat
                         fontFamily = FontFamily(Font(R.font.montserrat_bold))
                     )
                     Text(
+                        modifier = Modifier.padding(top = 20.dp),
                         text = stringResource(R.string.find_it_here_buy_it_now),
-                        modifier = Modifier.padding(0.dp, 20.dp, 0.dp, 0.dp),
                         color = Color.White,
                         fontSize = 14.sp,
                         textAlign = TextAlign.Center,
                         fontFamily = FontFamily(Font(R.font.montserrat_regular))
                     )
                     SolidButton(
-                        text = "Get Started",
                         modifier = Modifier
-                            .padding(0.dp, 40.dp, 0.dp, 0.dp)
-                            .height(55.dp)
-                            .width(279.dp)
+                            .fillMaxWidth()
+                            .padding(top = 40.dp),
+                        text = stringResource(R.string.get_started)
                     ) {
                         navigateToMainScreen(AppDestination.Main)
                     }
                 }
             }
         }
-
     }
 }
 
