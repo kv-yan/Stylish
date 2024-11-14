@@ -2,11 +2,13 @@ package am.stylish.app.navigation
 
 import am.stylish.app.auth.navigation.AuthMainScreen
 import am.stylish.app.landing.presentation.LandingScreens
+import am.stylish.app.main.get_started.GetStarted
+import am.stylish.app.main.navigation.presentation.component.MainScreenNavigation
 import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,13 +20,11 @@ import androidx.navigation.compose.rememberNavController
 fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestination) {
     val navController = rememberNavController()
 
-    Scaffold { innerPadding ->
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         NavHost(
+            modifier = modifier.background(Color.White),
             navController = navController,
             startDestination = startDestination,
-            modifier = modifier
-                .background(Color.White)
-                .padding(innerPadding),
         ) {
 
             composable<AppDestination.Landing>(
@@ -32,7 +32,7 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 exitTransition = { null },
                 popEnterTransition = { null },
             ) {
-                LandingScreens {
+                LandingScreens(Modifier.padding(innerPadding)) {
                     navController.navigate(AppDestination.Auth)
                 }
             }
@@ -42,8 +42,8 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 exitTransition = { null },
                 popEnterTransition = { null },
             ) {
-                AuthMainScreen {
-                    navController.navigate(AppDestination.Main)
+                AuthMainScreen(Modifier.padding(innerPadding)) {
+                    navController.navigate(AppDestination.GetStarted)
                 }
             }
 
@@ -52,7 +52,17 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 exitTransition = { null },
                 popEnterTransition = { null },
             ) {
-                Text(text = "Main")
+                MainScreenNavigation()
+            }
+
+            composable<AppDestination.GetStarted>(
+                enterTransition = { null },
+                exitTransition = { null },
+                popEnterTransition = { null },
+            ) {
+                GetStarted{
+                    navController.navigate(it)
+                }
             }
         }
     }

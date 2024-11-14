@@ -2,6 +2,7 @@ package am.stylish.app.main.get_started
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.components.button.SolidButton
+import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,17 +31,13 @@ import androidx.compose.ui.unit.sp
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun GetStarted() {
+fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestination) -> Unit) {
     val systemUiController = rememberSystemUiController()
     LaunchedEffect(Unit) {
         systemUiController.isSystemBarsVisible = false
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    )
-    {
+    Box(modifier = modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.get_started),
             contentDescription = null,
@@ -91,7 +88,9 @@ fun GetStarted() {
                             .padding(0.dp, 40.dp, 0.dp, 0.dp)
                             .height(55.dp)
                             .width(279.dp)
-                    )
+                    ) {
+                        navigateToMainScreen(AppDestination.Main)
+                    }
                 }
             }
         }
@@ -103,6 +102,6 @@ fun GetStarted() {
 @Preview(showBackground = true)
 @Composable
 fun GetStartedPreview() {
-    GetStarted()
+    GetStarted {}
 }
 

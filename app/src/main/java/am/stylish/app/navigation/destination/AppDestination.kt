@@ -11,4 +11,8 @@ sealed class AppDestination {
 
     @Serializable
     data object Main : AppDestination()
+
+    @Serializable
+    data object GetStarted : AppDestination()
+
 }

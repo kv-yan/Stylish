@@ -28,9 +28,18 @@ val RegularDescriptionTextStyle = TextStyle(
 
 
 val AuthTitleTextStyle = TextStyle(
-    color = Color(0xFF000000),
+    color = Color.Black,
     fontSize = 36.sp,
     lineHeight = 43.sp,
     fontFamily = FontFamily(Font(R.font.montserrat_bold)),
     fontWeight = FontWeight.W700
+)
+
+val BottomBarItemTextStyle = TextStyle(
+    fontSize = 12.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.roboto_mono_medium)),
+    fontWeight = FontWeight.W400,
+    color = Color(0xFF000000),
+    letterSpacing = 0.4.sp,
 )
