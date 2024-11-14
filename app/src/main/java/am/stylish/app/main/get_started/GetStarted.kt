@@ -2,6 +2,7 @@ package am.stylish.app.main.get_started
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.components.button.SolidButton
+import am.stylish.app.common_presentation.ui.theme.gradientColors
 import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,14 +32,6 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestination) -> Unit) {
-    val gradientColors = listOf(
-        Color.Transparent,
-        Color.Black.copy(alpha = 0.5f),
-        Color.Black.copy(alpha = 0.7f),
-        Color.Black.copy(alpha = 0.7f),
-        Color.Black.copy(alpha = 0.7f),
-        Color.Black.copy(alpha = 0.8f),
-    )
     Box(modifier = modifier.fillMaxSize()) {
         //background image
         Image(
