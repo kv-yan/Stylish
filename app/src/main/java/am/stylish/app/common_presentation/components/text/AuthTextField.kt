@@ -5,6 +5,7 @@ import am.stylish.app.R
 import am.stylish.app.common_presentation.ui.theme.DarkGrayText
 import am.stylish.app.common_presentation.ui.theme.LightGrayBackground
 import am.stylish.app.common_presentation.ui.theme.MediumGrayBorder
+import am.stylish.app.common_presentation.ui.theme.Shape10
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -63,9 +64,9 @@ fun AuthTextField(
                     MediumGrayBorder
                 else
                     MediumGrayBorder.copy(alpha = 0.5f),
-                shape = RoundedCornerShape(10.dp)
+                shape = Shape10
             )
-            .clip(RoundedCornerShape(10.dp))
+            .clip(Shape10)
             .background(
                 if (isFocused)
                     LightGrayBackground

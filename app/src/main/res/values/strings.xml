@@ -27,4 +27,7 @@
     <string name="we_will_send_you_a_message_to_set_or_reset_your_new_password">We will send you a message to set or reset your new password</string>
     <string name="star_symbol">*</string>
     <string name="submit">Submit</string>
+    <string name="off">%1$s%%Off</string>
+    <string name="old_price"> ₹%1$s </string>
+    <string name="price">₹%1$s</string>
 </resources>
