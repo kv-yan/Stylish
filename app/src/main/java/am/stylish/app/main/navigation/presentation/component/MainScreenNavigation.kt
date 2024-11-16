@@ -1,5 +1,6 @@
 package am.stylish.app.main.navigation.presentation.component
 
+import am.stylish.app.main.get_started.GetStarted
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
 import androidx.compose.foundation.background
