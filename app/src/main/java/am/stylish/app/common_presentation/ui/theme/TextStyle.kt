@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.sp
 
 
@@ -40,6 +41,56 @@ val BottomBarItemTextStyle = TextStyle(
     lineHeight = 16.sp,
     fontFamily = FontFamily(Font(R.font.roboto_mono_medium)),
     fontWeight = FontWeight.W400,
-    color = Color(0xFF000000),
+    color = Color.Black,
     letterSpacing = 0.4.sp,
+)
+
+val ProductTitleTextStyle = TextStyle(
+    fontSize = 16.sp,
+    lineHeight = 20.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W500,
+    color = Color.Black,
+)
+
+val ProductDescriptionTextStyle = TextStyle(
+    fontSize = 10.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W400,
+    color = Color.Black,
+)
+
+val ProductPriceTextStyle = TextStyle(
+    fontSize = 12.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W500,
+    color = Color.Black,
+)
+val ProductOldPriceTextStyle = TextStyle(
+    fontSize = 12.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W300,
+    color = MutedTeal,
+    textDecoration = TextDecoration.LineThrough,
+)
+
+
+val ProductDiscountTextStyle = TextStyle(
+    fontSize = 10.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W400,
+    color = CoralRed,
+    textAlign = TextAlign.Center,
+)
+
+val ProductReviewQuantityTextStyle = TextStyle(
+    fontSize = 10.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W400,
+    color = SoftSteel,
 )

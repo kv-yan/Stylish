@@ -28,3 +28,6 @@ val gradientColors = listOf(
     Color.Black.copy(alpha = 0.8f),
 )
 
+val MutedTeal = Color(0xFF808488)
+val CoralRed = Color(0xFFFE735C)
+val SoftSteel = Color(0xFFA4A9B3)

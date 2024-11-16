@@ -29,4 +29,7 @@
     <string name="submit">Submit</string>
     <string name="find_it_here_buy_it_now">Find it here, buy it now!</string>
     <string name="you_want_authentic_here_you_go">You want Authentic, here you go!</string>
+    <string name="off">%1$s%%Off</string>
+    <string name="old_price"> ₹%1$s </string>
+    <string name="price">₹%1$s</string>
 </resources>

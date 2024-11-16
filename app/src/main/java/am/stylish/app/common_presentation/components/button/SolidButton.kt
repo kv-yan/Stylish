@@ -2,6 +2,8 @@ package am.stylish.app.common_presentation.components.button
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.ui.theme.RoseRed
+import am.stylish.app.common_presentation.ui.theme.Shape10
+import am.stylish.app.common_presentation.ui.theme.Shape4
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -20,7 +22,7 @@ import androidx.compose.ui.unit.sp
 fun SolidButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit = {}) {
     Button(
         modifier = modifier, onClick = { onClick() },
-        shape = RoundedCornerShape(4.dp),
+        shape = Shape4,
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
             containerColor = RoseRed,
             contentColor = Color.White
