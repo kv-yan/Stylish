@@ -74,4 +74,7 @@ dependencies {
     //  Kotlin Serialization
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.core)
+
+    // palette
+    implementation (libs.androidx.palette)
 }

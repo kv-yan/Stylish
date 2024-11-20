@@ -32,4 +32,13 @@
     <string name="off">%1$s%%Off</string>
     <string name="old_price"> ₹%1$s </string>
     <string name="price">₹%1$s</string>
+    <string name="product_type_beauty">Beauty</string>
+    <string name="product_type_fashion">Fashion</string>
+    <string name="product_type_kids">Kids</string>
+    <string name="product_type_mens">Mens</string>
+    <string name="product_type_women">Women\'s</string>
+    <string name="product_type_other">Other</string>
+    <string name="deal_of_the_day">Deal of the Day</string>
+    <string name="ends_in">22h 55m remaining</string>
+    <string name="view_all">View all</string>
 </resources>
