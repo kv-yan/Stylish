@@ -1,6 +1,6 @@
 package am.stylish.app.main.navigation.presentation.component
 
-import am.stylish.app.main.get_started.GetStarted
+import am.stylish.app.main.home.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
 import androidx.compose.foundation.background
@@ -41,7 +41,7 @@ fun MainScreenNavigation(modifier: Modifier = Modifier) {
             navController = navController,
             startDestination = MainScreenDestination.Home,
         ) {
-            composable<MainScreenDestination.Home> { Text("Home") }
+            composable<MainScreenDestination.Home> { HomeScreen() }
             composable<MainScreenDestination.Wishlist> { Text("Wishlist") }
             composable<MainScreenDestination.Cart> { Text("Cart") }
             composable<MainScreenDestination.Search> { Text("Search") }

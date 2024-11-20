@@ -31,3 +31,5 @@ val gradientColors = listOf(
 val MutedTeal = Color(0xFF808488)
 val CoralRed = Color(0xFFFE735C)
 val SoftSteel = Color(0xFFA4A9B3)
+val GoldenAmber = Color(0xFFEDB310)
+val CoolGray = Color(0xFFBBBBBB)

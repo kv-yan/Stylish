@@ -94,3 +94,17 @@ val ProductReviewQuantityTextStyle = TextStyle(
     fontWeight = FontWeight.W400,
     color = SoftSteel,
 )
+
+val SpecialOfferTitleTextStyle = TextStyle(
+    fontSize = 16.sp,
+    lineHeight = 20.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W500,
+)
+
+val SpecialOfferDescriptionTextStyle = TextStyle(
+    fontSize = 12.sp,
+    lineHeight = 16.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight.W400,
+)
