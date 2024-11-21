@@ -29,7 +29,12 @@ import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
 
 @Composable
-fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<PageProduct>) {
+fun ProductListWithSpecialOffers(
+    modifier: Modifier = Modifier,
+    products: List<PageProduct>,
+    onProductClick: (PageProduct) -> Unit = {},
+    onSpecialOfferClick: (PageProduct.PageSpecialOffer) -> Unit = {}
+) {
     val context = LocalContext.current
     LazyColumn(modifier = modifier) {
         items(products) { item ->
@@ -45,10 +50,14 @@ fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<P
                                     .fillMaxWidth()
                                     .heightIn(min = 0.dp, max = gridHeight),
                                 products = item.products
-                            )
+                            ) {
+                                onProductClick(item)
+                            }
                         }
 
-                        ProductListType.LIST -> {} // TODO: not implemented yet
+                        ProductListType.LIST -> {
+                            // TODO: not implemented yet
+                        }
 
                         ProductListType.STAGGERED_GRID -> {
                             val rows = (item.products.size + 1) / 2
@@ -57,23 +66,25 @@ fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<P
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .heightIn(
-                                        min = 0.dp,
-                                        max = gridHeight
-                                    ),
-                                products = item.products
-                            )
+                                        min = 0.dp, max = gridHeight
+                                    ), products = item.products
+                            ) {
+                                onProductClick(item)
+                            }
                         }
 
                         ProductListType.PAGER -> {
                             ProductListPager(
-                                modifier = Modifier.fillMaxWidth(),
-                                products = item.products
-                            )
+                                modifier = Modifier.fillMaxWidth(), products = item.products
+                            ) {
+                                onProductClick(item)
+                            }
                         }
                     }
                 }
 
                 is PageProduct.PageSpecialOffer -> {
+
                     when (item.specialOffer.offerType) {
                         SpecialOfferType.PAGER -> {
                             PagerSpecialOffer(modifier = Modifier
@@ -92,7 +103,7 @@ fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<P
                                         contentScale = ContentScale.FillWidth
                                     )
                                 },
-                                onClick = { /* Handle click */ },
+                                onClick = { onSpecialOfferClick(item) },
                                 extractColor = { imageRes ->
                                     val bitmap =
                                         BitmapFactory.decodeResource(context.resources, imageRes)
@@ -113,7 +124,7 @@ fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<P
                                     )
                                 },
                                 onClick = {
-                                    // TODO:  navigate to special offer screen
+                                    onSpecialOfferClick(item)
                                 })
                         }
 
@@ -127,7 +138,9 @@ fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<P
                                     .fillMaxWidth()
                                     .padding(start = 16.dp, end = 16.dp, top = 16.dp),
                                 item.specialOffer
-                            )
+                            ){
+                                onSpecialOfferClick(item)
+                            }
                         }
 
                         SpecialOfferType.SPECIAL_OFFER -> {
@@ -140,7 +153,9 @@ fun ProductListWithSpecialOffers(modifier: Modifier = Modifier, products: List<P
                                     .fillMaxWidth()
                                     .padding(horizontal = 16.dp),
                                 offer = item.specialOffer
-                            )
+                            ) {
+                                onSpecialOfferClick(item)
+                            }
                         }
                     }
                 }
