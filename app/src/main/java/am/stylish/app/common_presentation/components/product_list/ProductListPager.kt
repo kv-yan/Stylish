@@ -34,7 +34,8 @@ import kotlinx.coroutines.launch
 fun ProductListPager(
     modifier: Modifier = Modifier,
     products: List<Product>,
-    isShowingController: Boolean = true
+    isShowingController: Boolean = true,
+    onProductClick: (Product) -> Unit = {}
 ) {
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
@@ -48,7 +49,9 @@ fun ProductListPager(
                 ProductPagerItem(
                     modifier = Modifier.widthIn(min = 170.dp, max = 170.dp),
                     product = item
-                )
+                ){
+                    onProductClick(item)
+                }
             }
         }
 
