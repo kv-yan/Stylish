@@ -21,6 +21,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +42,7 @@ fun ProductListPager(
 ) {
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
+    val firstVisibleItemIndex by remember { derivedStateOf { listState.firstVisibleItemIndex } }
 
     Box(modifier = modifier) {
         LazyRow(
@@ -57,10 +61,10 @@ fun ProductListPager(
 
         // Animate Start Button visibility
         AnimatedVisibility(
-            visible = isShowingController && listState.firstVisibleItemIndex > 0,
+            visible = isShowingController && firstVisibleItemIndex > 0,
             modifier = Modifier.align(Alignment.CenterStart),
-            enter = fadeIn(),
-            exit = fadeOut()
+//            enter = fadeIn(),
+//            exit = fadeOut()
         ) {
             IconButton(
                 modifier = Modifier.padding(start = 16.dp),
@@ -80,10 +84,10 @@ fun ProductListPager(
 
         // Animate Forward Button visibility
         AnimatedVisibility(
-            visible = isShowingController && listState.firstVisibleItemIndex < products.size - 1,
+            visible = isShowingController && firstVisibleItemIndex < products.size - 1,
             modifier = Modifier.align(Alignment.CenterEnd),
-            enter = fadeIn(),
-            exit = fadeOut()
+//            enter = fadeIn(),
+//            exit = fadeOut()
         ) {
             IconButton(
                 modifier = Modifier.padding(16.dp),

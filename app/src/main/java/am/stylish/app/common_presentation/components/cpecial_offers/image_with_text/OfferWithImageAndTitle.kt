@@ -26,7 +26,9 @@ import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun OfferWithImageAndTitle(
-    modifier: Modifier = Modifier, offer: SpecialOffer, onOfferClick: (SpecialOffer) -> Unit = {}
+    modifier: Modifier = Modifier,
+    offer: SpecialOffer,
+    onOfferClick: (SpecialOffer) -> Unit = {},
 ) {
     val imageUrl = offer.imageUrl.firstOrNull()
     Surface(modifier = modifier, shape = Shape12) {
@@ -60,10 +62,9 @@ fun OfferWithImageAndTitle(
                         style = SpecialOfferTitleTextStyle,
                     )
                 }
-                ButtonViewAll(
-                    backgroundColor = RoseRed,
-                    onClick = { onOfferClick(offer) }
-                )
+                ButtonViewAll(backgroundColor = RoseRed) {
+                    onOfferClick(offer)
+                }
             }
         }
     }

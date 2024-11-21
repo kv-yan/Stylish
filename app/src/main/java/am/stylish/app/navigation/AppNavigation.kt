@@ -79,19 +79,19 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
             composable<AppDestination.SpecialOfferDetails>(
                 enterTransition = {
                     slideInHorizontally(
-                        initialOffsetX = { it }, // Enter from the right
+                        initialOffsetX = { it },
                         animationSpec = tween(durationMillis = 300)
                     )
                 },
                 exitTransition = {
                     slideOutHorizontally(
-                        targetOffsetX = { -it }, // Exit to the left
+                        targetOffsetX = { -it },
                         animationSpec = tween(durationMillis = 300)
                     )
                 },
                 popEnterTransition = {
                     slideInHorizontally(
-                        initialOffsetX = { -it }, // Enter from the left (back stack)
+                        initialOffsetX = { -it },
                         animationSpec = tween(durationMillis = 300)
                     )
                 }, popExitTransition = {
@@ -119,18 +119,18 @@ fun AppNavigation(modifier: Modifier = Modifier, startDestination: AppDestinatio
                 },
                 exitTransition = {
                     slideOutHorizontally(
-                        targetOffsetX = { -it }, // Exit to the left
+                        targetOffsetX = { -it },
                         animationSpec = tween(durationMillis = 300)
                     )
                 },
                 popEnterTransition = {
                     slideInHorizontally(
-                        initialOffsetX = { -it }, // Enter from the left (back stack)
+                        initialOffsetX = { -it },
                         animationSpec = tween(durationMillis = 300)
                     )
                 }, popExitTransition = {
                     slideOutHorizontally(
-                        targetOffsetX = { it }, // Exit to the right
+                        targetOffsetX = { it },
                         animationSpec = tween(durationMillis = 300)
                     )
                 }
