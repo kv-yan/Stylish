@@ -24,16 +24,20 @@ fun ButtonViewAll(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.Transparent,
     contentColor: Color = Color.White,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
 ) {
     OutlinedButton(
+        modifier = modifier,
+        onClick = { onClick() },
         shape = Shape4,
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = backgroundColor,
             contentColor = Color.White,
         ),
-        border = BorderStroke(width = 1.dp, color = Color.White),
-        onClick = { /*TODO*/ }
+        border = BorderStroke(
+            width = 1.dp,
+            color = Color.White,
+        ),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -51,5 +55,4 @@ fun ButtonViewAll(
             )
         }
     }
-
 }

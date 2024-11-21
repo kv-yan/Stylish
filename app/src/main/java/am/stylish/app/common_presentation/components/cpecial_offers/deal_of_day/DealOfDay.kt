@@ -24,7 +24,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DealOfDayOffer(modifier: Modifier = Modifier, offer: SpecialOffer) {
+fun DealOfDayOffer(
+    modifier: Modifier = Modifier,
+    offer: SpecialOffer,
+    onClick: () -> Unit,
+) {
     val backgroundColor: Color = offer.contentBackgroundColor ?: Color.Transparent
     Surface(
         modifier = modifier, color = backgroundColor,
@@ -61,7 +65,9 @@ fun DealOfDayOffer(modifier: Modifier = Modifier, offer: SpecialOffer) {
                 }
             }
 
-            ButtonViewAll()
+            ButtonViewAll {
+                onClick()
+            }
         }
     }
 }

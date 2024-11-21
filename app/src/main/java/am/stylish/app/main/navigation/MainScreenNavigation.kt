@@ -1,5 +1,8 @@
-package am.stylish.app.main.navigation.presentation.component
+package am.stylish.app.main.navigation
 
+import am.stylish.app.common_domain.model.Product
+import am.stylish.app.common_domain.model.SpecialOffer
+import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.main.home.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
@@ -18,21 +21,23 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun MainScreenNavigation(modifier: Modifier = Modifier) {
+fun MainScreenNavigation(
+    modifier: Modifier = Modifier,
+    navigateToProductDetails: (Product) -> Unit = {},
+    navigateToSpecialOffer: (SpecialOffer) -> Unit = {}
+) {
     val navController = rememberNavController()
 
-    Scaffold(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .navigationBarsPadding(),
+    Scaffold(modifier = modifier
+        .fillMaxSize()
+        .background(SoftWhite)
+        .navigationBarsPadding(),
         bottomBar = {
             BottomNavigationBar(
                 modifier = Modifier.fillMaxWidth(),
                 navController = navController,
             )
-        }
-    ) {
+        }) {
         NavHost(
             modifier = Modifier
                 .fillMaxSize()
@@ -41,7 +46,9 @@ fun MainScreenNavigation(modifier: Modifier = Modifier) {
             navController = navController,
             startDestination = MainScreenDestination.Home,
         ) {
-            composable<MainScreenDestination.Home> { HomeScreen() }
+            composable<MainScreenDestination.Home> {
+                HomeScreen(onSpecialOfferClick = navigateToSpecialOffer)
+            }
             composable<MainScreenDestination.Wishlist> { Text("Wishlist") }
             composable<MainScreenDestination.Cart> { Text("Cart") }
             composable<MainScreenDestination.Search> { Text("Search") }
@@ -49,3 +56,4 @@ fun MainScreenNavigation(modifier: Modifier = Modifier) {
         }
     }
 }
+

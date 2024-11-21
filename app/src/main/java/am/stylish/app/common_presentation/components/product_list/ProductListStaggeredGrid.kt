@@ -12,13 +12,19 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun ProductListStaggeredGrid(modifier: Modifier = Modifier, products: List<Product>) {
+fun ProductListStaggeredGrid(
+    modifier: Modifier = Modifier,
+    products: List<Product>,
+    onProductClick: (Product) -> Unit = {}
+) {
     LazyVerticalStaggeredGrid(
         modifier = modifier.padding(8.dp),
         columns = StaggeredGridCells.Fixed(2),
     ) {
         items(products) { product ->
-            ProductStaggeredGridItem(product)
+            ProductStaggeredGridItem(product) {
+                onProductClick(product)
+            }
         }
     }
 }

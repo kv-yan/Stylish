@@ -15,4 +15,9 @@ sealed class AppDestination {
     @Serializable
     data object GetStarted : AppDestination()
 
+    @Serializable
+    data class SpecialOfferDetails(val specialOfferId: String) : AppDestination()
+
+    @Serializable
+    data object ProductDetails : AppDestination()
 }
