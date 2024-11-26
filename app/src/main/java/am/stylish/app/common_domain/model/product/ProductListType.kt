@@ -1,4 +1,4 @@
-package am.stylish.app.common_domain.model
+package am.stylish.app.common_domain.model.product
 
 enum class ProductListType {
     GRID,

@@ -1,6 +1,6 @@
 package am.stylish.app.common_presentation.components.cpecial_offers.items
 
-import am.stylish.app.common_domain.model.SpecialOffer
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

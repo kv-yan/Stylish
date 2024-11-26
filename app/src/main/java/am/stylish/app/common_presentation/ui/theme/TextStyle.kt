@@ -108,3 +108,12 @@ val SpecialOfferDescriptionTextStyle = TextStyle(
     fontFamily = FontFamily(Font(R.font.montserrat_regular)),
     fontWeight = FontWeight.W400,
 )
+
+
+val PurchaseButtonTextStyle = TextStyle(
+    fontSize = 16.sp,
+    lineHeight = 20.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_bold)),
+    fontWeight = FontWeight.W500,
+    color = Color.White,
+)

@@ -1,7 +1,7 @@
 package am.stylish.app.common_presentation.components.cpecial_offers.deal_of_day
 
 import am.stylish.app.R
-import am.stylish.app.common_domain.model.SpecialOffer
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_presentation.components.button.ButtonViewAll
 import am.stylish.app.common_presentation.ui.theme.Shape4
 import am.stylish.app.common_presentation.ui.theme.SpecialOfferDescriptionTextStyle

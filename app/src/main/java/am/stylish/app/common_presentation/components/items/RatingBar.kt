@@ -12,11 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RatingBar(rating: Float) {
+fun RatingBar(rating: Float, iconSize: Int = 14) {
     Row {
         repeat(5) { index ->
             Icon(
-                modifier = Modifier.size(14.dp),
+                modifier = Modifier.size(iconSize.dp),
                 imageVector = Icons.Filled.Star,
                 contentDescription = "Star",
                 tint = if (index < rating) GoldenAmber else CoolGray
