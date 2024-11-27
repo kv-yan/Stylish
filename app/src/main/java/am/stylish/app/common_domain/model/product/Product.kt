@@ -1,6 +1,7 @@
-package am.stylish.app.common_domain.model
+package am.stylish.app.common_domain.model.product
 
 data class Product(
+    val id: String = "",
     val name: String = "",
     val description: String = "",
     val price: Int = 0,

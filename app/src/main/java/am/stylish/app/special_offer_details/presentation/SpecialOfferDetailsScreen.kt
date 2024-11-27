@@ -1,7 +1,7 @@
 package am.stylish.app.special_offer_details.presentation
 
-import am.stylish.app.common_domain.model.SpecialOffer
-import am.stylish.app.common_domain.model.SpecialOfferType
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
+import am.stylish.app.common_domain.model.special_offer.SpecialOfferType
 import am.stylish.app.common_presentation.components.action_bar.ActionBar
 import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
 import androidx.compose.foundation.layout.Column
