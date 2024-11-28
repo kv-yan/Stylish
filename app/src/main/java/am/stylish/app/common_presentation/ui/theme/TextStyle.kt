@@ -109,6 +109,22 @@ val SpecialOfferDescriptionTextStyle = TextStyle(
     fontWeight = FontWeight.W400,
 )
 
+val SplashLogoTextStyle = TextStyle(
+    fontSize = 40.sp,
+    lineHeight = 22.sp,
+    fontFamily = FontFamily(Font(R.font.libre_caslon_text_bold)),
+    fontWeight = FontWeight.W700,
+    color = RoseRed,
+)
+
+val ActionBarLogoTextStyle = TextStyle(
+    fontSize = 18.sp,
+    lineHeight = 22.sp,
+    fontFamily = FontFamily(Font(R.font.libre_caslon_text_bold)),
+    fontWeight = FontWeight.W700,
+    color = DodgerBlue,
+    textAlign = TextAlign.Center,
+)
 
 val PurchaseButtonTextStyle = TextStyle(
     fontSize = 16.sp,

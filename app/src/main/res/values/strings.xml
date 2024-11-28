@@ -52,4 +52,5 @@
     <string name="view_similar">View Similar</string>
     <string name="add_to_compare">Add to Compare</string>
     <string name="similar_to">Similar To</string>
+    <string name="action_bar_title">Stylish</string>
 </resources>

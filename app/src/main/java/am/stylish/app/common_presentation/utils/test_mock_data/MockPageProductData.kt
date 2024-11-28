@@ -6,6 +6,8 @@ import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_domain.model.special_offer.SpecialOfferType
 import androidx.compose.ui.graphics.Color
 
+import am.stylish.app.common_presentation.ui.theme.DodgerBlue
+
 val mockPageProductData = listOf(
     PageProduct.PageSpecialOffer(
         specialOffer = SpecialOffer(
@@ -23,7 +25,7 @@ val mockPageProductData = listOf(
             offerType = SpecialOfferType.DEAL_OF_DAY,
             contentTitle = "Deal of the Day!",
             contentDescription = "",
-            contentBackgroundColor = Color(0xFF4392F9),
+            contentBackgroundColor = DodgerBlue,
             products = productsMockData
         )
     ),
