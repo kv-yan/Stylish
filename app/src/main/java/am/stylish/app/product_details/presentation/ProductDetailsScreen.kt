@@ -3,7 +3,7 @@ package am.stylish.app.product_details.presentation
 import am.stylish.app.R
 import am.stylish.app.common_domain.model.details.ProductDetails
 import am.stylish.app.common_domain.model.product.Product
-import am.stylish.app.common_presentation.components.action_bar.ActionBar
+import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.button.IconTextButton
 import am.stylish.app.common_presentation.components.button.PurchaseButton
 import am.stylish.app.common_presentation.components.items.RatingBar
@@ -40,7 +40,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.rounded.ShoppingCart
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -108,11 +113,28 @@ fun ProductDetailsScreenContent(
             .systemBarsPadding()
             .verticalScroll(scrollState), verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        ActionBar(
-            Modifier.fillMaxWidth(),
-            onBackClick = onBackClick,
-            onCartClick = {},
-        )
+        AppActionBar(modifier = Modifier.fillMaxWidth(),
+            showCenterContent = false,
+            showStartContent = true,
+            showEndContent = true,
+            startContent = {
+                IconButton(onClick = { onBackClick() }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                }
+            },
+            endContent = {
+                IconButton(onClick = { }) {
+                    Icon(
+                        imageVector = Icons.Rounded.ShoppingCart,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                }
+            })
 
         ProductImagePager(
             modifier = Modifier.fillMaxWidth(),
@@ -280,9 +302,7 @@ fun ProductDetailsScreenContent(
                 fontSize = 20.sp
             )
             Text(
-                text = "282+ Items",
-                style = AuthTitleTextStyle,
-                fontSize = 18.sp
+                text = "282+ Items", style = AuthTitleTextStyle, fontSize = 18.sp
             )
 
 

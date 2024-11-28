@@ -46,7 +46,6 @@ fun SpecialOfferDetailsScreen(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = null
                             )
-
                         }
                         Text(
                             text = specialOffer.contentTitle,
@@ -54,14 +53,12 @@ fun SpecialOfferDetailsScreen(
                             fontSize = 21.sp
                         )
                     }
-
                 })
             ProductListStaggeredGrid(
                 modifier = Modifier.fillMaxSize(),
                 products = specialOffer.products,
             )
         }
-
     }
 }
 
