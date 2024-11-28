@@ -1,4 +1,6 @@
-package am.stylish.app.common_domain.model
+package am.stylish.app.common_domain.model.product
+
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 
 sealed class PageProduct {
     data class ProductList(

@@ -125,3 +125,11 @@ val ActionBarLogoTextStyle = TextStyle(
     color = DodgerBlue,
     textAlign = TextAlign.Center,
 )
+
+val PurchaseButtonTextStyle = TextStyle(
+    fontSize = 16.sp,
+    lineHeight = 20.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_bold)),
+    fontWeight = FontWeight.W500,
+    color = Color.White,
+)

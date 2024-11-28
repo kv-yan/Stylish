@@ -1,6 +1,6 @@
 package am.stylish.app.common_presentation.components.product_list
 
-import am.stylish.app.common_domain.model.Product
+import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.items.ProductStaggeredGridItem
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid

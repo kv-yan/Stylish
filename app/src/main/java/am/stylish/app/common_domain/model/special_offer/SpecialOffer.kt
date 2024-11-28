@@ -1,5 +1,6 @@
-package am.stylish.app.common_domain.model
+package am.stylish.app.common_domain.model.special_offer
 
+import am.stylish.app.common_domain.model.product.Product
 import androidx.compose.ui.graphics.Color
 import java.util.UUID
 

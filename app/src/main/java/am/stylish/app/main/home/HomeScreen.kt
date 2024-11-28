@@ -1,7 +1,8 @@
 package am.stylish.app.main.home
 
 import am.stylish.app.R
-import am.stylish.app.common_domain.model.SpecialOffer
+import am.stylish.app.common_domain.model.product.Product
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.button.IconButton
 import am.stylish.app.common_presentation.components.product_list.ProductListWithSpecialOffers
@@ -27,7 +28,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    onProductClick: () -> Unit = {},
+    onProductClick: (Product) -> Unit = {},
     onSpecialOfferClick: (SpecialOffer) -> Unit = {}
 ) {
     val scrollState = rememberScrollState()
@@ -67,7 +68,7 @@ fun HomeScreen(
         ProductListWithSpecialOffers(
             modifier = modifier.fillMaxSize(),
             products = mockPageProductData,
-            onProductClick = {},
+            onProductClick = onProductClick,
             onSpecialOfferClick = {
                 onSpecialOfferClick(it.specialOffer)
             },

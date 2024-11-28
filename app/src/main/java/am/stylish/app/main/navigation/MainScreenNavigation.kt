@@ -1,7 +1,7 @@
 package am.stylish.app.main.navigation
 
-import am.stylish.app.common_domain.model.Product
-import am.stylish.app.common_domain.model.SpecialOffer
+import am.stylish.app.common_domain.model.product.Product
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.main.home.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
@@ -47,7 +47,7 @@ fun MainScreenNavigation(
             startDestination = MainScreenDestination.Home,
         ) {
             composable<MainScreenDestination.Home> {
-                HomeScreen(onSpecialOfferClick = navigateToSpecialOffer)
+                HomeScreen(onSpecialOfferClick = navigateToSpecialOffer, onProductClick = navigateToProductDetails)
             }
             composable<MainScreenDestination.Wishlist> { Text("Wishlist") }
             composable<MainScreenDestination.Cart> { Text("Cart") }

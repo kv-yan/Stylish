@@ -58,23 +58,25 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //koin
-    implementation(libs.koin.android)
+    //  Koin
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.android)
 
     // coil
-    implementation (libs.coil.compose)
+    implementation(libs.coil.compose)
 
     // navigation
-    implementation (libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 
     // system ui controller
-    implementation (libs.accompanist.systemuicontroller)
+    implementation(libs.accompanist.systemuicontroller)
 
     //  Kotlin Serialization
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.serialization.core)
 
     // palette
-    implementation (libs.androidx.palette)
+    implementation(libs.androidx.palette)
 }
