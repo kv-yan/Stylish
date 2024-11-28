@@ -53,4 +53,7 @@
     <string name="add_to_compare">Add to Compare</string>
     <string name="similar_to">Similar To</string>
     <string name="action_bar_title">Stylish</string>
+    <string name="search">Search</string>
+    <string name="voice_search">Voice search</string>
+    <string name="search_any_product">Search any Product..</string>
 </resources>
