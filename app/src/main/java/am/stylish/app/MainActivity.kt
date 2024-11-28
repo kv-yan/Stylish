@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
             if (showSplashScreen) {
                 SplashScreen()
             } else {
-                AppNavigation(startDestination = AppDestination.Auth)
+                AppNavigation(startDestination = AppDestination.Main)
             }
         }
     }

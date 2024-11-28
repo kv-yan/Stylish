@@ -5,10 +5,9 @@ import am.stylish.app.common_presentation.components.items.ProductPagerItem
 import am.stylish.app.common_presentation.ui.theme.CoolGray
 import am.stylish.app.common_presentation.utils.test_mock_data.productsMockData
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyRow
@@ -47,13 +46,18 @@ fun ProductListPager(
     Box(modifier = modifier) {
         LazyRow(
             state = listState,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(
+                    min = 0.dp,
+                    max = 450.dp
+                ),
         ) {
             items(products) { item ->
                 ProductPagerItem(
                     modifier = Modifier.widthIn(min = 170.dp, max = 170.dp),
                     product = item
-                ){
+                ) {
                     onProductClick(item)
                 }
             }

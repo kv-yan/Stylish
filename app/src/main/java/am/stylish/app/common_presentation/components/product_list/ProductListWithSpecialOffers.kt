@@ -36,7 +36,12 @@ fun ProductListWithSpecialOffers(
     onSpecialOfferClick: (PageProduct.PageSpecialOffer) -> Unit = {}
 ) {
     val context = LocalContext.current
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = modifier.heightIn(
+            min = 0.dp,
+            max = 1500.dp
+        )
+    ) {
         items(products) { item ->
             when (item) {
                 is PageProduct.ProductList -> {
@@ -138,7 +143,7 @@ fun ProductListWithSpecialOffers(
                                     .fillMaxWidth()
                                     .padding(start = 16.dp, end = 16.dp, top = 16.dp),
                                 item.specialOffer
-                            ){
+                            ) {
                                 onSpecialOfferClick(item)
                             }
                         }

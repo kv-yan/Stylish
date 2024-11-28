@@ -2,7 +2,7 @@ package am.stylish.app.special_offer_details.presentation
 
 import am.stylish.app.common_domain.model.SpecialOffer
 import am.stylish.app.common_domain.model.SpecialOfferType
-import am.stylish.app.common_presentation.components.action_bar.ActionBar
+import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,12 +21,9 @@ fun SpecialOfferDetailsScreen(
 ) {
     Scaffold(Modifier.fillMaxSize()) { innerPadding ->
         Column(modifier = modifier.padding(innerPadding)) {
-            ActionBar(
+            AppActionBar(
                 modifier = Modifier
                     .fillMaxWidth(),
-                title = specialOffer.contentTitle,
-                isShowingBackIcon = true,
-                onBackClick = onBackClick
             )
             ProductListStaggeredGrid(
                 modifier = Modifier.fillMaxSize(),
