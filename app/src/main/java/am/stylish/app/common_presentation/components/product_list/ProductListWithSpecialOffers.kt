@@ -34,15 +34,11 @@ fun ProductListWithSpecialOffers(
     modifier: Modifier = Modifier,
     products: List<PageProduct>,
     onProductClick: (Product) -> Unit = {},
+    onWishedClick: (String) -> Unit = {},
     onSpecialOfferClick: (PageProduct.PageSpecialOffer) -> Unit = {}
 ) {
     val context = LocalContext.current
-    LazyColumn(
-        modifier = modifier.heightIn(
-            min = 0.dp,
-            max = 1500.dp
-        )
-    ) {
+    LazyColumn(modifier = modifier.heightIn(min = 0.dp, max = 1500.dp)) {
         items(products) { item ->
             when (item) {
                 is PageProduct.ProductList -> {
@@ -54,11 +50,18 @@ fun ProductListWithSpecialOffers(
                             ProductListGrid(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .heightIn(min = 0.dp, max = gridHeight),
-                                products = item.products
-                            ) {
-                                onProductClick(it)
-                            }
+                                    .heightIn(
+                                        min = 0.dp,
+                                        max = gridHeight
+                                    ),
+                                products = item.products,
+                                onProductClick = {
+                                    onProductClick(it)
+                                },
+                                onWishlistClick = {
+                                    onWishedClick(it)
+                                }
+                            )
                         }
 
                         ProductListType.LIST -> {
@@ -72,8 +75,10 @@ fun ProductListWithSpecialOffers(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .heightIn(
-                                        min = 0.dp, max = gridHeight
-                                    ), products = item.products
+                                        min = 0.dp,
+                                        max = gridHeight
+                                    ),
+                                products = item.products
                             ) {
                                 onProductClick(it)
                             }
@@ -81,10 +86,15 @@ fun ProductListWithSpecialOffers(
 
                         ProductListType.PAGER -> {
                             ProductListPager(
-                                modifier = Modifier.fillMaxWidth(), products = item.products
-                            ) {
-                                onProductClick(it)
-                            }
+                                modifier = Modifier.fillMaxWidth(),
+                                products = item.products,
+                                onProductClick = {
+                                    onProductClick(it)
+                                },
+                                onWishedClick = {
+                                    onWishedClick(it)
+                                }
+                            )
                         }
                     }
                 }
@@ -93,9 +103,10 @@ fun ProductListWithSpecialOffers(
 
                     when (item.specialOffer.offerType) {
                         SpecialOfferType.PAGER -> {
-                            PagerSpecialOffer(modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
+                            PagerSpecialOffer(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp),
                                 sourceList = listOf(
                                     R.drawable.pager_special_offer,
                                     R.drawable.pager_special_offer,
@@ -115,12 +126,14 @@ fun ProductListWithSpecialOffers(
                                         BitmapFactory.decodeResource(context.resources, imageRes)
                                     val palette = Palette.from(bitmap).generate()
                                     Color(palette.getDominantColor(Color.Gray.toArgb()))
-                                })
+                                }
+                            )
                         }
 
                         SpecialOfferType.IMAGE -> {
-                            ImageSpecialOffer(Modifier,
-                                R.drawable.image_special_offer,
+                            ImageSpecialOffer(
+                                modifier = Modifier,
+                                sourceList = R.drawable.image_special_offer,
                                 imageLoader = { resId ->
                                     Image(
                                         modifier = Modifier.fillMaxSize(),
@@ -131,7 +144,8 @@ fun ProductListWithSpecialOffers(
                                 },
                                 onClick = {
                                     onSpecialOfferClick(item)
-                                })
+                                }
+                            )
                         }
 
                         SpecialOfferType.BANNER -> {
@@ -140,14 +154,13 @@ fun ProductListWithSpecialOffers(
 
                         SpecialOfferType.DEAL_OF_DAY -> {
                             DealOfDayOffer(
-                                Modifier
+                                modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(
                                         start = 16.dp,
                                         end = 16.dp,
                                         top = 16.dp,
-                                    ),
-                                item.specialOffer
+                                    ), offer = item.specialOffer
                             ) {
                                 onSpecialOfferClick(item)
                             }

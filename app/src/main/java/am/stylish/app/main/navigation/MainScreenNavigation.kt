@@ -2,10 +2,12 @@ package am.stylish.app.main.navigation
 
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_domain.model.special_offer.SpecialOffer
+import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
-import am.stylish.app.main.home.HomeScreen
+import am.stylish.app.main.home.presentation.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
+import am.stylish.app.main.wishlist.presentation.WishlistScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,7 +26,8 @@ import androidx.navigation.compose.rememberNavController
 fun MainScreenNavigation(
     modifier: Modifier = Modifier,
     navigateToProductDetails: (Product) -> Unit = {},
-    navigateToSpecialOffer: (SpecialOffer) -> Unit = {}
+    navigateToSpecialOffer: (SpecialOffer) -> Unit = {},
+    onSnackbarShown: (SnackbarState) -> Unit = {}
 ) {
     val navController = rememberNavController()
 
@@ -47,9 +50,15 @@ fun MainScreenNavigation(
             startDestination = MainScreenDestination.Home,
         ) {
             composable<MainScreenDestination.Home> {
-                HomeScreen(onSpecialOfferClick = navigateToSpecialOffer, onProductClick = navigateToProductDetails)
+                HomeScreen(
+                    onSpecialOfferClick = navigateToSpecialOffer,
+                    onProductClick = navigateToProductDetails,
+                    onSnackbarShown = onSnackbarShown,
+                )
             }
-            composable<MainScreenDestination.Wishlist> { Text("Wishlist") }
+            composable<MainScreenDestination.Wishlist> {
+                WishlistScreen(onProductClick = navigateToProductDetails)
+            }
             composable<MainScreenDestination.Cart> { Text("Cart") }
             composable<MainScreenDestination.Search> { Text("Search") }
             composable<MainScreenDestination.Settings> { Text("Settings") }

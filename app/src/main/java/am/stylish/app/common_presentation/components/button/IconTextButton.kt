@@ -10,9 +10,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,7 +42,11 @@ fun IconTextButton(
 ) {
     Box(modifier = modifier
         .clip(shape)
-        .border(width = 1.dp, color = borderColor, shape = shape)
+        .border(
+            width = 1.dp,
+            color = borderColor,
+            shape = shape,
+        )
         .background(backgroundColor)
         .clickable { onClick() }) {
 
@@ -70,6 +77,59 @@ fun IconTextButton(
     }
 }
 
+
+@Composable
+fun IconTextButton(
+    modifier: Modifier = Modifier,
+    icon: Int = R.drawable.ic_visibility,
+    contentTint: Color = Color.Black,
+    text: String = "",
+    borderColor: Color = Color.Black,
+    backgroundColor: Color = Color.White,
+    shape: Shape = Shape4,
+    padding: PaddingValues = PaddingValues(),
+    onClick: () -> Unit = {}
+) {
+    Surface(
+        shadowElevation = 2.dp,
+        shape = shape,
+        color = backgroundColor,
+        onClick = onClick
+    ) {
+        Box(modifier = modifier
+            .clip(shape)
+            .border(
+                width = 1.dp,
+                color = borderColor,
+                shape = shape,
+            )
+            .background(backgroundColor)
+            .clickable { onClick() }) {
+
+            Row(
+                modifier = Modifier.padding(padding),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    text = text,
+                    color = contentTint,
+                    style = ProductTitleTextStyle,
+                    fontSize = 12.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+                Icon(
+                    painter = painterResource(icon),
+                    contentDescription = null,
+                    tint = contentTint,
+                )
+            }
+        }
+    }
+}
+
 @Preview
 @Composable
 fun IconTextButtonPrev() {
@@ -78,7 +138,7 @@ fun IconTextButtonPrev() {
             modifier = Modifier.weight(1f),
             icon = R.drawable.ic_visibility,
             contentTint = Color.Black,
-            text = "View Similar",
+            text = stringResource(R.string.view_similar),
             borderColor = CloudGray,
             backgroundColor = Color.White,
             shape = Shape8,
@@ -87,7 +147,7 @@ fun IconTextButtonPrev() {
             modifier = Modifier.weight(1f),
             icon = R.drawable.ic_compere_product,
             contentTint = Color.Black,
-            text = "Add to Compare",
+            text = stringResource(R.string.add_to_compare),
             borderColor = CloudGray,
             backgroundColor = Color.White,
             shape = Shape8,
