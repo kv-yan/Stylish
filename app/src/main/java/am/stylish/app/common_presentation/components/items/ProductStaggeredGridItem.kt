@@ -1,7 +1,7 @@
 package am.stylish.app.common_presentation.components.items
 
 import am.stylish.app.R
-import am.stylish.app.common_domain.model.Product
+import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.ui.theme.ProductDescriptionTextStyle
 import am.stylish.app.common_presentation.ui.theme.ProductDiscountTextStyle
 import am.stylish.app.common_presentation.ui.theme.ProductOldPriceTextStyle

@@ -55,4 +55,19 @@
     <string name="bank_account_number">Bank Account Number</string>
     <string name="account_holder_s_name">Account Holder’s Name</string>
     <string name="ifsc_code">IFSC Code</string>
+    <string name="product_not_found">Product not found</string>
+    <string name="product_details">Product Details</string>
+    <string name="show_less">" Show Less"</string>
+    <string name="more">" …More"</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="go_to_cart">Go to cart</string>
+    <string name="delivery_in">Delivery in</string>
+    <string name="_1_within_hour">1 within Hour</string>
+    <string name="view_similar">View Similar</string>
+    <string name="add_to_compare">Add to Compare</string>
+    <string name="similar_to">Similar To</string>
+    <string name="action_bar_title">Stylish</string>
+    <string name="search">Search</string>
+    <string name="voice_search">Voice search</string>
+    <string name="search_any_product">Search any Product..</string>
 </resources>

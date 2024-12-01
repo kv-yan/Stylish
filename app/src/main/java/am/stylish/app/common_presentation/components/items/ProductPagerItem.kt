@@ -1,7 +1,7 @@
 package am.stylish.app.common_presentation.components.items
 
 import am.stylish.app.R
-import am.stylish.app.common_domain.model.Product
+import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.ui.theme.ProductDescriptionTextStyle
 import am.stylish.app.common_presentation.ui.theme.ProductDiscountTextStyle
 import am.stylish.app.common_presentation.ui.theme.ProductOldPriceTextStyle
@@ -30,8 +30,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
 @Composable
-fun ProductPagerItem(modifier: Modifier, product: Product, onClick: () -> Unit = {}) {
-
+fun ProductPagerItem(
+    modifier: Modifier = Modifier,
+    product: Product,
+    onClick: () -> Unit = {},
+) {
     Card(
         modifier = modifier
             .padding(8.dp)

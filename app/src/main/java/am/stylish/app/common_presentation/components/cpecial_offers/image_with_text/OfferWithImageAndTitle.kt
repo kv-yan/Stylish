@@ -1,7 +1,7 @@
 package am.stylish.app.common_presentation.components.cpecial_offers.image_with_text
 
-import am.stylish.app.common_domain.model.SpecialOffer
-import am.stylish.app.common_domain.model.SpecialOfferType
+import am.stylish.app.common_domain.model.special_offer.SpecialOffer
+import am.stylish.app.common_domain.model.special_offer.SpecialOfferType
 import am.stylish.app.common_presentation.components.button.ButtonViewAll
 import am.stylish.app.common_presentation.ui.theme.RoseRed
 import am.stylish.app.common_presentation.ui.theme.Shape12

@@ -1,9 +1,10 @@
 package am.stylish.app.common_presentation.components.product_list
 
 import am.stylish.app.R
-import am.stylish.app.common_domain.model.PageProduct
-import am.stylish.app.common_domain.model.ProductListType
-import am.stylish.app.common_domain.model.SpecialOfferType
+import am.stylish.app.common_domain.model.product.PageProduct
+import am.stylish.app.common_domain.model.product.Product
+import am.stylish.app.common_domain.model.product.ProductListType
+import am.stylish.app.common_domain.model.special_offer.SpecialOfferType
 import am.stylish.app.common_presentation.components.cpecial_offers.deal_of_day.DealOfDayOffer
 import am.stylish.app.common_presentation.components.cpecial_offers.image.ImageSpecialOffer
 import am.stylish.app.common_presentation.components.cpecial_offers.image_with_text.OfferWithImageAndTitle
@@ -32,11 +33,16 @@ import androidx.palette.graphics.Palette
 fun ProductListWithSpecialOffers(
     modifier: Modifier = Modifier,
     products: List<PageProduct>,
-    onProductClick: (PageProduct) -> Unit = {},
+    onProductClick: (Product) -> Unit = {},
     onSpecialOfferClick: (PageProduct.PageSpecialOffer) -> Unit = {}
 ) {
     val context = LocalContext.current
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = modifier.heightIn(
+            min = 0.dp,
+            max = 1500.dp
+        )
+    ) {
         items(products) { item ->
             when (item) {
                 is PageProduct.ProductList -> {
@@ -51,7 +57,7 @@ fun ProductListWithSpecialOffers(
                                     .heightIn(min = 0.dp, max = gridHeight),
                                 products = item.products
                             ) {
-                                onProductClick(item)
+                                onProductClick(it)
                             }
                         }
 
@@ -69,7 +75,7 @@ fun ProductListWithSpecialOffers(
                                         min = 0.dp, max = gridHeight
                                     ), products = item.products
                             ) {
-                                onProductClick(item)
+                                onProductClick(it)
                             }
                         }
 
@@ -77,7 +83,7 @@ fun ProductListWithSpecialOffers(
                             ProductListPager(
                                 modifier = Modifier.fillMaxWidth(), products = item.products
                             ) {
-                                onProductClick(item)
+                                onProductClick(it)
                             }
                         }
                     }
@@ -136,9 +142,13 @@ fun ProductListWithSpecialOffers(
                             DealOfDayOffer(
                                 Modifier
                                     .fillMaxWidth()
-                                    .padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                                    .padding(
+                                        start = 16.dp,
+                                        end = 16.dp,
+                                        top = 16.dp,
+                                    ),
                                 item.specialOffer
-                            ){
+                            ) {
                                 onSpecialOfferClick(item)
                             }
                         }
