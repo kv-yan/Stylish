@@ -2,8 +2,8 @@ package am.stylish.app.main.checkout
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.components.button.SolidButton
+import am.stylish.app.common_presentation.components.text.AuthTextField
 import am.stylish.app.common_presentation.ui.theme.RoseRed
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -16,7 +16,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -31,7 +30,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
@@ -68,7 +66,8 @@ fun CheckoutScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 40.dp, bottom = 40.dp),
-            text = stringResource(R.string.save))
+            text = stringResource(R.string.save)
+        )
     }
 }
 
@@ -173,14 +172,13 @@ private fun personalDetailsView(email: String, password: String) {
         text = stringResource(R.string.password),
         fontSize = 12.sp, fontFamily = FontFamily(Font(R.font.montserrat_regular))
     )
-    OutlinedTextField(
+    AuthTextField(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 15.dp),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        value = password1,
-        visualTransformation = PasswordVisualTransformation(),
-        onValueChange = { password1 = it },
+        isPasswordField = true,
+        text = password1,
+
     )
     Text(
         modifier = Modifier
