@@ -10,6 +10,7 @@ import am.stylish.app.common_presentation.components.items.RatingBar
 import am.stylish.app.common_presentation.components.pager.ProductImagePager
 import am.stylish.app.common_presentation.components.product_components.ProductSizeSection
 import am.stylish.app.common_presentation.components.product_list.ProductListGrid
+import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.components.text.ExpandableAnnotatedText
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CloudGray
@@ -26,6 +27,7 @@ import am.stylish.app.common_presentation.ui.theme.RegularDescriptionTextStyle
 import am.stylish.app.common_presentation.ui.theme.Shape4
 import am.stylish.app.common_presentation.ui.theme.Shape8
 import am.stylish.app.common_presentation.ui.theme.SkyBlue
+import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.common_presentation.utils.test_mock_data.productsMockData
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -56,6 +58,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -66,13 +69,15 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun ProductDetailsScreen(
     modifier: Modifier = Modifier,
-    productId: String = "0",
+    productId: String = stringResource(R.string.empty_string),
     productDetailsViewModel: ProductDetailsViewModel = getViewModel { parametersOf(productId) },
     onBackClick: () -> Unit = {},
     onCartClick: () -> Unit = {},
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onSnackbarShown: (SnackbarState) -> Unit = {}
 ) {
     val viewState by productDetailsViewModel.screenState.collectAsState()
+    val isWishlistAdded by productDetailsViewModel.isWishlistAdded.collectAsState()
     val context = LocalContext.current
 
     when (val state = viewState) {
@@ -89,10 +94,16 @@ fun ProductDetailsScreen(
             ProductDetailsScreenContent(
                 modifier = modifier
                     .fillMaxSize()
-                    .background(Color(0xFFF9F9F9)),
+                    .background(SoftWhite),
                 productDetails = details,
+                isWishlistAdded = isWishlistAdded,
                 onBackClick = onBackClick,
-                onProductClick = onProductClick
+                onProductClick = onProductClick,
+                onWishedClick = { itemId ->
+                    productDetailsViewModel.toggleWishlist(id = itemId) {
+                        onSnackbarShown(it)
+                    }
+                },
             )
         }
     }
@@ -103,8 +114,10 @@ fun ProductDetailsScreen(
 fun ProductDetailsScreenContent(
     modifier: Modifier = Modifier,
     productDetails: ProductDetails,
+    isWishlistAdded: Boolean,
     onBackClick: () -> Unit = {},
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onWishedClick: (String) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
     Column(
@@ -127,12 +140,25 @@ fun ProductDetailsScreenContent(
                 }
             },
             endContent = {
-                IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Rounded.ShoppingCart,
-                        contentDescription = null,
-                        tint = Color.Black
-                    )
+
+                Row(verticalAlignment = Alignment.CenterVertically) {
+
+                    IconButton(onClick = { onWishedClick(productDetails.productId) }) {
+                        Icon(
+                            painter = painterResource(
+                                if (isWishlistAdded) R.drawable.ic_favorite_filled
+                                else R.drawable.ic_favorite_outline
+                            ), contentDescription = null, tint = Color.Black
+                        )
+                    }
+
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Rounded.ShoppingCart,
+                            contentDescription = null,
+                            tint = Color.Black
+                        )
+                    }
                 }
             })
 
@@ -317,13 +343,13 @@ fun ProductDetailsScreenContent(
 
         val rows = productsMockData.size + 1
         val gridHeight = (rows * 350).dp
-        ProductListGrid(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = 0.dp, max = gridHeight),
-            products = productsMockData
-        ) {
-            onProductClick(it)
-        }
+        ProductListGrid(modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 0.dp, max = gridHeight),
+            products = productsMockData,
+            onProductClick = { onProductClick(it) },
+            onWishlistClick = {
+                onWishedClick(it)
+            })
     }
 }

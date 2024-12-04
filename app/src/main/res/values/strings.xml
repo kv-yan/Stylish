@@ -56,4 +56,10 @@
     <string name="search">Search</string>
     <string name="voice_search">Voice search</string>
     <string name="search_any_product">Search any Product..</string>
+    <string name="items">"%1$s Items"</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="something_went_wrong">Something went wrong\\nplease try again later</string>
+    <string name="product_deleted_successfully">Product deleted successfully</string>
+    <string name="product_added_to_wishlist">Product added to Wishlist</string>
 </resources>

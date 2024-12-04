@@ -4,11 +4,9 @@ import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.items.ProductPagerItem
 import am.stylish.app.common_presentation.components.pager.PagerController
 import am.stylish.app.common_presentation.utils.test_mock_data.productsMockData
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -30,7 +28,8 @@ fun ProductListPager(
     modifier: Modifier = Modifier,
     products: List<Product>,
     isShowingController: Boolean = true,
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onWishedClick: (String) -> Unit = {}
 ) {
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
@@ -49,10 +48,13 @@ fun ProductListPager(
             items(products) { item ->
                 ProductPagerItem(
                     modifier = Modifier.widthIn(min = 170.dp, max = 170.dp),
-                    product = item
-                ) {
-                    onProductClick(item)
-                }
+                    product = item,
+                    onWishlistClick = {
+                        onWishedClick(it)
+                    },
+                    onClick = {
+                        onProductClick(item)
+                    })
             }
         }
         if (isShowingController) {

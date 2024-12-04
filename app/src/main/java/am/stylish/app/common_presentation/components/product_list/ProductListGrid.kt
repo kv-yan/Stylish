@@ -13,7 +13,8 @@ import androidx.compose.ui.Modifier
 fun ProductListGrid(
     modifier: Modifier = Modifier,
     products: List<Product>,
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onWishlistClick: (String) -> Unit = {}
 ) {
 
     LazyVerticalGrid(
@@ -21,9 +22,11 @@ fun ProductListGrid(
         columns = GridCells.Fixed(2),
     ) {
         items(products) { product ->
-            ProductPagerItem(product = product) {
+            ProductPagerItem(product = product, onClick = {
                 onProductClick(product)
-            }
+            }, onWishlistClick = {
+                onWishlistClick(it)
+            })
         }
     }
 }
