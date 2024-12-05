@@ -12,7 +12,7 @@ val mockProductsData = listOf(
         discount = 50,
         reviewsCount = 52_157,
         rating = 4.0f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARIxhEBz1wiRD8BAZC8QW~ism1-R~Dv94FDfwIdP1RHVyOja5wHRJA1~9tTBw8~2sqgOXNBsjeuJeKd7DlgtbJxSurIBnJih2jXWfEskgTyuNwQstJWrM~5mzmxFyePHriVPiXivMYHZp4bzMGCiR4nv2zyf3UIhB6Qqu2QhckHYmdUnVA~OWcd9sSBKc8UE-h2ECKF63ORwEQOKRyqbVtBIVpqFRRHebDkdoZ91jFJe1JfodjO1p9xGquNZI4YlPWPcF1Le5XqfsWQESQ5yYYoqJ1A5UjmnQreyO0N3ZFs1To0TAKU6VdLR9r-7nOi2WkkpkB7zQcJxPhesvFC1hA__"
+        imageUrl = "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__"
     ), Product(
         id = "2",
         name = "Men's Starry Shirt",
@@ -36,7 +36,7 @@ val mockProductsData = listOf(
         description = "Casual pink dress with beautiful embroidery details",
         price = 699,
         rating = 4.2f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/743f/0181/31926f97294be302b7272fa7fbd8ddcc?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FXYQH6yG5ZFPluY1GggefItqIHPFLQSH0ddXjsPRjkSnYyoNf8YAulIVfvbC06WwsQTAPfyOiPPP34uSgQh30GT1icpDBas7bQdJ9KfPF-iwkAi5C14aGa3v~sj9txOwRo5h~JgrqCgH-PbbK0dz~cvstonZ743fPjix29LAp3VMlLG-rjX2-f1u45I8y2-DyvKnMqSDA3AEbkLWuWbTSiK40iBbZedCce1qqCNMPO7xWxnndwBOCxKtArbS3rMgAVH3wJHCLfq6TsPsP7ok0KcW32yLyBE8Lus5iHWjEgMmiZpB3B7g5qBXGl689s6Dp8T5y2P3Ki0WiZVVlOxKCA__"
+        imageUrl = "https://s3-alpha-sig.figma.com/img/ce8f/5f59/6f4bc239eaaba2d48652d030bce31853?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H0QApAyaa0gjkqBwMfY2f-q7IJSmO7UNk2Ajfo2GmaN1N8RbHXW~bUGk2wlaPqGhd1v252x9R5WHN0y627HVFI-DROLLDFqUwpwjjxizmbpIziiByvo7jUizZ8J6L9i2mPGJPD2KndXFy2XdClTtnLRXhRJ0QSfw1w841YeWVXdeTTCd1ix09Y4ABEi8cq5ebZc-viOKzd-8N53jhgLACo1Mdy5YB9890LiVtqFgGHfuUyhFULoOGeXbitkD4VuLTqYcaTZryWcMxhqNwYoSFz2kbgv95kPipOf7g-CdhGc2fqbDrCY0s2IlJcy61rKjaCPibdDgX1ivANAjQyoLUQ__"
     ), Product(
         id = "5",
         name = "Casual Denim Jacket",
@@ -123,7 +123,7 @@ val mockProductsData = listOf(
         description = "Casual pink dress with beautiful embroidery details",
         price = 699,
         rating = 4.2f,
-        imageUrl = "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        imageUrl = "https://s3-alpha-sig.figma.com/img/ce8f/5f59/6f4bc239eaaba2d48652d030bce31853?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H0QApAyaa0gjkqBwMfY2f-q7IJSmO7UNk2Ajfo2GmaN1N8RbHXW~bUGk2wlaPqGhd1v252x9R5WHN0y627HVFI-DROLLDFqUwpwjjxizmbpIziiByvo7jUizZ8J6L9i2mPGJPD2KndXFy2XdClTtnLRXhRJ0QSfw1w841YeWVXdeTTCd1ix09Y4ABEi8cq5ebZc-viOKzd-8N53jhgLACo1Mdy5YB9890LiVtqFgGHfuUyhFULoOGeXbitkD4VuLTqYcaTZryWcMxhqNwYoSFz2kbgv95kPipOf7g-CdhGc2fqbDrCY0s2IlJcy61rKjaCPibdDgX1ivANAjQyoLUQ__"
     ), Product(
         id = "15",
         name = "Casual Denim Jacket",
@@ -189,7 +189,7 @@ val productsShortMockData = listOf(
         discount = 50,
         reviewsCount = 52_157,
         rating = 4.0f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ARIxhEBz1wiRD8BAZC8QW~ism1-R~Dv94FDfwIdP1RHVyOja5wHRJA1~9tTBw8~2sqgOXNBsjeuJeKd7DlgtbJxSurIBnJih2jXWfEskgTyuNwQstJWrM~5mzmxFyePHriVPiXivMYHZp4bzMGCiR4nv2zyf3UIhB6Qqu2QhckHYmdUnVA~OWcd9sSBKc8UE-h2ECKF63ORwEQOKRyqbVtBIVpqFRRHebDkdoZ91jFJe1JfodjO1p9xGquNZI4YlPWPcF1Le5XqfsWQESQ5yYYoqJ1A5UjmnQreyO0N3ZFs1To0TAKU6VdLR9r-7nOi2WkkpkB7zQcJxPhesvFC1hA__"
+        imageUrl = "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__"
     ), Product(
         id = "2",
         name = "Men's Starry Shirt",
