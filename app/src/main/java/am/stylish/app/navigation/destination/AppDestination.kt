@@ -20,4 +20,11 @@ sealed class AppDestination {
 
     @Serializable
     data class ProductDetails(val productId: String) : AppDestination()
+
+    @Serializable
+    data class ProductFullScreenImages(
+        val images: List<String>,
+        val position: Int = 0
+    ) : AppDestination()
+
 }

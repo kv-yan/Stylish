@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,27 +28,31 @@ fun ProductImagePager(
     modifier: Modifier = Modifier,
     showingController: Boolean = true,
     sourceList: List<String>,
-    onClick: () -> Unit = {}
+    onClick: (Int) -> Unit = {}
 ) {
     val pagerState = rememberPagerState(initialPage = 0) { sourceList.size }
     val currentPage = pagerState.currentPage
     val scope = rememberCoroutineScope()
 
-    Box(Modifier.fillMaxWidth()) {
+    Box(modifier = Modifier.fillMaxWidth()) {
         Column(
-            modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center
+            modifier = modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
         ) {
             HorizontalPager(
                 modifier = Modifier.fillMaxWidth(),
                 state = pagerState,
             ) {
-                Box(modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
-                    .heightIn(min = 216.dp)
-                    .aspectRatio(1.4f)
-                    .clickable { onClick() }
-                    .clip(Shape12)) {
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth()
+                        .heightIn(min = 216.dp)
+                        .aspectRatio(1.4f)
+                        .clickable { onClick(pagerState.currentPage) }
+                        .clip(Shape12)
+                ) {
+
                     Image(
                         modifier = Modifier
                             .fillMaxSize()
@@ -64,7 +67,10 @@ fun ProductImagePager(
             PagerIndicator(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp, bottom = 12.dp),
+                    .padding(
+                        top = 8.dp,
+                        bottom = 12.dp,
+                    ),
                 size = sourceList.size,
                 currentIndex = currentPage,
             )

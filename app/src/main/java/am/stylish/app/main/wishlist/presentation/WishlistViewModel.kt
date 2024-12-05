@@ -2,7 +2,7 @@ package am.stylish.app.main.wishlist.presentation
 
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.utils.GeneralTags
-import am.stylish.app.common_presentation.utils.test_mock_data.productsMockData
+import am.stylish.app.common_presentation.utils.test_mock_data.mockProductsData
 import am.stylish.app.main.wishlist.domain.usecase.GetWishedListUseCase
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -28,7 +28,7 @@ class WishlistViewModel(
         getWishedListUseCase.invoke().onEach { wishedItemList ->
 
             wishedItemList.map { item ->
-                productsMockData.forEach {
+                mockProductsData.forEach {
                     if (it.id == item.id) {
                         wishlistItems.add(it)
                     }

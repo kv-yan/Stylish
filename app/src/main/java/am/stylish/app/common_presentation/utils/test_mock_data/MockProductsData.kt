@@ -2,7 +2,7 @@ package am.stylish.app.common_presentation.utils.test_mock_data
 
 import am.stylish.app.common_domain.model.product.Product
 
-val productsMockData = listOf(
+val mockProductsData = listOf(
     Product(
         id = "1",
         name = "HRX by Hrithik Roshan",

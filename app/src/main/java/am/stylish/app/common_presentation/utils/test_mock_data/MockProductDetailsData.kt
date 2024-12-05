@@ -7,7 +7,7 @@ const val COMMON_DESCRIPTION =
     "This product is made with the highest quality materials to ensure durability and style."
 private val defaultSizeList = listOf("6 UK", "7 UK", "8 UK", "9 UK", "10 UK")
 
-val productDetailsMockData = listOf(
+val mockProductDetails = listOf(
     ProductDetails(
         productId = "1",
         title = "HRX by Hrithik Roshan",

@@ -28,7 +28,7 @@ import am.stylish.app.common_presentation.ui.theme.Shape4
 import am.stylish.app.common_presentation.ui.theme.Shape8
 import am.stylish.app.common_presentation.ui.theme.SkyBlue
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
-import am.stylish.app.common_presentation.utils.test_mock_data.productsMockData
+import am.stylish.app.common_presentation.utils.test_mock_data.mockProductsData
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -74,7 +74,8 @@ fun ProductDetailsScreen(
     onBackClick: () -> Unit = {},
     onCartClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {}
+    onSnackbarShown: (SnackbarState) -> Unit = {},
+    onImageClick: (List<String>, Int) -> Unit
 ) {
     val viewState by productDetailsViewModel.screenState.collectAsState()
     val isWishlistAdded by productDetailsViewModel.isWishlistAdded.collectAsState()
@@ -104,6 +105,12 @@ fun ProductDetailsScreen(
                         onSnackbarShown(it)
                     }
                 },
+                onImageClick = { pagerPosition ->
+                    onImageClick(
+                        details.imageUrl,
+                        pagerPosition
+                    )
+                }
             )
         }
     }
@@ -118,6 +125,7 @@ fun ProductDetailsScreenContent(
     onBackClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
     onWishedClick: (String) -> Unit = {},
+    onImageClick: (Int) -> Unit = {}
 ) {
     val scrollState = rememberScrollState()
     Column(
@@ -166,8 +174,8 @@ fun ProductDetailsScreenContent(
             modifier = Modifier.fillMaxWidth(),
             showingController = true,
             sourceList = productDetails.imageUrl,
-        ) {
-            // TODO: displaying image in full screen
+        ) { pagerPosition ->
+            onImageClick(pagerPosition)
         }
 
         ProductSizeSection(
@@ -341,12 +349,12 @@ fun ProductDetailsScreenContent(
             */
         }
 
-        val rows = productsMockData.size + 1
+        val rows = mockProductsData.size + 1
         val gridHeight = (rows * 350).dp
         ProductListGrid(modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 0.dp, max = gridHeight),
-            products = productsMockData,
+            products = mockProductsData,
             onProductClick = { onProductClick(it) },
             onWishlistClick = {
                 onWishedClick(it)

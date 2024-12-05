@@ -3,7 +3,7 @@ package am.stylish.app.common_presentation.components.product_list
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.items.ProductPagerItem
 import am.stylish.app.common_presentation.components.pager.PagerController
-import am.stylish.app.common_presentation.utils.test_mock_data.productsMockData
+import am.stylish.app.common_presentation.utils.test_mock_data.mockProductsData
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -86,6 +86,6 @@ fun ProductListPager(
 @Composable
 private fun ProductListPagerPrev() {
     ProductListPager(
-        modifier = Modifier.fillMaxWidth(), products = productsMockData
+        modifier = Modifier.fillMaxWidth(), products = mockProductsData
     )
 }
