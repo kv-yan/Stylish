@@ -62,4 +62,5 @@
     <string name="something_went_wrong">Something went wrong\\nplease try again later</string>
     <string name="product_deleted_successfully">Product deleted successfully</string>
     <string name="product_added_to_wishlist">Product added to Wishlist</string>
+    <string name="product_image_position">%1$s / %2$s</string>
 </resources>

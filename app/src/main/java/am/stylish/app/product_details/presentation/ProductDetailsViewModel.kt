@@ -4,7 +4,7 @@ import am.stylish.app.R
 import am.stylish.app.common_domain.entity.WishedItem
 import am.stylish.app.common_domain.utils.Result
 import am.stylish.app.common_presentation.components.snackbar.SnackbarState
-import am.stylish.app.common_presentation.utils.test_mock_data.productDetailsMockData
+import am.stylish.app.common_presentation.utils.test_mock_data.mockProductDetails
 import am.stylish.app.main.wishlist.domain.usecase.DeleteWishedItemUseCase
 import am.stylish.app.main.wishlist.domain.usecase.GetWishedListUseCase
 import am.stylish.app.main.wishlist.domain.usecase.InsertWishedItemUseCase
@@ -34,7 +34,7 @@ class ProductDetailsViewModel(
 
     private fun fetchProductDetails() {
         _screenState.value = DetailsScreenState.Loading
-        productDetailsMockData.find { it.productId == productId }?.let {
+        mockProductDetails.find { it.productId == productId }?.let {
             checkIfItemIsWished(productId)
             _screenState.value = DetailsScreenState.Success(it)
         } ?: run {

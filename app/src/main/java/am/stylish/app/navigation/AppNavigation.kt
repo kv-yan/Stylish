@@ -6,10 +6,12 @@ import am.stylish.app.common_presentation.components.snackbar.AppSnackbar
 import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.common_presentation.utils.test_mock_data.mockPageProductData
+import am.stylish.app.fullscreen_images.ProductFullScreenImagesScreen
 import am.stylish.app.landing.presentation.LandingScreens
 import am.stylish.app.main.get_started.GetStarted
 import am.stylish.app.main.navigation.MainScreenNavigation
 import am.stylish.app.navigation.destination.AppDestination
+import am.stylish.app.navigation.nav_type.ListStringNavType
 import am.stylish.app.product_details.presentation.ProductDetailsScreen
 import am.stylish.app.special_offer_details.presentation.SpecialOfferDetailsScreen
 import androidx.compose.animation.core.tween
@@ -32,6 +34,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import kotlin.reflect.typeOf
 
 @Composable
 fun AppNavigation(
@@ -42,7 +45,8 @@ fun AppNavigation(
 
     Box(modifier = Modifier.fillMaxSize()) {
 
-        AppNavigationContent(modifier = modifier,
+        AppNavigationContent(
+            modifier = modifier,
             startDestination = startDestination,
             onSnackbarShown = {
                 snackbarState = it
@@ -117,23 +121,28 @@ private fun AppNavigationContent(
                 }
             }
 
-            composable<AppDestination.SpecialOfferDetails>(enterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = { it }, animationSpec = tween(durationMillis = 300)
-                )
-            }, exitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
-                )
-            }, popEnterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
-                )
-            }, popExitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = { it }, animationSpec = tween(durationMillis = 300)
-                )
-            }) { entry ->
+            composable<AppDestination.SpecialOfferDetails>(
+                enterTransition = {
+                    slideInHorizontally(
+                        initialOffsetX = { it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+                exitTransition = {
+                    slideOutHorizontally(
+                        targetOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+                popEnterTransition = {
+                    slideInHorizontally(
+                        initialOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+                popExitTransition = {
+                    slideOutHorizontally(
+                        targetOffsetX = { it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+            ) { entry ->
                 val specialOfferId =
                     entry.toRoute<AppDestination.SpecialOfferDetails>().specialOfferId
                 val specialOffer = mockPageProductData.find {
@@ -145,32 +154,63 @@ private fun AppNavigationContent(
                 })
             }
 
-            composable<AppDestination.ProductDetails>(enterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = { it }, animationSpec = tween(durationMillis = 300)
-                )
-            }, exitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
-                )
-            }, popEnterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
-                )
-            }, popExitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = { it }, animationSpec = tween(durationMillis = 300)
-                )
-            }) {
+            composable<AppDestination.ProductDetails>(
+                enterTransition = {
+                    slideInHorizontally(
+                        initialOffsetX = { it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+                exitTransition = {
+                    slideOutHorizontally(
+                        targetOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+                popEnterTransition = {
+                    slideInHorizontally(
+                        initialOffsetX = { -it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+                popExitTransition = {
+                    slideOutHorizontally(
+                        targetOffsetX = { it }, animationSpec = tween(durationMillis = 300)
+                    )
+                },
+            ) {
                 val productId = it.toRoute<AppDestination.ProductDetails>().productId
-                ProductDetailsScreen(productId = productId,
+                ProductDetailsScreen(
+                    productId = productId,
                     onBackClick = { navController.navigateUp() },
                     onProductClick = { product ->
                         navController.navigate(AppDestination.ProductDetails(product.id))
                     },
-                    onSnackbarShown = onSnackbarShown
+                    onSnackbarShown = onSnackbarShown,
+                    onImageClick = { images, position ->
+                        navController.navigate(
+                            AppDestination.ProductFullScreenImages(
+                                images = images,
+                                position = position
+                            )
+                        )
+                    }
                 )
             }
+
+            composable<AppDestination.ProductFullScreenImages>(
+                typeMap = mapOf(
+                    typeOf<List<String>>() to ListStringNavType.listStringType,
+                )
+            ) {
+                val images = it.toRoute<AppDestination.ProductFullScreenImages>().images
+                val position = it.toRoute<AppDestination.ProductFullScreenImages>().position
+
+                ProductFullScreenImagesScreen(
+                    images = images,
+                    initialPage = position
+                ) {
+                    navController.navigateUp()
+                }
+            }
+
         }
     }
 }

@@ -35,7 +35,6 @@ fun AppSnackbar(
     LaunchedEffect(isShown.value) {
         delay(1500)
         isShown.value = false
-        println("closed")
     }
 
     AnimatedVisibility(
