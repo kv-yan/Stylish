@@ -9,6 +9,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -60,10 +61,12 @@ fun <T> PagerSpecialOffer(
         HorizontalPager(
             modifier = Modifier.fillMaxWidth(),
             state = pagerState,
+            contentPadding = PaddingValues(horizontal = 16.dp),
         ) { page ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(horizontal = 4.dp)
                     .aspectRatio(1.5f)
                     .clickable { onClick() }
                     .clip(Shape12)
@@ -74,7 +77,8 @@ fun <T> PagerSpecialOffer(
 
         Row(
             modifier = Modifier
-                .fillMaxWidth().padding(top = 0.dp),
+                .fillMaxWidth()
+                .padding(top = 0.dp),
             horizontalArrangement = Arrangement.Center
         ) {
             for (i in sourceList.indices) {

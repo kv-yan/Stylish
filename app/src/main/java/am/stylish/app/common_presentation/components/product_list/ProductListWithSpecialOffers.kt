@@ -105,8 +105,7 @@ fun ProductListWithSpecialOffers(
                         SpecialOfferType.PAGER -> {
                             PagerSpecialOffer(
                                 modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 16.dp),
+                                    .fillMaxWidth(),
                                 sourceList = listOf(
                                     R.drawable.pager_special_offer,
                                     R.drawable.pager_special_offer,
