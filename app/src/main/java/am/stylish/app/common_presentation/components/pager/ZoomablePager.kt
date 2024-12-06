@@ -24,7 +24,10 @@ fun ZoomablePager(
     val bitmap = remember { mutableStateOf<ImageBitmap?>(null) }
 
     HorizontalPager(
-        modifier = modifier, state = pagerState, userScrollEnabled = !isZoomed.value
+        modifier = modifier,
+        state = pagerState,
+        userScrollEnabled = !isZoomed.value,
+        key = { it },
     ) { page ->
 
         LaunchedEffect(page) {

@@ -29,7 +29,7 @@ fun ProductListStaggeredGrid(
             ),
         columns = StaggeredGridCells.Fixed(2),
     ) {
-        items(products) { product ->
+        items(products, key = { it.id }) { product ->
             ProductStaggeredGridItem(product) {
                 onProductClick(product)
             }

@@ -39,7 +39,7 @@ fun ProductListWithSpecialOffers(
 ) {
     val context = LocalContext.current
     LazyColumn(modifier = modifier.heightIn(min = 0.dp, max = 1500.dp)) {
-        items(products) { item ->
+        items(products, key = { it.id }) { item ->
             when (item) {
                 is PageProduct.ProductList -> {
 

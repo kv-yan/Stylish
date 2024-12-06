@@ -8,6 +8,8 @@ import am.stylish.app.main.wishlist.data.di.wishlistDataModule
 import am.stylish.app.main.wishlist.domain.di.wishlistDomainModule
 import am.stylish.app.main.wishlist.presentation.di.wishlistPresentationModule
 import am.stylish.app.product_details.presentation.di.productDetailsPresentationModule
+import am.stylish.app.special_offer_details.domain.di.specialOfferDetailsDomainModule
+import am.stylish.app.special_offer_details.presentation.di.specialOfferDetailsPresentationModule
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -26,7 +28,9 @@ class Application : Application() {
                 wishlistDomainModule,
                 wishlistPresentationModule,
                 homePresentationModule,
-                homeDomainModule
+                homeDomainModule,
+                specialOfferDetailsPresentationModule,
+                specialOfferDetailsDomainModule,
             )
         }
     }

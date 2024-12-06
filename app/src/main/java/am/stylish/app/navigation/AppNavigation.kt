@@ -1,11 +1,9 @@
 package am.stylish.app.navigation
 
 import am.stylish.app.auth.navigation.AuthMainScreen
-import am.stylish.app.common_domain.model.product.PageProduct
 import am.stylish.app.common_presentation.components.snackbar.AppSnackbar
 import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
-import am.stylish.app.common_presentation.utils.test_mock_data.mockPageProductData
 import am.stylish.app.fullscreen_images.ProductFullScreenImagesScreen
 import am.stylish.app.landing.presentation.LandingScreens
 import am.stylish.app.main.get_started.GetStarted
@@ -143,15 +141,18 @@ private fun AppNavigationContent(
                     )
                 },
             ) { entry ->
-                val specialOfferId =
-                    entry.toRoute<AppDestination.SpecialOfferDetails>().specialOfferId
-                val specialOffer = mockPageProductData.find {
-                    (it as? PageProduct.PageSpecialOffer)?.specialOffer?.offerId == specialOfferId
-                } as PageProduct.PageSpecialOffer
+                val specialOfferId = entry.toRoute<AppDestination.SpecialOfferDetails>().specialOfferId
 
-                SpecialOfferDetailsScreen(specialOffer = specialOffer.specialOffer, onBackClick = {
-                    navController.navigateUp()
-                })
+                SpecialOfferDetailsScreen(
+                    specialOfferId = specialOfferId,
+                    onBackClick = {
+                        navController.navigateUp()
+                    },
+                    onProductClick = {
+                        navController.navigate(AppDestination.ProductDetails(it.id))
+                    },
+                    onSnackbarShown = onSnackbarShown
+                )
             }
 
             composable<AppDestination.ProductDetails>(
