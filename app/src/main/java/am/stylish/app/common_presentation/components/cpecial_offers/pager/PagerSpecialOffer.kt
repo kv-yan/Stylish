@@ -47,7 +47,7 @@ fun <T> PagerSpecialOffer(
     extractColor: suspend (T) -> Color,
     onClick: () -> Unit = {}
 ) {
-    val pagerState = rememberPagerState(initialPage = 0) { sourceList.size }
+    val pagerState = rememberPagerState(initialPage = 1) { sourceList.size }
     val currentColor = remember { mutableStateOf(Color.Gray) }
 
     LaunchedEffect(pagerState.currentPage) {

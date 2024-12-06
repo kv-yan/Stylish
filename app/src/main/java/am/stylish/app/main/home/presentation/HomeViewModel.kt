@@ -8,6 +8,8 @@ import am.stylish.app.main.home.domain.usecase.GetHomePageProductsUseCase
 import am.stylish.app.main.wishlist.domain.usecase.InsertWishedItemUseCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
@@ -31,7 +33,7 @@ class HomeViewModel(
             _screenState.value = HomeScreenState.Success(it)
         }.catch {
             _screenState.value = HomeScreenState.Error(R.string.something_went_wrong)
-        }.launchIn(viewModelScope)
+        }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 
     fun addToWishlist(productId: String, onAction: (SnackbarState) -> Unit) {
@@ -60,6 +62,6 @@ class HomeViewModel(
                     _icon = R.drawable.ic_error
                 )
             )
-        }.launchIn(viewModelScope)
+        }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 }

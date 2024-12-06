@@ -45,7 +45,7 @@ fun ProductListPager(
                     max = 450.dp
                 ),
         ) {
-            items(products) { item ->
+            items(items = products, key = { it.id }) { item ->
                 ProductPagerItem(
                     modifier = Modifier.widthIn(min = 170.dp, max = 170.dp),
                     product = item,

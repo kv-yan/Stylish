@@ -21,7 +21,7 @@ fun ProductListGrid(
         modifier = modifier,
         columns = GridCells.Fixed(2),
     ) {
-        items(products) { product ->
+        items(products, key = { it.id }) { product ->
             ProductPagerItem(product = product, onClick = {
                 onProductClick(product)
             }, onWishlistClick = {

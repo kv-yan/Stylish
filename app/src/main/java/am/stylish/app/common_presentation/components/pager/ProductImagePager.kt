@@ -40,6 +40,7 @@ fun ProductImagePager(
             verticalArrangement = Arrangement.Center,
         ) {
             HorizontalPager(
+                key = { it },
                 modifier = Modifier.fillMaxWidth(),
                 state = pagerState,
             ) {
