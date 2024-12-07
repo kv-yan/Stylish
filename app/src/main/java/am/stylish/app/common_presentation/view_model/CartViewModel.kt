@@ -43,20 +43,17 @@ class CartViewModel(
     }
 
     fun addCartItem(
-        item: String,
-        action: (SnackbarState) -> Unit = {}
+        item: String, action: (SnackbarState) -> Unit = {}
     ) {
         insertCartItemUseCase.invoke(CartItem(item)).onEach {
             action(
                 when (it) {
                     is Result.Error<*> -> SnackbarState.Error(
-                        _message = R.string.something_went_wrong,
-                        R.drawable.ic_error
+                        _message = R.string.something_went_wrong, R.drawable.ic_error
                     )
 
                     is Result.Success<*> -> SnackbarState.Success(
-                        _message = R.string.item_added_to_cart,
-                        R.drawable.ic_cart
+                        _message = R.string.item_added_to_cart, R.drawable.ic_cart
                     )
                 }
             )
@@ -69,9 +66,24 @@ class CartViewModel(
         }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 
-    private fun deleteCartItem(item: CartItem) {
-        deleteCartItemUseCase.invoke(item).onEach {
+    fun deleteCartItem(id: String, action: (SnackbarState) -> Unit = {}) {
+        deleteCartItemUseCase.invoke(CartItem(id)).onEach {
+            action(
+                when (it) {
+                    is Result.Error<*> -> {
+                        SnackbarState.Error(
+                            _message = R.string.something_went_wrong, _icon = R.drawable.ic_error
+                        )
+                    }
 
+                    is Result.Success<*> -> {
+                        SnackbarState.Error(
+                            _message = R.string.item_removed_from_cart,
+                            _icon = R.drawable.ic_cart_removed
+                        )
+                    }
+                }
+            )
         }.launchIn(CoroutineScope(Dispatchers.IO))
     }
 
@@ -82,7 +94,7 @@ class CartViewModel(
 
     fun decreaseQuantityAndUpdate(item: CartItem) {
         if (item.quantity == 1) {
-            deleteCartItem(item)
+            deleteCartItem(item.id)
         } else {
             val newItem = item.copy(quantity = item.quantity - 1)
             updateCartItem(newItem)

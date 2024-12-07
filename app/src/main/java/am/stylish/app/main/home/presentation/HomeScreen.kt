@@ -133,7 +133,6 @@ private fun HomeScreenContent(
                 }
             },
             isItemInCart = {
-//                cartViewModel.isItemInCart(it)
                 cartList.find { cartItem -> cartItem.id == it }
             }
         )

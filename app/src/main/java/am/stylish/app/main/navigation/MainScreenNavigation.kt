@@ -48,7 +48,7 @@ fun MainScreenNavigation(
                 .background(Color.White)
                 .padding(it),
             navController = navController,
-            startDestination = MainScreenDestination.Home,
+            startDestination = MainScreenDestination.Wishlist,
         ) {
             composable<MainScreenDestination.Home> {
                 HomeScreen(
@@ -59,11 +59,18 @@ fun MainScreenNavigation(
             }
 
             composable<MainScreenDestination.Wishlist> {
-                WishlistScreen(onProductClick = navigateToProductDetails)
+                WishlistScreen(
+                    onProductClick = navigateToProductDetails,
+                    onSnackbarShown = onSnackbarShown
+                )
             }
 
             composable<MainScreenDestination.Cart> {
-                CartScreen()
+                CartScreen(
+                    onProductClick = navigateToProductDetails,
+                    onSnackbarShown = onSnackbarShown,
+                    onBackClick = { navController.navigateUp() },
+                )
             }
 
             composable<MainScreenDestination.Search> { Text("Search") }

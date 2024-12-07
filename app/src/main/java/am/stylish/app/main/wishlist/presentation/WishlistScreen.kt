@@ -1,15 +1,17 @@
 package am.stylish.app.main.wishlist.presentation
 
 import am.stylish.app.R
+import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.action_bar.ItemsSummaryHeaderWithActions
 import am.stylish.app.common_presentation.components.action_bar.MainMenuActionBarContent
 import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
 import am.stylish.app.common_presentation.components.search.SearchBar
+import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
-import android.widget.Toast
+import am.stylish.app.common_presentation.view_model.CartViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,11 +28,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -38,16 +40,17 @@ import org.koin.androidx.compose.koinViewModel
 fun WishlistScreen(
     modifier: Modifier = Modifier,
     viewModel: WishlistViewModel = koinViewModel(),
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onSnackbarShown: (SnackbarState) -> Unit = {}
 ) {
-    val context = LocalContext.current
     val wishlistScreenState by viewModel.wishlistScreenState.collectAsState()
+    val cartViewModel = koinViewModel<CartViewModel>()
+    val cartList by cartViewModel.cartList.collectAsStateWithLifecycle()
+
 
     when (val state = wishlistScreenState) {
         is WishlistScreenState.Error -> {
-            val message = state.message
-            // TODO:  ErrorScreen(message = message)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            onSnackbarShown(SnackbarState.Error(R.string.something_went_wrong))
         }
 
         WishlistScreenState.Loading -> {
@@ -63,7 +66,15 @@ fun WishlistScreen(
             WishlistScreenContent(
                 modifier = modifier,
                 wishlistState = state.wishlistItems,
-                onProductClick = onProductClick
+                onProductClick = onProductClick,
+                onAddToCart = { id, _ ->
+                    cartViewModel.addCartItem(id) {
+                        onSnackbarShown(it)
+                    }
+                },
+                isItemInCart = {
+                    cartList.find { cartItem -> cartItem.id == it }
+                }
             )
         }
     }
@@ -73,7 +84,9 @@ fun WishlistScreen(
 private fun WishlistScreenContent(
     modifier: Modifier = Modifier,
     wishlistState: List<Product>,
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onAddToCart: (String, Int) -> Unit = { _, _ -> },
+    isItemInCart: (String) -> CartItem? = { null }
 ) {
     val scrollState = rememberScrollState()
 
@@ -111,10 +124,10 @@ private fun WishlistScreenContent(
                 modifier = Modifier.fillMaxSize(),
                 products = wishlistState,
                 onProductClick = onProductClick,
-                onAddToCart = { _, _ -> },
+                onAddToCart = { id, quantity -> onAddToCart(id, quantity) },
                 onRemoveFromCart = { _, _ -> },
-                onCartClick = {},
-                onWishlistClick = {}
+                onWishlistClick = {},
+                isItemInCart = { isItemInCart(it) }
             )
 
         } else {

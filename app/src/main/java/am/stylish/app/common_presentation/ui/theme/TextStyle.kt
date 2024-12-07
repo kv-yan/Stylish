@@ -133,3 +133,19 @@ val PurchaseButtonTextStyle = TextStyle(
     fontWeight = FontWeight.W500,
     color = Color.White,
 )
+
+val AppSubtitleTextStyle = TextStyle(
+    fontSize = 15.sp,
+    lineHeight = 22.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_bold)),
+    fontWeight = FontWeight.W100,
+    color = Color.Black,
+)
+
+val AddressTitleTextStyle = TextStyle(
+    fontSize = 14.sp,
+    lineHeight = 18.sp,
+    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
+    fontWeight = FontWeight(400),
+    color = Color.Black,
+)

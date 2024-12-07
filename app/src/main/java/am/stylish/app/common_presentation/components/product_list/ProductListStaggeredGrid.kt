@@ -19,7 +19,6 @@ fun ProductListStaggeredGrid(
     products: List<Product>,
     onProductClick: (Product) -> Unit = {},
     onWishlistClick: (String) -> Unit = {},
-    onCartClick: (String) -> Unit = {},
     onAddToCart: (String, Int) -> Unit = { _, _ -> },
     onRemoveFromCart: (String, Int) -> Unit = { _, _ -> } ,
     isItemInCart: (String) -> CartItem? = { null }
@@ -38,7 +37,6 @@ fun ProductListStaggeredGrid(
         items(products, key = { it.id }) { product ->
             ProductStaggeredGridItem(
                 product = product,
-                onCartClick = onCartClick,
                 onAddToCart = onAddToCart,
                 onRemoveFromCart = onRemoveFromCart,
                 onWishlistClick = onWishlistClick,

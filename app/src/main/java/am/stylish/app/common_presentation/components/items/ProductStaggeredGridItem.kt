@@ -41,7 +41,6 @@ fun ProductStaggeredGridItem(
     product: Product,
     onClick: () -> Unit = {},
     onWishlistClick: (String) -> Unit = {},
-    onCartClick: (String) -> Unit = {},
     onAddToCart: (String, Int) -> Unit = { _, _ -> },
     onRemoveFromCart: (String, Int) -> Unit = { _, _ -> },
     isItemInCart: (String) -> CartItem? = { null }
@@ -115,14 +114,6 @@ fun ProductStaggeredGridItem(
                             )
                         }
                     }
-
-                    AddToCartButton(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 4.dp),
-                        isAdded = isInCart != null,
-                        quantity = isInCart?.quantity ?: 0,
-                    )
                 }
             }
 
@@ -136,6 +127,14 @@ fun ProductStaggeredGridItem(
                     contentDescription = null,
                     tint = Color.Black
                 )
+            }
+
+            AddToCartButton(
+                modifier = Modifier.align(Alignment.BottomEnd),
+                isAdded = isInCart != null,
+                quantity = isInCart?.quantity ?: 0
+            ) {
+                onAddToCart(product.id, 1)
             }
         }
     }

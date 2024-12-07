@@ -12,6 +12,7 @@ import am.stylish.app.common_presentation.ui.theme.Shape10
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -82,10 +83,25 @@ fun ProductPagerItem(
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Text(
-                        text = stringResource(R.string.price, product.price),
-                        style = ProductPriceTextStyle,
-                    )
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = stringResource(R.string.price, product.price),
+                            style = ProductPriceTextStyle,
+                        )
+
+                        AddToCartButton(
+                            modifier = Modifier,
+                            isAdded = isInCart != null,
+                            quantity = isInCart?.quantity ?: 0
+                        ) {
+                            onCartClick(product.id)
+                        }
+
+                    }
                 }
             }
 
@@ -99,14 +115,6 @@ fun ProductPagerItem(
                     contentDescription = null,
                     tint = Color.Black
                 )
-            }
-
-            AddToCartButton(
-                modifier = Modifier.align(Alignment.BottomEnd),
-                isAdded = isInCart != null,
-                quantity = isInCart?.quantity ?: 0
-            ) {
-                onCartClick(product.id)
             }
         }
     }

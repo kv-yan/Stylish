@@ -1,6 +1,7 @@
 package am.stylish.app.product_details.presentation
 
 import am.stylish.app.R
+import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.model.details.ProductDetails
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
@@ -29,7 +30,7 @@ import am.stylish.app.common_presentation.ui.theme.Shape8
 import am.stylish.app.common_presentation.ui.theme.SkyBlue
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.common_presentation.utils.test_mock_data.mockProductsData
-import android.widget.Toast
+import am.stylish.app.common_presentation.view_model.CartViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -57,13 +58,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
@@ -72,18 +74,22 @@ fun ProductDetailsScreen(
     productId: String = stringResource(R.string.empty_string),
     productDetailsViewModel: ProductDetailsViewModel = getViewModel { parametersOf(productId) },
     onBackClick: () -> Unit = {},
-    onCartClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
     onSnackbarShown: (SnackbarState) -> Unit = {},
     onImageClick: (List<String>, Int) -> Unit
 ) {
     val viewState by productDetailsViewModel.screenState.collectAsState()
     val isWishlistAdded by productDetailsViewModel.isWishlistAdded.collectAsState()
-    val context = LocalContext.current
-
+    val cartViewModel = koinViewModel<CartViewModel>()
+    val cartList by cartViewModel.cartList.collectAsStateWithLifecycle()
     when (val state = viewState) {
         is DetailsScreenState.Error -> {
-            Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+            onSnackbarShown(
+                SnackbarState.Error(
+                    _message = R.string.something_went_wrong,
+                    _icon = R.drawable.ic_error
+                )
+            )
         }
 
         DetailsScreenState.Loading -> {
@@ -110,7 +116,13 @@ fun ProductDetailsScreen(
                         details.imageUrl,
                         pagerPosition
                     )
-                }
+                },
+                onCartClick = { id, quantity ->
+                    cartViewModel.addCartItem(id) {
+                        onSnackbarShown(it)
+                    }
+                },
+                isItemInCart = { cartList.find { cartItem -> cartItem.id == it } }
             )
         }
     }
@@ -125,7 +137,9 @@ fun ProductDetailsScreenContent(
     onBackClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
     onWishedClick: (String) -> Unit = {},
-    onImageClick: (Int) -> Unit = {}
+    onImageClick: (Int) -> Unit = {},
+    onCartClick: (String, Int) -> Unit = { _, _ -> },
+    isItemInCart: (String) -> CartItem? = { null }
 ) {
     val scrollState = rememberScrollState()
     Column(
@@ -339,25 +353,23 @@ fun ProductDetailsScreenContent(
                 text = "282+ Items", style = AuthTitleTextStyle, fontSize = 18.sp
             )
 
-
-            /*
-
-            Row {
-                // TODO: add filtering, shor functionality
-            }
-
-            */
         }
 
         val rows = mockProductsData.size + 1
-        val gridHeight = (rows * 350).dp
-        ProductListGrid(modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 0.dp, max = gridHeight),
+        val gridHeight = (rows * 352).dp
+        ProductListGrid(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 0.dp, max = gridHeight),
             products = mockProductsData,
+            isItemInCart = isItemInCart,
             onProductClick = { onProductClick(it) },
             onWishlistClick = {
                 onWishedClick(it)
-            })
+            },
+            onCartClick = {
+                onCartClick(it, 1)
+            }
+        )
     }
 }

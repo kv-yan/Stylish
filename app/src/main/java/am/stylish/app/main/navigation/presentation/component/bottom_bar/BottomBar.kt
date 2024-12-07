@@ -128,12 +128,14 @@ fun BottomBarItem(
     isSelected: Boolean,
     navigateTo: (MainScreenDestination) -> Unit,
 ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally,
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .padding(top = 12.dp)
             .clickable {
                 navigateTo.invoke(item.route)
-            }) {
+            },
+    ) {
         Icon(
             painter = painterResource(id = item.icon),
             contentDescription = item.title,
@@ -143,7 +145,7 @@ fun BottomBarItem(
             text = item.title,
             style = BottomBarItemTextStyle,
             color = if (isSelected) RoseRed else Color.Black,
-            modifier = Modifier.padding(top = 3.dp)
+            modifier = Modifier.padding(top = 4.dp)
         )
     }
 }

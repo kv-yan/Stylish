@@ -34,13 +34,23 @@ fun AddToCartButton(
     }) {
         Box(
             modifier = modifier
-                .padding(horizontal = 8.dp, vertical = 4.dp)
-                .border(0.5.dp, Color.Black, CircleShape),
+                .padding(
+                    horizontal = 8.dp,
+                    vertical = 4.dp
+                )
+                .border(
+                    width = 0.5.dp,
+                    color = Color.Black,
+                    shape = CircleShape,
+                ),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 modifier = Modifier
-                    .padding(horizontal = 10.dp, vertical = 6.dp)
+                    .padding(
+                        horizontal = 8.dp,
+                        vertical = 6.dp
+                    )
                     .zIndex(2f),
                 painter = painterResource(R.drawable.ic_add_to_cart),
                 contentDescription = null,
@@ -69,7 +79,6 @@ fun AddToCartButton(
                 }
             }
         }
-
     }
 }
 
@@ -78,7 +87,8 @@ fun AddToCartButton(
 @Composable
 private fun AddToCartButtonPrev() {
     Box(
-        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
     ) {
         AddToCartButton()
     }

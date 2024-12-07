@@ -43,7 +43,8 @@ fun ProductListGrid(
                 },
                 onRemoveFromCart = { id, quantity ->
                     onRemoveFromCart(id, quantity)
-                }
+                },
+                isItemInCart = isItemInCart
             )
         }
     }

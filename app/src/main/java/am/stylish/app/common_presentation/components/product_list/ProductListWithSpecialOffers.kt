@@ -94,7 +94,6 @@ fun ProductListWithSpecialOffers(
                                 onWishlistClick = {
                                     onWishedClick(it)
                                 },
-                                onCartClick = onCartClick,
                                 onAddToCart = onAddToCart,
                                 onRemoveFromCart = onRemoveFromCart,
                                 isItemInCart = isItemInCart
