@@ -1,19 +1,17 @@
 package am.stylish.app.common_presentation.components.items
 
 import am.stylish.app.R
+import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.model.product.Product
+import am.stylish.app.common_presentation.components.button.AddToCartButton
 import am.stylish.app.common_presentation.ui.theme.CoolGray
 import am.stylish.app.common_presentation.ui.theme.ProductDescriptionTextStyle
-import am.stylish.app.common_presentation.ui.theme.ProductDiscountTextStyle
-import am.stylish.app.common_presentation.ui.theme.ProductOldPriceTextStyle
 import am.stylish.app.common_presentation.ui.theme.ProductPriceTextStyle
-import am.stylish.app.common_presentation.ui.theme.ProductReviewQuantityTextStyle
 import am.stylish.app.common_presentation.ui.theme.ProductTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.Shape10
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -40,8 +38,14 @@ fun ProductPagerItem(
     modifier: Modifier = Modifier,
     product: Product,
     onClick: () -> Unit = {},
-    onWishlistClick: (String) -> Unit = {}
+    onWishlistClick: (String) -> Unit = {},
+    onCartClick: (String) -> Unit = {},
+    onAddToCart: (String, Int) -> Unit = { _, _ -> },
+    onRemoveFromCart: (String, Int) -> Unit = { _, _ -> },
+    isItemInCart: (String) -> CartItem? = { null }
 ) {
+    val isInCart = isItemInCart(product.id)
+
     Card(
         modifier = modifier
             .padding(8.dp)
@@ -82,40 +86,6 @@ fun ProductPagerItem(
                         text = stringResource(R.string.price, product.price),
                         style = ProductPriceTextStyle,
                     )
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
-                    ) {
-                        val oldPrice = if (product.oldPrice != null) stringResource(
-                            R.string.old_price,
-                            product.oldPrice
-                        )
-                        else stringResource(R.string.empty_string)
-                        Text(
-                            text = oldPrice,
-                            style = ProductOldPriceTextStyle,
-                        )
-                        val discount = if (product.discount != null) stringResource(
-                            R.string.off, product.discount
-                        )
-                        else stringResource(R.string.empty_string)
-                        Text(
-                            text = discount,
-                            style = ProductDiscountTextStyle,
-                        )
-                    }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        RatingBar(rating = product.rating)
-                        product.reviewsCount?.let {
-                            Text(
-                                text = it.toString(),
-                                style = ProductReviewQuantityTextStyle,
-                            )
-                        }
-                    }
                 }
             }
 
@@ -129,6 +99,14 @@ fun ProductPagerItem(
                     contentDescription = null,
                     tint = Color.Black
                 )
+            }
+
+            AddToCartButton(
+                modifier = Modifier.align(Alignment.BottomEnd),
+                isAdded = isInCart != null,
+                quantity = isInCart?.quantity ?: 0
+            ) {
+                onCartClick(product.id)
             }
         }
     }

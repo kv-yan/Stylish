@@ -257,7 +257,7 @@ fun ProductDetailsScreenContent(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             PurchaseButton(
-                text = stringResource(R.string.go_to_cart),
+                text = stringResource(R.string.add_to_cart),
                 icon = R.drawable.ic_cart,
                 brush = Brush.verticalGradient(listOf(SkyBlue, DeepOceanBlue))
             ) // TODO: impl click action

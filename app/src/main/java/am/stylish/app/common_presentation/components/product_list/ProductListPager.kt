@@ -1,5 +1,6 @@
 package am.stylish.app.common_presentation.components.product_list
 
+import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.items.ProductPagerItem
 import am.stylish.app.common_presentation.components.pager.PagerController
@@ -29,7 +30,11 @@ fun ProductListPager(
     products: List<Product>,
     isShowingController: Boolean = true,
     onProductClick: (Product) -> Unit = {},
-    onWishedClick: (String) -> Unit = {}
+    onWishedClick: (String) -> Unit = {},
+    onCartClick: (String) -> Unit = {},
+    onAddToCart: (String, Int) -> Unit = { _, _ -> },
+    onRemoveFromCart: (String, Int) -> Unit = { _, _ -> },
+    isItemInCart: (String) -> CartItem? = { null }
 ) {
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
@@ -41,20 +46,30 @@ fun ProductListPager(
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(
-                    min = 0.dp,
-                    max = 450.dp
+                    min = 0.dp, max = 450.dp
                 ),
         ) {
             items(items = products, key = { it.id }) { item ->
                 ProductPagerItem(
                     modifier = Modifier.widthIn(min = 170.dp, max = 170.dp),
                     product = item,
+                    isItemInCart = isItemInCart,
                     onWishlistClick = {
                         onWishedClick(it)
                     },
                     onClick = {
                         onProductClick(item)
-                    })
+                    },
+                    onCartClick = {
+                        onCartClick(it)
+                    },
+                    onAddToCart = { id, quantity ->
+                        onAddToCart(id, quantity)
+                    },
+                    onRemoveFromCart = { id, quantity ->
+                        onRemoveFromCart(id, quantity)
+                    },
+                )
             }
         }
         if (isShowingController) {

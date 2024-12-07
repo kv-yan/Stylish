@@ -4,7 +4,7 @@
     <string name="prev">Prev</string>
     <string name="get_started">"Get Started "</string>
     <string name="next">Next</string>
-    <string name="empty_string">"     "</string>
+    <string name="empty_string">""</string>
     <string name="welcome_back">Welcome \nBack!</string>
     <string name="username_or_email">Username or Email</string>
     <string name="password">Password</string>
@@ -46,7 +46,7 @@
     <string name="show_less">" Show Less"</string>
     <string name="more">" …More"</string>
     <string name="buy_now">Buy Now</string>
-    <string name="go_to_cart">Go to cart</string>
+    <string name="add_to_cart">Add to cart</string>
     <string name="delivery_in">Delivery in</string>
     <string name="_1_within_hour">1 within Hour</string>
     <string name="view_similar">View Similar</string>
@@ -59,8 +59,11 @@
     <string name="items">"%1$s Items"</string>
     <string name="sort">Sort</string>
     <string name="filter">Filter</string>
-    <string name="something_went_wrong">Something went wrong\\nplease try again later</string>
+    <string name="something_went_wrong">Something went wrong\nPlease try again later</string>
     <string name="product_deleted_successfully">Product deleted successfully</string>
     <string name="product_added_to_wishlist">Product added to Wishlist</string>
     <string name="product_image_position">%1$s / %2$s</string>
+    <string name="there_are_no_items_in_the_cart">There are no items in the cart</string>
+    <string name="there_are_no_items_in_the_wishlist">There are no items in the wishlist</string>
+    <string name="item_added_to_cart">Item added to cart</string>
 </resources>

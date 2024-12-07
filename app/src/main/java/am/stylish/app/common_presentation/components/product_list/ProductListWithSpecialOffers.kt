@@ -1,6 +1,7 @@
 package am.stylish.app.common_presentation.components.product_list
 
 import am.stylish.app.R
+import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.model.product.PageProduct
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_domain.model.product.ProductListType
@@ -35,7 +36,11 @@ fun ProductListWithSpecialOffers(
     products: List<PageProduct>,
     onProductClick: (Product) -> Unit = {},
     onWishedClick: (String) -> Unit = {},
-    onSpecialOfferClick: (PageProduct.PageSpecialOffer) -> Unit = {}
+    onSpecialOfferClick: (PageProduct.PageSpecialOffer) -> Unit = {},
+    onCartClick: (String) -> Unit = {},
+    onAddToCart: (String, Int) -> Unit = { _, _ -> },
+    onRemoveFromCart: (String, Int) -> Unit = { _, _ -> },
+    isItemInCart: (String) -> CartItem? = { null }
 ) {
     val context = LocalContext.current
     LazyColumn(modifier = modifier.heightIn(min = 0.dp, max = 1500.dp)) {
@@ -60,7 +65,11 @@ fun ProductListWithSpecialOffers(
                                 },
                                 onWishlistClick = {
                                     onWishedClick(it)
-                                }
+                                },
+                                onCartClick = onCartClick,
+                                onAddToCart = onAddToCart,
+                                onRemoveFromCart = onRemoveFromCart,
+                                isItemInCart = isItemInCart
                             )
                         }
 
@@ -78,10 +87,18 @@ fun ProductListWithSpecialOffers(
                                         min = 0.dp,
                                         max = gridHeight
                                     ),
-                                products = item.products
-                            ) {
-                                onProductClick(it)
-                            }
+                                products = item.products,
+                                onProductClick = {
+                                    onProductClick(it)
+                                },
+                                onWishlistClick = {
+                                    onWishedClick(it)
+                                },
+                                onCartClick = onCartClick,
+                                onAddToCart = onAddToCart,
+                                onRemoveFromCart = onRemoveFromCart,
+                                isItemInCart = isItemInCart
+                            )
                         }
 
                         ProductListType.PAGER -> {
@@ -93,7 +110,11 @@ fun ProductListWithSpecialOffers(
                                 },
                                 onWishedClick = {
                                     onWishedClick(it)
-                                }
+                                },
+                                onCartClick = onCartClick,
+                                onAddToCart = onAddToCart,
+                                onRemoveFromCart = onRemoveFromCart,
+                                isItemInCart = isItemInCart
                             )
                         }
                     }

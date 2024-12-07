@@ -70,7 +70,8 @@ fun SpecialOfferDetailsScreen(
                 modifier = modifier,
                 specialOffer = (screenState as SpecialOfferDetailsScreenState.Success).specialOffer,
                 onBackClick = onBackClick,
-                onProductClick = onProductClick
+                onProductClick = onProductClick,
+                onWishlistClick = {}
             )
         }
     }
@@ -83,6 +84,7 @@ private fun SpecialOfferDetailsScreenContent(
     specialOffer: SpecialOffer,
     onBackClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
+    onWishlistClick: (String) -> Unit = {},
 ) {
     Scaffold(Modifier.fillMaxSize()) { innerPadding ->
         Column(modifier = modifier.padding(innerPadding)) {
@@ -114,9 +116,12 @@ private fun SpecialOfferDetailsScreenContent(
             ProductListStaggeredGrid(
                 modifier = Modifier.fillMaxSize(),
                 products = specialOffer.products,
-            ) {
-                onProductClick(it)
-            }
+                onProductClick = onProductClick,
+                onAddToCart = { _, _ -> },
+                onRemoveFromCart = { _, _ -> },
+                onCartClick = {},
+                onWishlistClick = onWishlistClick
+            )
         }
     }
 }

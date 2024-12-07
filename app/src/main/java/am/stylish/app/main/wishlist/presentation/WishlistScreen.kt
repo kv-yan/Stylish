@@ -6,6 +6,7 @@ import am.stylish.app.common_presentation.components.action_bar.ItemsSummaryHead
 import am.stylish.app.common_presentation.components.action_bar.MainMenuActionBarContent
 import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
 import am.stylish.app.common_presentation.components.search.SearchBar
+import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import android.widget.Toast
@@ -18,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -26,7 +28,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -105,10 +109,26 @@ private fun WishlistScreenContent(
 
             ProductListStaggeredGrid(
                 modifier = Modifier.fillMaxSize(),
-                products = wishlistState
-            ) {
-                onProductClick(it)
-            }
+                products = wishlistState,
+                onProductClick = onProductClick,
+                onAddToCart = { _, _ -> },
+                onRemoveFromCart = { _, _ -> },
+                onCartClick = {},
+                onWishlistClick = {}
+            )
+
+        } else {
+            Text(
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                text = stringResource(R.string.there_are_no_items_in_the_wishlist),
+                style = AuthTitleTextStyle,
+                fontSize = 18.sp,
+                color = CoralRed,
+                textAlign = TextAlign.Center
+            )
+
         }
     }
 }

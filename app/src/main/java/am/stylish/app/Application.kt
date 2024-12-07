@@ -1,7 +1,11 @@
 package am.stylish.app
 
 import am.stylish.app.common_data.di.commonDataModule
+import am.stylish.app.common_presentation.di.commonPresentationModule
 import am.stylish.app.landing.presentation.di.landingPresentationModule
+import am.stylish.app.main.cart.data.di.cartDataModule
+import am.stylish.app.main.cart.domain.di.cartDomainModule
+import am.stylish.app.main.cart.presentation.di.cartPresentationModule
 import am.stylish.app.main.home.domain.di.homeDomainModule
 import am.stylish.app.main.home.presentation.di.homePresentationModule
 import am.stylish.app.main.wishlist.data.di.wishlistDataModule
@@ -22,6 +26,7 @@ class Application : Application() {
             androidContext(this@Application)
             modules(
                 commonDataModule,
+                commonPresentationModule,
                 landingPresentationModule,
                 productDetailsPresentationModule,
                 wishlistDataModule,
@@ -31,6 +36,9 @@ class Application : Application() {
                 homeDomainModule,
                 specialOfferDetailsPresentationModule,
                 specialOfferDetailsDomainModule,
+                cartPresentationModule,
+                cartDomainModule,
+                cartDataModule,
             )
         }
     }
