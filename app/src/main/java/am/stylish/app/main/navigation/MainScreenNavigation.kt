@@ -63,7 +63,11 @@ fun MainScreenNavigation(
             }
 
             composable<MainScreenDestination.Cart> {
-                CartScreen()
+                CartScreen(
+                    onProductClick = navigateToProductDetails,
+                    onSnackbarShown = onSnackbarShown,
+                    onBackClick = { navController.navigateUp() },
+                )
             }
 
             composable<MainScreenDestination.Search> { Text("Search") }

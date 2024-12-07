@@ -2,15 +2,16 @@ package am.stylish.app.main.cart.presentation
 
 import am.stylish.app.R
 import am.stylish.app.common_domain.model.product.Product
-import am.stylish.app.common_presentation.components.action_bar.MainMenuActionBarContent
-import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
-import am.stylish.app.common_presentation.components.search.SearchBar
+import am.stylish.app.common_presentation.components.action_bar.AppActionBar
+import am.stylish.app.common_presentation.components.product_list.CartProductList
 import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
 import am.stylish.app.common_presentation.ui.theme.RoseRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
+import am.stylish.app.common_presentation.view_model.CartViewModel
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +19,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -26,6 +31,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -37,6 +43,7 @@ import org.koin.androidx.compose.koinViewModel
 fun CartScreen(
     modifier: Modifier = Modifier,
     viewModel: CartScreenViewModel = koinViewModel(),
+    cartViewModel: CartViewModel = koinViewModel(),
     onProductClick: (Product) -> Unit = {},
     onBackClick: () -> Unit = {},
     onSnackbarShown: (SnackbarState) -> Unit = {}
@@ -66,7 +73,13 @@ fun CartScreen(
             CartScreenContent(
                 modifier = modifier,
                 products = state.cartItems,
-                onProductClick = onProductClick
+                onProductClick = onProductClick,
+                onBackClick = onBackClick,
+                onDeleteClick = {
+                    cartViewModel.deleteCartItem(it) {
+                        onSnackbarShown(it)
+                    }
+                }
             )
         }
     }
@@ -76,7 +89,9 @@ fun CartScreen(
 private fun CartScreenContent(
     modifier: Modifier = Modifier,
     products: List<Product>,
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onDeleteClick: (String) -> Unit = {},
+    onBackClick: () -> Unit = {}
 ) {
     val scrollState = rememberScrollState()
 
@@ -84,31 +99,38 @@ private fun CartScreenContent(
         modifier = modifier
             .fillMaxSize()
             .background(SoftWhite)
-            .verticalScroll(scrollState)
+            .verticalScroll(scrollState),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        MainMenuActionBarContent()
-
-        SearchBar(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp,
-                    top = 16.dp,
-                ),
-            text = stringResource(R.string.search_any_product),
+        AppActionBar(
+            modifier = Modifier.fillMaxWidth(),
+            showStartContent = true,
+            showCenterContent = true,
+            startContent = {
+                IconButton(onClick = { onBackClick() }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
+                        contentDescription = null
+                    )
+                }
+            },
+            centerContent = {
+                Text(
+                    text = stringResource(R.string.add_to_cart),
+                    style = AuthTitleTextStyle,
+                    fontSize = 18.sp,
+                    color = Color.Black,
+                )
+            }
         )
+
         if (products.isNotEmpty()) {
-
-            ProductListStaggeredGrid(
-                modifier = Modifier.fillMaxSize(), products = products,
-                onProductClick = onProductClick,
-                onAddToCart = { _, _ -> },
-                onRemoveFromCart = { _, _ -> },
-                onCartClick = {},
-                onWishlistClick = {}
+            CartProductList(
+                modifier = Modifier.fillMaxSize(),
+                products = products,
+                onDetailsClick = onDeleteClick,
+                onProductClick = onProductClick
             )
-
         } else {
             Text(
                 modifier = modifier

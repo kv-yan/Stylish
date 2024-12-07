@@ -66,4 +66,9 @@
     <string name="there_are_no_items_in_the_cart">There are no items in the cart</string>
     <string name="there_are_no_items_in_the_wishlist">There are no items in the wishlist</string>
     <string name="item_added_to_cart">Item added to cart</string>
+    <string name="total_price">Total price : (%1$s)</string>
+    <string name="price_dollar">$ %1$s</string>
+    <string name="cart">Cart</string>
+    <string name="upton_off">Upton %1$s% off</string>
+    <string name="item_removed_from_cart">Item removed from cart successfully</string>
 </resources>
