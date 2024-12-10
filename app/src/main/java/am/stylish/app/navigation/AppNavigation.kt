@@ -1,8 +1,8 @@
 package am.stylish.app.navigation
 
 import am.stylish.app.auth.navigation.AuthMainScreen
-import am.stylish.app.common_presentation.components.snackbar.AppSnackbar
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.AppSnackbar
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.fullscreen_images.ProductFullScreenImagesScreen
 import am.stylish.app.landing.presentation.LandingScreens
@@ -18,16 +18,16 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -36,28 +36,37 @@ import kotlin.reflect.typeOf
 
 @Composable
 fun AppNavigation(
-    modifier: Modifier = Modifier, startDestination: AppDestination
+    modifier: Modifier = Modifier,
+    startDestination: AppDestination
 ) {
-    var snackbarState by remember { mutableStateOf<SnackbarState>(SnackbarState.Success()) }
-    val showingSnackbar = remember { mutableStateOf(false) }
+    val snackbars = remember { mutableStateListOf<SnackbarState>() }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
         AppNavigationContent(
             modifier = modifier,
             startDestination = startDestination,
-            onSnackbarShown = {
-                snackbarState = it
-                showingSnackbar.value = true
-            })
+            onSnackbarShown = { snackbarState ->
+                snackbars.add(snackbarState)
+            }
+        )
 
-        AppSnackbar(
+        Box(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 32.dp),
-            state = snackbarState,
-            isShown = showingSnackbar
-        )
+                .padding(top = 32.dp)
+        ) {
+            snackbars.forEachIndexed { index, state ->
+                AppSnackbar(
+                    modifier = Modifier
+                        .offset(y = (index * 8).dp)
+                        .zIndex(index.toFloat()),
+                    state = state
+                ) {
+                    snackbars.remove(state)
+                }
+            }
+        }
     }
 }
 

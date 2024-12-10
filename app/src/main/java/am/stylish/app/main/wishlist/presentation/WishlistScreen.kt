@@ -7,7 +7,7 @@ import am.stylish.app.common_presentation.components.action_bar.ItemsSummaryHead
 import am.stylish.app.common_presentation.components.action_bar.MainMenuActionBarContent
 import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
 import am.stylish.app.common_presentation.components.search.SearchBar
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite

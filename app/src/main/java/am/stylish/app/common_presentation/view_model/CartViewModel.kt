@@ -3,7 +3,7 @@ package am.stylish.app.common_presentation.view_model
 import am.stylish.app.R
 import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.utils.Result
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.utils.GeneralTags
 import am.stylish.app.main.cart.domain.usecase.DeleteCartItemUseCase
 import am.stylish.app.main.cart.domain.usecase.GetCartListUseCase

@@ -1,4 +1,4 @@
-package am.stylish.app.common_presentation.components.snackbar
+package am.stylish.app.common_presentation.components.snackbars
 
 import am.stylish.app.R
 

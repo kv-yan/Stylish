@@ -6,7 +6,7 @@ import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.product_list.ProductListStaggeredGrid
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
 import am.stylish.app.common_presentation.view_model.CartViewModel

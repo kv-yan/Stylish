@@ -5,7 +5,7 @@ import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.address.AddressSection
 import am.stylish.app.common_presentation.components.product_list.CartProductList
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.components.text.AppSubTitle
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
