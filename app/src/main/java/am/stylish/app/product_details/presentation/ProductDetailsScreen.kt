@@ -11,7 +11,7 @@ import am.stylish.app.common_presentation.components.items.RatingBar
 import am.stylish.app.common_presentation.components.pager.ProductImagePager
 import am.stylish.app.common_presentation.components.product_components.ProductSizeSection
 import am.stylish.app.common_presentation.components.product_list.ProductListGrid
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.components.text.ExpandableAnnotatedText
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CloudGray

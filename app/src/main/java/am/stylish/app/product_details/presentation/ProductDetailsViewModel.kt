@@ -3,7 +3,7 @@ package am.stylish.app.product_details.presentation
 import am.stylish.app.R
 import am.stylish.app.common_domain.entity.WishedItem
 import am.stylish.app.common_domain.utils.Result
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.utils.test_mock_data.mockProductDetails
 import am.stylish.app.main.wishlist.domain.usecase.DeleteWishedItemUseCase
 import am.stylish.app.main.wishlist.domain.usecase.GetWishedListUseCase

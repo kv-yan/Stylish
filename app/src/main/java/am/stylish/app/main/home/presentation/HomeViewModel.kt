@@ -3,11 +3,10 @@ package am.stylish.app.main.home.presentation
 import am.stylish.app.R
 import am.stylish.app.common_domain.entity.WishedItem
 import am.stylish.app.common_domain.utils.Result
-import am.stylish.app.common_presentation.components.snackbar.SnackbarState
+import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.main.home.domain.usecase.GetHomePageProductsUseCase
 import am.stylish.app.main.wishlist.domain.usecase.InsertWishedItemUseCase
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
