@@ -53,8 +53,8 @@ fun AppNavigation(
 
         AppSnackbar(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 16.dp),
+                .align(Alignment.TopCenter)
+                .padding(top = 32.dp),
             state = snackbarState,
             isShown = showingSnackbar
         )
@@ -141,7 +141,8 @@ private fun AppNavigationContent(
                     )
                 },
             ) { entry ->
-                val specialOfferId = entry.toRoute<AppDestination.SpecialOfferDetails>().specialOfferId
+                val specialOfferId =
+                    entry.toRoute<AppDestination.SpecialOfferDetails>().specialOfferId
 
                 SpecialOfferDetailsScreen(
                     specialOfferId = specialOfferId,

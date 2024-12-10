@@ -1,5 +1,6 @@
 package am.stylish.app.common_presentation.components.product_list
 
+import am.stylish.app.common_domain.entity.CartItem
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.items.ProductStaggeredGridItem
 import androidx.compose.foundation.layout.heightIn
@@ -16,7 +17,11 @@ import androidx.compose.ui.unit.dp
 fun ProductListStaggeredGrid(
     modifier: Modifier = Modifier,
     products: List<Product>,
-    onProductClick: (Product) -> Unit = {}
+    onProductClick: (Product) -> Unit = {},
+    onWishlistClick: (String) -> Unit = {},
+    onAddToCart: (String, Int) -> Unit = { _, _ -> },
+    onRemoveFromCart: (String, Int) -> Unit = { _, _ -> } ,
+    isItemInCart: (String) -> CartItem? = { null }
 ) {
     val rows = products.size
     val maxHeight = (rows) * 400
@@ -30,10 +35,16 @@ fun ProductListStaggeredGrid(
         columns = StaggeredGridCells.Fixed(2),
     ) {
         items(products, key = { it.id }) { product ->
-            ProductStaggeredGridItem(product) {
-                onProductClick(product)
-            }
+            ProductStaggeredGridItem(
+                product = product,
+                onAddToCart = onAddToCart,
+                onRemoveFromCart = onRemoveFromCart,
+                onWishlistClick = onWishlistClick,
+                onClick = {
+                    onProductClick(product)
+                } ,
+                isItemInCart = isItemInCart
+            )
         }
     }
 }
-

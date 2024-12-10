@@ -11,6 +11,7 @@ import am.stylish.app.common_presentation.components.search.SearchBar
 import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.CoralRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
+import am.stylish.app.common_presentation.view_model.CartViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,8 +36,7 @@ fun HomeScreen(
     onProductClick: (Product) -> Unit = {},
     onSpecialOfferClick: (SpecialOffer) -> Unit = {},
     onSnackbarShown: (SnackbarState) -> Unit = {},
-    viewModel: HomeViewModel = koinViewModel()
-
+    viewModel: HomeViewModel = koinViewModel(),
 ) {
     val screenState by viewModel.screenState.collectAsStateWithLifecycle()
 
@@ -58,7 +58,9 @@ fun HomeScreen(
         }
 
         is HomeScreenState.Success -> {
-            HomeScreenContent(modifier = modifier,
+
+            HomeScreenContent(
+                modifier = modifier,
                 products = state.pageProduct,
                 onProductClick = onProductClick,
                 onSpecialOfferClick = onSpecialOfferClick,
@@ -66,7 +68,9 @@ fun HomeScreen(
                     viewModel.addToWishlist(it) { snackbar ->
                         onSnackbarShown(snackbar)
                     }
-                })
+                },
+                onSnackbarShown = onSnackbarShown
+            )
         }
     }
 }
@@ -76,11 +80,14 @@ fun HomeScreen(
 private fun HomeScreenContent(
     modifier: Modifier = Modifier,
     products: List<PageProduct> = emptyList(),
+    cartViewModel: CartViewModel = koinViewModel(),
     onProductClick: (Product) -> Unit = {},
     onSpecialOfferClick: (SpecialOffer) -> Unit = {},
-    onWishedClick: (String) -> Unit = {}
+    onWishedClick: (String) -> Unit = {},
+    onSnackbarShown: (SnackbarState) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
+    val cartList by cartViewModel.cartList.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -112,12 +119,22 @@ private fun HomeScreenContent(
         )
 
 
-        ProductListWithSpecialOffers(modifier = modifier.fillMaxSize(),
+        ProductListWithSpecialOffers(
+            modifier = modifier.fillMaxSize(),
             products = products,
             onProductClick = onProductClick,
             onWishedClick = onWishedClick,
             onSpecialOfferClick = {
                 onSpecialOfferClick(it.specialOffer)
-            })
+            },
+            onCartClick = {
+                cartViewModel.addCartItem(it) { snackbar ->
+                    onSnackbarShown(snackbar)
+                }
+            },
+            isItemInCart = {
+                cartList.find { cartItem -> cartItem.id == it }
+            }
+        )
     }
 }

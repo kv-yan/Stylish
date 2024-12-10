@@ -4,6 +4,7 @@ import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_presentation.components.snackbar.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
+import am.stylish.app.main.cart.presentation.CartScreen
 import am.stylish.app.main.home.presentation.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
@@ -47,7 +48,7 @@ fun MainScreenNavigation(
                 .background(Color.White)
                 .padding(it),
             navController = navController,
-            startDestination = MainScreenDestination.Home,
+            startDestination = MainScreenDestination.Wishlist,
         ) {
             composable<MainScreenDestination.Home> {
                 HomeScreen(
@@ -56,11 +57,24 @@ fun MainScreenNavigation(
                     onSnackbarShown = onSnackbarShown,
                 )
             }
+
             composable<MainScreenDestination.Wishlist> {
-                WishlistScreen(onProductClick = navigateToProductDetails)
+                WishlistScreen(
+                    onProductClick = navigateToProductDetails,
+                    onSnackbarShown = onSnackbarShown
+                )
             }
-            composable<MainScreenDestination.Cart> { Text("Cart") }
+
+            composable<MainScreenDestination.Cart> {
+                CartScreen(
+                    onProductClick = navigateToProductDetails,
+                    onSnackbarShown = onSnackbarShown,
+                    onBackClick = { navController.navigateUp() },
+                )
+            }
+
             composable<MainScreenDestination.Search> { Text("Search") }
+
             composable<MainScreenDestination.Settings> { Text("Settings") }
         }
     }

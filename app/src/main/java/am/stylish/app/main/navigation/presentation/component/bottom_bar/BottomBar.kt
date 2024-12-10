@@ -2,7 +2,6 @@ package am.stylish.app.main.navigation.presentation.component.bottom_bar
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.ui.theme.BottomBarItemTextStyle
-import am.stylish.app.common_presentation.ui.theme.LightGray
 import am.stylish.app.common_presentation.ui.theme.RoseRed
 import am.stylish.app.main.navigation.domain.BottomBarDomain
 import am.stylish.app.main.navigation.domain.MainScreenDestination
@@ -17,7 +16,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,7 +27,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -47,20 +44,27 @@ fun BottomNavigationBar(modifier: Modifier = Modifier, navController: NavControl
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
-    val isInHomeScreen =
-        currentDestination?.hierarchy?.any { destination -> destination.route == MainScreenDestination.Home::class.qualifiedName }
-    val isInWishListScreen =
-        currentDestination?.hierarchy?.any { destination -> destination.route == MainScreenDestination.Wishlist::class.qualifiedName }
-    val isInCartScreen =
-        currentDestination?.hierarchy?.any { destination -> destination.route == MainScreenDestination.Cart::class.qualifiedName }
-    val isInSearchScreen =
-        currentDestination?.hierarchy?.any { destination -> destination.route == MainScreenDestination.Search::class.qualifiedName }
-    val isInSettingsScreen =
-        currentDestination?.hierarchy?.any { destination -> destination.route == MainScreenDestination.Settings::class.qualifiedName }
+    val isInHomeScreen = currentDestination?.hierarchy?.any { destination ->
+        destination.route == MainScreenDestination.Home::class.qualifiedName
+    }
+    val isInWishListScreen = currentDestination?.hierarchy?.any { destination ->
+        destination.route == MainScreenDestination.Wishlist::class.qualifiedName
+    }
+    val isInCartScreen = currentDestination?.hierarchy?.any { destination ->
+        destination.route == MainScreenDestination.Cart::class.qualifiedName
+    }
+    val isInSearchScreen = currentDestination?.hierarchy?.any { destination ->
+        destination.route == MainScreenDestination.Search::class.qualifiedName
+    }
+    val isInSettingsScreen = currentDestination?.hierarchy?.any { destination ->
+        destination.route == MainScreenDestination.Settings::class.qualifiedName
+    }
+
 
     Column(
         modifier = modifier
             .fillMaxWidth()
+            .padding(bottom = 4.dp)
             .background(Color.White)
     ) {
         Row(
@@ -130,7 +134,7 @@ fun BottomBarItem(
             .padding(top = 12.dp)
             .clickable {
                 navigateTo.invoke(item.route)
-            }
+            },
     ) {
         Icon(
             painter = painterResource(id = item.icon),
@@ -141,7 +145,7 @@ fun BottomBarItem(
             text = item.title,
             style = BottomBarItemTextStyle,
             color = if (isSelected) RoseRed else Color.Black,
-            modifier = Modifier.padding(top = 3.dp)
+            modifier = Modifier.padding(top = 4.dp)
         )
     }
 }
@@ -150,17 +154,15 @@ fun BottomBarItem(
 fun MiddleCartItem(
     modifier: Modifier = Modifier,
     isSelected: Boolean,
-    onClick: (MainScreenDestination) -> Unit
+    onClick: (MainScreenDestination) -> Unit,
 ) {
-    Surface(
-        modifier = modifier,
-        shadowElevation = 14.dp,
+    Surface(modifier = modifier,
+        shadowElevation = 4.dp,
         color = if (isSelected) RoseRed else Color.White,
         shape = CircleShape,
         onClick = {
             onClick(MainScreenDestination.Cart)
-        }
-    ) {
+        }) {
         Box(modifier = Modifier.padding(16.dp)) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_shopping_cart),
