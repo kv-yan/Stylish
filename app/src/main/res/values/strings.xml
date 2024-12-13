@@ -80,4 +80,12 @@
     <string name="test_product_size">8 UK</string>
     <string name="test_product_color">Black</string>
     <string name="upton_off">Upton %1$s %off</string>
+    <string name="order_details">Order Details</string>
+    <string name="proceed_to_payment">Proceed to Payment</string>
+    <string name="order_payment_details">Order Payment Details</string>
+    <string name="order_amounts">Order Amounts</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="free">Free</string>
+    <string name="address_details">Address Details</string>
+    <string name="percent">- %1$s %%</string>
 </resources>

@@ -26,11 +26,11 @@ fun SpecialOfferItem(offer: SpecialOffer) {
         Text(text = offer.contentDescription)
         offer.imageUrl?.let {
             Image(
-                painter = rememberAsyncImagePainter(it),
-                contentDescription = offer.contentTitle,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
+                    .height(200.dp),
+                painter = rememberAsyncImagePainter(it),
+                contentDescription = offer.contentTitle
             )
         }
     }

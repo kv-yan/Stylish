@@ -78,7 +78,7 @@ fun CartProductItem(
                     modifier = Modifier
                         .padding(start = 12.dp, top = 8.dp)
                         .fillMaxWidth()
-                        .heightIn(min = 0.dp, max = 134.dp),
+                        .heightIn(min = 0.dp, max = 152.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
 
@@ -105,20 +105,24 @@ fun CartProductItem(
                         )
                     }
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
+                            modifier = Modifier.weight(0.5f),
                             text = stringResource(R.string.variations),
                             style = SpecialOfferDescriptionTextStyle,
                             maxLines = 1,
                             color = Color.Black,
                             overflow = TextOverflow.Ellipsis,
-                            fontSize = 14.sp,
+                            fontSize = 14.sp
                         )
 
                         Row(
-                            Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly
+                            modifier = Modifier.weight(1f),
+                            horizontalArrangement = Arrangement.spacedBy(2.dp)
                         ) {
                             Text(
                                 modifier = Modifier
@@ -132,7 +136,9 @@ fun CartProductItem(
                                     ),
                                 text = stringResource(R.string.test_product_size),
                                 color = Color.Black,
-                                textAlign = TextAlign.Center
+                                textAlign = TextAlign.Center,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
                             )
 
                             Text(
@@ -146,7 +152,9 @@ fun CartProductItem(
                                         horizontal = 8.dp, vertical = 4.dp
                                     ),
                                 text = stringResource(R.string.test_product_color),
-                                color = Color.Black
+                                color = Color.Black,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
                             )
                         }
                     }
@@ -184,8 +192,8 @@ fun CartProductItem(
                                 text = stringResource(R.string.price_dollar, product.price),
                                 style = AuthTitleTextStyle,
                                 maxLines = 1,
-                                color = Color.Black,
                                 overflow = TextOverflow.Ellipsis,
+                                color = Color.Black,
                                 fontSize = 18.sp,
                             )
                         }
@@ -194,7 +202,9 @@ fun CartProductItem(
                             Column(modifier = Modifier.padding(start = 12.dp)) {
                                 Text(
                                     text = stringResource(R.string.upton_off, product.discount),
-                                    style = ProductDiscountTextStyle
+                                    style = ProductDiscountTextStyle,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
                                 )
 
                                 Text(
@@ -224,7 +234,8 @@ fun CartProductItem(
                 Text(
                     text = stringResource(R.string.total_price, quantity),
                     style = ProductPriceTextStyle,
-                )
+
+                    )
 
                 Text(
                     text = stringResource(R.string.price_dollar, product.price),

@@ -27,4 +27,9 @@ sealed class AppDestination {
         val position: Int = 0
     ) : AppDestination()
 
+    @Serializable
+    data class OrderDetails(
+        val productIds: List<String>,
+    ) : AppDestination()
+
 }
