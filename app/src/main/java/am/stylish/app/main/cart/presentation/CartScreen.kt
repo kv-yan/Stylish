@@ -4,11 +4,12 @@ import am.stylish.app.R
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.address.AddressSection
+import am.stylish.app.common_presentation.components.card.CheckoutSummaryCard
 import am.stylish.app.common_presentation.components.product_list.CartProductList
 import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.components.text.AppSubTitle
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
-import am.stylish.app.common_presentation.ui.theme.CoralRed
+import am.stylish.app.common_presentation.ui.theme.CoolGray
 import am.stylish.app.common_presentation.ui.theme.RoseRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.common_presentation.view_model.CartViewModel
@@ -22,11 +23,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -54,20 +53,24 @@ fun CartScreen(
     cartViewModel: CartViewModel = koinViewModel(),
     onProductClick: (Product) -> Unit = {},
     onBackClick: () -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {}
+    onSnackbarShown: (SnackbarState) -> Unit = {},
+    navigateToOrderDetails: (List<String>) -> Unit = {}
 ) {
-    val cartScreenState by viewModel.screenState.collectAsState(CartScreenState.Loading)
+    val screenState by viewModel.screenState.collectAsState(CartScreenState.Loading)
     LaunchedEffect(Unit) {
         viewModel.fetchCartItems()
     }
 
-    when (val state = cartScreenState) {
+    when (val state = screenState) {
         is CartScreenState.Error -> {
-            onSnackbarShown(
-                SnackbarState.Error(
-                    _message = R.string.something_went_wrong, _icon = R.drawable.ic_error
+            LaunchedEffect(screenState) {
+                onSnackbarShown(
+                    SnackbarState.Error(
+                        _message = R.string.something_went_wrong,
+                        _icon = R.drawable.ic_error,
+                    )
                 )
-            )
+            }
         }
 
         CartScreenState.Loading -> {
@@ -77,7 +80,8 @@ fun CartScreen(
         }
 
         is CartScreenState.Success -> {
-            CartScreenContent(modifier = modifier,
+            CartScreenContent(
+                modifier = modifier,
                 products = state.cartItems.toMutableStateList(),
                 onProductClick = onProductClick,
                 onBackClick = onBackClick,
@@ -85,7 +89,9 @@ fun CartScreen(
                     cartViewModel.deleteCartItem(it) {
                         onSnackbarShown(it)
                     }
-                })
+                },
+                navigateToOrderDetails = navigateToOrderDetails
+            )
         }
     }
 }
@@ -96,27 +102,23 @@ private fun CartScreenContent(
     products: SnapshotStateList<Product>,
     onProductClick: (Product) -> Unit = {},
     onDeleteClick: (String) -> Unit = {},
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
+    navigateToOrderDetails: (List<String>) -> Unit = {}
 ) {
     val scrollState = rememberScrollState()
 
-    Column(
+    Box(
         modifier = modifier
             .fillMaxSize()
             .background(SoftWhite)
-            .verticalScroll(scrollState),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-
-        Card(
+        Column(
             modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(2.dp),
-            colors = CardDefaults.cardColors(Color.White),
-            shape = RoundedCornerShape(0.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            AppActionBar(modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp),
+            AppActionBar(
+                modifier = Modifier
+                    .fillMaxWidth(),
                 showStartContent = true,
                 showCenterContent = true,
                 startContent = {
@@ -137,59 +139,79 @@ private fun CartScreenContent(
                         fontSize = 18.sp,
                         color = Color.Black,
                     )
-                })
-        }
-
-        AppSubTitle(modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-            text = stringResource(R.string.delivery_address),
-            icon = {
-                Icon(
-                    painter = painterResource(R.drawable.ic_location),
-                    contentDescription = null,
-                    tint = Color.Unspecified,
-                )
-            })
+                }
+            )
+            HorizontalDivider(Modifier.fillMaxWidth(), thickness = 0.5.dp, color = CoolGray)
 
 
-
-        AddressSection(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        )
-
-        if (products.isNotEmpty()) {
-            AppSubTitle(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(
-                        start = 16.dp,
-                        top = 14.dp,
-                        end = 16.dp,
-                    ),
-                text = stringResource(R.string.shopping_list),
-            )
+                    .verticalScroll(scrollState),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                AppSubTitle(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                    text = stringResource(R.string.delivery_address),
+                    icon = {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_location),
+                            contentDescription = null,
+                            tint = Color.Unspecified,
+                        )
+                    })
 
-            CartProductList(
-                modifier = Modifier.fillMaxSize(),
-                products = products,
-                onDeleteClick = onDeleteClick,
-                onProductClick = onProductClick,
-            )
+                AddressSection(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                )
 
-        } else {
-            Text(
-                modifier = modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                text = stringResource(R.string.there_are_no_items_in_the_cart),
-                style = AuthTitleTextStyle,
-                fontSize = 18.sp,
-                color = CoralRed,
-                textAlign = TextAlign.Center
-            )
+                if (products.isNotEmpty()) {
+                    AppSubTitle(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(
+                                start = 16.dp,
+                                top = 14.dp,
+                                end = 16.dp,
+                            ),
+                        text = stringResource(R.string.shopping_list),
+                    )
+
+                    CartProductList(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(bottom = 124.dp),
+                        products = products,
+                        onDeleteClick = onDeleteClick,
+                        onProductClick = onProductClick,
+                    )
+
+                } else {
+                    Text(
+                        modifier = modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        text = stringResource(R.string.there_are_no_items_in_the_cart),
+                        style = AuthTitleTextStyle,
+                        fontSize = 18.sp,
+                        color = RoseRed,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        }
+
+        CheckoutSummaryCard(
+            isExpanded = products.isNotEmpty(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter),
+            price = products.sumOf { it.price }
+        ) {
+            navigateToOrderDetails(products.map { it.id })
         }
     }
 }

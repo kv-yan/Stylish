@@ -43,14 +43,22 @@ fun WishlistScreen(
     onProductClick: (Product) -> Unit = {},
     onSnackbarShown: (SnackbarState) -> Unit = {}
 ) {
-    val wishlistScreenState by viewModel.wishlistScreenState.collectAsState()
+    val screenState by viewModel.wishlistScreenState.collectAsState()
     val cartViewModel = koinViewModel<CartViewModel>()
     val cartList by cartViewModel.cartList.collectAsStateWithLifecycle()
 
 
-    when (val state = wishlistScreenState) {
+    when (val state = screenState) {
         is WishlistScreenState.Error -> {
-            onSnackbarShown(SnackbarState.Error(R.string.something_went_wrong))
+            LaunchedEffect(screenState) {
+                onSnackbarShown(
+                    SnackbarState.Error(
+                        _message = R.string.something_went_wrong,
+                        _icon = R.drawable.ic_error,
+                    )
+                )
+            }
+
         }
 
         WishlistScreenState.Loading -> {
@@ -64,7 +72,7 @@ fun WishlistScreen(
                 viewModel.fetchWishlistItems()
             }
             WishlistScreenContent(
-                modifier = modifier,
+                modifier = modifier.fillMaxSize(),
                 wishlistState = state.wishlistItems,
                 onProductClick = onProductClick,
                 onAddToCart = { id, _ ->
@@ -92,8 +100,8 @@ private fun WishlistScreenContent(
 
     Column(
         modifier = modifier
-            .fillMaxSize()
             .background(SoftWhite)
+            .fillMaxSize()
             .verticalScroll(scrollState)
     ) {
         MainMenuActionBarContent()

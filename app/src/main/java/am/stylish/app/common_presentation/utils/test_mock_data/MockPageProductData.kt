@@ -45,7 +45,7 @@ val mockPageProductData = listOf(
     ),
     PageProduct.ProductList(
         productListType = ProductListType.PAGER,
-        products = productsShortMockData,
+        products = mockProductsShortData,
     ),
     PageProduct.PageSpecialOffer(
         specialOffer = SpecialOffer(

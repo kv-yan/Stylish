@@ -51,6 +51,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -78,18 +79,21 @@ fun ProductDetailsScreen(
     onSnackbarShown: (SnackbarState) -> Unit = {},
     onImageClick: (List<String>, Int) -> Unit
 ) {
-    val viewState by productDetailsViewModel.screenState.collectAsState()
+    val screenState by productDetailsViewModel.screenState.collectAsState()
     val isWishlistAdded by productDetailsViewModel.isWishlistAdded.collectAsState()
     val cartViewModel = koinViewModel<CartViewModel>()
     val cartList by cartViewModel.cartList.collectAsStateWithLifecycle()
-    when (val state = viewState) {
+
+    when (val state = screenState) {
         is DetailsScreenState.Error -> {
-            onSnackbarShown(
-                SnackbarState.Error(
-                    _message = R.string.something_went_wrong,
-                    _icon = R.drawable.ic_error
+            LaunchedEffect(screenState) {
+                onSnackbarShown(
+                    SnackbarState.Error(
+                        _message = R.string.something_went_wrong,
+                        _icon = R.drawable.ic_error,
+                    )
                 )
-            )
+            }
         }
 
         DetailsScreenState.Loading -> {

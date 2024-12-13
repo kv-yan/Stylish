@@ -11,6 +11,7 @@ import am.stylish.app.main.home.presentation.di.homePresentationModule
 import am.stylish.app.main.wishlist.data.di.wishlistDataModule
 import am.stylish.app.main.wishlist.domain.di.wishlistDomainModule
 import am.stylish.app.main.wishlist.presentation.di.wishlistPresentationModule
+import am.stylish.app.order_details_screen.presentation.di.orderDetailsPresentationModule
 import am.stylish.app.product_details.presentation.di.productDetailsPresentationModule
 import am.stylish.app.special_offer_details.domain.di.specialOfferDetailsDomainModule
 import am.stylish.app.special_offer_details.presentation.di.specialOfferDetailsPresentationModule
@@ -39,6 +40,7 @@ class Application : Application() {
                 cartPresentationModule,
                 cartDomainModule,
                 cartDataModule,
+                orderDetailsPresentationModule,
             )
         }
     }

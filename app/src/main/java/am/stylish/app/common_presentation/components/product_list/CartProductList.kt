@@ -2,7 +2,6 @@ package am.stylish.app.common_presentation.components.product_list
 
 import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.items.CartProductItem
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CartProductList(
     modifier: Modifier = Modifier,
@@ -23,19 +21,20 @@ fun CartProductList(
     onProductClick: (Product) -> Unit = {}
 ) {
     val columns = products.size
-    val maxHeight = columns * 228
+    val maxHeight = columns * 258
 
     LazyColumn(
         modifier = modifier.heightIn(min = 0.dp, max = maxHeight.dp),
         userScrollEnabled = false,
-        contentPadding = PaddingValues(bottom = 45.dp)
+        contentPadding = PaddingValues(bottom = 24.dp)
     ) {
         items(
             items = products,
             key = { it.id }
         ) { product ->
             Box(
-                modifier = Modifier.animateItem(fadeInSpec = null, fadeOutSpec = null)
+                modifier = Modifier
+                    .animateItem(fadeInSpec = null, fadeOutSpec = null)
                     .fillMaxWidth()
                     .padding(horizontal = 12.dp, vertical = 6.dp)
             ) {
