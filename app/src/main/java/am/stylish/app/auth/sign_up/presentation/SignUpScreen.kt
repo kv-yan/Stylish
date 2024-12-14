@@ -3,7 +3,7 @@ package am.stylish.app.auth.sign_up.presentation
 import am.stylish.app.R
 import am.stylish.app.auth.authwithsection.AuthWithSection
 import am.stylish.app.common_presentation.components.button.SolidButton
-import am.stylish.app.common_presentation.components.text.AuthTextField
+import am.stylish.app.common_presentation.components.text.InputTextField
 import am.stylish.app.common_presentation.components.text.AuthTitle
 import am.stylish.app.common_presentation.ui.theme.DarkGrayText
 import am.stylish.app.common_presentation.ui.theme.LightGrayText
@@ -69,7 +69,7 @@ private fun SignUpScreenContent(
             title = stringResource(R.string.create_an_account_capitalize),
         )
 
-        AuthTextField(modifier = Modifier
+        InputTextField(modifier = Modifier
             .fillMaxWidth()
             .padding(top = 36.dp),
             text = stringResource(R.string.username_or_email),
@@ -81,7 +81,7 @@ private fun SignUpScreenContent(
                 )
             })
 
-        AuthTextField(modifier = Modifier
+        InputTextField(modifier = Modifier
             .fillMaxWidth()
             .padding(top = 32.dp),
             text = stringResource(R.string.password),
@@ -92,7 +92,7 @@ private fun SignUpScreenContent(
                 )
             })
 
-        AuthTextField(modifier = Modifier
+        InputTextField(modifier = Modifier
             .fillMaxWidth()
             .padding(top = 32.dp),
             text = stringResource(R.string.confirm_password),

@@ -1,5 +1,9 @@
 package am.stylish.app
 
+import am.stylish.app.add_payment_method.data.di.addPaymentMethodsDataModule
+import am.stylish.app.add_payment_method.domain.di.addPaymentMethodsDomainModule
+import am.stylish.app.add_payment_method.presentation.di.addPaymentMethodsPresentationModule
+import am.stylish.app.checkout.presentation.di.checkoutPresentationModule
 import am.stylish.app.common_data.di.commonDataModule
 import am.stylish.app.common_presentation.di.commonPresentationModule
 import am.stylish.app.landing.presentation.di.landingPresentationModule
@@ -41,6 +45,10 @@ class Application : Application() {
                 cartDomainModule,
                 cartDataModule,
                 orderDetailsPresentationModule,
+                addPaymentMethodsPresentationModule,
+                addPaymentMethodsDomainModule,
+                addPaymentMethodsDataModule,
+                checkoutPresentationModule
             )
         }
     }

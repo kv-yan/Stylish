@@ -10,6 +10,7 @@ import am.stylish.app.common_presentation.components.search.SearchBar
 import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
 import am.stylish.app.common_presentation.ui.theme.CoralRed
+import am.stylish.app.common_presentation.ui.theme.RoseRed
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
 import am.stylish.app.common_presentation.view_model.CartViewModel
 import androidx.compose.foundation.background
@@ -146,10 +147,9 @@ private fun WishlistScreenContent(
                 text = stringResource(R.string.there_are_no_items_in_the_wishlist),
                 style = AuthTitleTextStyle,
                 fontSize = 18.sp,
-                color = CoralRed,
+                color = RoseRed,
                 textAlign = TextAlign.Center
             )
-
         }
     }
 }

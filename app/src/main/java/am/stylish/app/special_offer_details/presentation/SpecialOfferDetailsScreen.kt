@@ -43,7 +43,7 @@ fun SpecialOfferDetailsScreen(
     viewModel: SpecialOfferDetailsViewModel = getViewModel { parametersOf(specialOfferId) },
     onBackClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {},
+    onSnackBarShown: (SnackbarState) -> Unit = {},
 
     ) {
     val screenState by viewModel.screenState.collectAsStateWithLifecycle()
@@ -53,7 +53,7 @@ fun SpecialOfferDetailsScreen(
     when (screenState) {
         is SpecialOfferDetailsScreenState.Error -> {
             LaunchedEffect(screenState) {
-                onSnackbarShown(
+                onSnackBarShown(
                     SnackbarState.Error(
                         _message = R.string.something_went_wrong,
                         _icon = R.drawable.ic_error,
@@ -83,7 +83,7 @@ fun SpecialOfferDetailsScreen(
                 onWishlistClick = {},
                 onAddToCart = { id, _ ->
                     cartViewModel.addCartItem(id) {
-                        onSnackbarShown(it)
+                        onSnackBarShown(it)
                     }
                 },
                 isItemInCart = {

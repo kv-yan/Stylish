@@ -1,6 +1,8 @@
 package am.stylish.app.navigation
 
+import am.stylish.app.add_payment_method.presentation.AddPaymentMethodScreen
 import am.stylish.app.auth.navigation.AuthMainScreen
+import am.stylish.app.checkout.presentation.CheckoutScreen
 import am.stylish.app.common_presentation.components.snackbars.AppSnackbar
 import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.ui.theme.SoftWhite
@@ -40,15 +42,15 @@ fun AppNavigation(
     modifier: Modifier = Modifier,
     startDestination: AppDestination
 ) {
-    val snackbars = remember { mutableStateListOf<SnackbarState>() }
+    val snackBars = remember { mutableStateListOf<SnackbarState>() }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
         AppNavigationContent(
             modifier = modifier,
             startDestination = startDestination,
-            onSnackbarShown = { snackbarState ->
-                snackbars.add(snackbarState)
+            onSnackBarShown = { snackBarState ->
+                snackBars.add(snackBarState)
             }
         )
 
@@ -57,14 +59,14 @@ fun AppNavigation(
                 .align(Alignment.TopCenter)
                 .padding(top = 32.dp)
         ) {
-            snackbars.forEachIndexed { index, state ->
+            snackBars.forEachIndexed { index, state ->
                 AppSnackbar(
                     modifier = Modifier
                         .offset(y = (index * 8).dp)
                         .zIndex(index.toFloat()),
                     state = state
                 ) {
-                    snackbars.remove(state)
+                    snackBars.remove(state)
                 }
             }
         }
@@ -75,7 +77,7 @@ fun AppNavigation(
 private fun AppNavigationContent(
     modifier: Modifier = Modifier,
     startDestination: AppDestination,
-    onSnackbarShown: (SnackbarState) -> Unit = {},
+    onSnackBarShown: (SnackbarState) -> Unit = {},
 ) {
     val navController = rememberNavController()
 
@@ -111,7 +113,7 @@ private fun AppNavigationContent(
                 popEnterTransition = { null },
             ) {
                 MainScreenNavigation(
-                    onSnackbarShown = onSnackbarShown,
+                    onSnackBarShown = onSnackBarShown,
                     navigateToSpecialOffer = { offer ->
                         navController.navigate(AppDestination.SpecialOfferDetails(offer.offerId))
                     },
@@ -167,7 +169,7 @@ private fun AppNavigationContent(
                     onProductClick = {
                         navController.navigate(AppDestination.ProductDetails(it.id))
                     },
-                    onSnackbarShown = onSnackbarShown
+                    onSnackBarShown = onSnackBarShown
                 )
             }
 
@@ -200,7 +202,7 @@ private fun AppNavigationContent(
                     onProductClick = { product ->
                         navController.navigate(AppDestination.ProductDetails(product.id))
                     },
-                    onSnackbarShown = onSnackbarShown,
+                    onSnackBarShown = onSnackBarShown,
                     onImageClick = { images, position ->
                         navController.navigate(
                             AppDestination.ProductFullScreenImages(
@@ -238,7 +240,31 @@ private fun AppNavigationContent(
                 OrderDetailsScreen(
                     products = productIds,
                     onBackClick = { navController.navigateUp() },
-                    onSnackbarShown = onSnackbarShown,
+                    onSnackBarShown = onSnackBarShown,
+                    onPaymentClick = { totalPrice ->
+                        navController.navigate(AppDestination.Checkout(totalPrice))
+                    }
+                )
+            }
+
+            composable<AppDestination.Checkout> {
+                val totalPrice = it.toRoute<AppDestination.Checkout>().totalPrice
+                CheckoutScreen(
+                    orderPrice = totalPrice,
+                    onBackClick = {
+                        navController.navigateUp()
+                    },
+                    onAddPaymentMethodClick = {
+                        navController.navigate(AppDestination.AddPaymentMethod)
+                    }
+                )
+            }
+
+
+            composable<AppDestination.AddPaymentMethod> {
+                AddPaymentMethodScreen(
+                    onSnackBarShow = onSnackBarShown,
+                    onBackClick = { navController.navigateUp() }
                 )
             }
         }

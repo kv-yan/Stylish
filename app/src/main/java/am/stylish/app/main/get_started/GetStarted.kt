@@ -2,7 +2,7 @@ package am.stylish.app.main.get_started
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.components.button.SolidButton
-import am.stylish.app.common_presentation.ui.theme.gradientColors
+import am.stylish.app.common_presentation.ui.theme.GradientColors
 import am.stylish.app.navigation.destination.AppDestination
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestination) -> Unit) {
     Box(modifier = modifier.fillMaxSize()) {
-        //background image
         Image(
             modifier = Modifier
                 .fillMaxSize()
@@ -51,7 +50,7 @@ fun GetStarted(modifier: Modifier = Modifier, navigateToMainScreen: (AppDestinat
                     .wrapContentSize()
                     .background(
                         brush = Brush.verticalGradient(
-                            colors = gradientColors //shadow
+                            colors = GradientColors
                         )
                     )
             ) {

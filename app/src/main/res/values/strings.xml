@@ -88,4 +88,23 @@
     <string name="free">Free</string>
     <string name="address_details">Address Details</string>
     <string name="percent">- %1$s %%</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_demo_text">_ _ _ _&#160;&#160;_ _ _ _&#160;&#160;_ _ _ _&#160;&#160;_ _ _ _</string>
+    <string name="card_holder_name">Card Holder name</string>
+    <string name="card_holder_demo_text">**** **********</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="expiry_date_demo_text">XX/XX</string>
+    <string name="security_code">Security Code</string>
+    <string name="security_code_demo_text">XXX</string>
+    <string name="add_payment_method">Add Payment Method</string>
+    <string name="checkout">Checkout</string>
+    <string name="shipping">Shipping</string>
+    <string name="total">Total</string>
+    <string name="payment">Payment</string>
+    <string name="no_payment_methods">There is no payment methods\nPlease add payment method</string>
+    <string name="payment_method_added_successfully">Payment method added successfully</string>
+    <string name="failed_to_add_payment_method">Failed to add payment method\nPlease try again later</string>
+    <string name="continue_to_checkout">Continue</string>
+    <string name="counting">Counting</string>
+
 </resources>

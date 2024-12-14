@@ -76,7 +76,7 @@ fun ProductDetailsScreen(
     productDetailsViewModel: ProductDetailsViewModel = getViewModel { parametersOf(productId) },
     onBackClick: () -> Unit = {},
     onProductClick: (Product) -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {},
+    onSnackBarShown: (SnackbarState) -> Unit = {},
     onImageClick: (List<String>, Int) -> Unit
 ) {
     val screenState by productDetailsViewModel.screenState.collectAsState()
@@ -87,7 +87,7 @@ fun ProductDetailsScreen(
     when (val state = screenState) {
         is DetailsScreenState.Error -> {
             LaunchedEffect(screenState) {
-                onSnackbarShown(
+                onSnackBarShown(
                     SnackbarState.Error(
                         _message = R.string.something_went_wrong,
                         _icon = R.drawable.ic_error,
@@ -112,7 +112,7 @@ fun ProductDetailsScreen(
                 onProductClick = onProductClick,
                 onWishedClick = { itemId ->
                     productDetailsViewModel.toggleWishlist(id = itemId) {
-                        onSnackbarShown(it)
+                        onSnackBarShown(it)
                     }
                 },
                 onImageClick = { pagerPosition ->
@@ -123,7 +123,7 @@ fun ProductDetailsScreen(
                 },
                 onCartClick = { id, quantity ->
                     cartViewModel.addCartItem(id) {
-                        onSnackbarShown(it)
+                        onSnackBarShown(it)
                     }
                 },
                 isItemInCart = { cartList.find { cartItem -> cartItem.id == it } }

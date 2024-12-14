@@ -88,4 +88,7 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
+
+    // datastore
+    implementation (libs.androidx.datastore.preferences)
 }

@@ -20,11 +20,12 @@ fun ProductListStaggeredGrid(
     onProductClick: (Product) -> Unit = {},
     onWishlistClick: (String) -> Unit = {},
     onAddToCart: (String, Int) -> Unit = { _, _ -> },
-    onRemoveFromCart: (String, Int) -> Unit = { _, _ -> } ,
+    onRemoveFromCart: (String, Int) -> Unit = { _, _ -> },
     isItemInCart: (String) -> CartItem? = { null }
 ) {
     val rows = products.size
     val maxHeight = (rows) * 400
+
     LazyVerticalStaggeredGrid(
         modifier = modifier
             .padding(8.dp)
@@ -42,7 +43,7 @@ fun ProductListStaggeredGrid(
                 onWishlistClick = onWishlistClick,
                 onClick = {
                     onProductClick(product)
-                } ,
+                },
                 isItemInCart = isItemInCart
             )
         }

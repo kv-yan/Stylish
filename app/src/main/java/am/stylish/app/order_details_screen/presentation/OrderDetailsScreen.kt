@@ -54,7 +54,8 @@ fun OrderDetailsScreen(
     products: List<String> = mockProductsDataIds,
     viewModel: OrderDetailsViewModel = getViewModel { parametersOf(products) },
     onBackClick: () -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {},
+    onSnackBarShown: (SnackbarState) -> Unit = {},
+    onPaymentClick: (Int) -> Unit = {}
 ) {
     val screenState by viewModel.screenState.collectAsState()
     val orderItemsList by viewModel.orderItemsList.collectAsState()
@@ -67,7 +68,7 @@ fun OrderDetailsScreen(
     when (screenState) {
         is OrderDetailsScreenState.Error -> {
             LaunchedEffect(screenState) {
-                onSnackbarShown(
+                onSnackBarShown(
                     SnackbarState.Error(
                         _message = R.string.something_went_wrong,
                         _icon = R.drawable.ic_error,
@@ -77,21 +78,30 @@ fun OrderDetailsScreen(
         }
 
         OrderDetailsScreenState.Loading -> {
-            Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator(color = RoseRed, strokeWidth = 4.dp)
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                CircularProgressIndicator(
+                    color = RoseRed,
+                    strokeWidth = 4.dp,
+                )
             }
         }
 
         is OrderDetailsScreenState.Success -> {
 
-            OrderDetailsScreenContent(modifier = modifier
-                .fillMaxSize()
-                .systemBarsPadding(),
+            OrderDetailsScreenContent(
+                modifier = modifier
+                    .fillMaxSize()
+                    .systemBarsPadding(),
                 orderItems = orderItemsList,
                 totalPrice = totalPrice,
                 onBackClick = onBackClick,
+                proceedToPayment = { onPaymentClick(totalPrice) },
                 onItemUpdate = { viewModel.updateOrderItem(it) },
-                onRemoveItem = { viewModel.removeOrderItem(it) })
+                onRemoveItem = { viewModel.removeOrderItem(it) },
+            )
         }
     }
 }
@@ -103,10 +113,12 @@ fun OrderDetailsScreenContent(
     totalPrice: Int = 0,
     onBackClick: () -> Unit = {},
     onItemUpdate: (OrderItem) -> Unit = {},
-    onRemoveItem: (OrderItem) -> Unit = {}
+    onRemoveItem: (OrderItem) -> Unit = {},
+    proceedToPayment: () -> Unit = {},
 ) {
     Box(modifier = modifier.fillMaxSize()) {
         Column(modifier = modifier) {
+
             AppActionBar(modifier = Modifier.fillMaxWidth(),
                 showStartContent = true,
                 showCenterContent = true,
@@ -134,7 +146,7 @@ fun OrderDetailsScreenContent(
                 Row(
                     modifier = Modifier.fillMaxSize(),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                    horizontalArrangement = Arrangement.Center,
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_cart),
@@ -151,21 +163,25 @@ fun OrderDetailsScreenContent(
             } else LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .padding(
+                        horizontal = 16.dp, vertical = 8.dp
+                    )
             ) {
                 items(orderItems) { item ->
                     Box(
                         modifier = Modifier
                             .animateItem(fadeInSpec = null, fadeOutSpec = null)
                             .fillMaxWidth()
-                            .padding(vertical = 4.dp)
+                            .padding(vertical = 4.dp),
                     ) {
-                        OrderItem(modifier = Modifier
-                            .animateItem()
-                            .fillMaxWidth(),
+                        OrderItem(
+                            modifier = Modifier
+                                .animateItem()
+                                .fillMaxWidth(),
                             orderItem = item,
                             onCheckedChange = { onItemUpdate(it) },
-                            onDeleteClick = { onRemoveItem(it) })
+                            onDeleteClick = { onRemoveItem(it) },
+                        )
                     }
                 }
 
@@ -173,7 +189,9 @@ fun OrderDetailsScreenContent(
                     Spacer(modifier = Modifier.height(32.dp))
 
                     HorizontalDivider(
-                        modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = CoolGray
+                        modifier = Modifier.fillMaxWidth(),
+                        thickness = 1.dp,
+                        color = CoolGray,
                     )
 
                     Spacer(modifier = Modifier.height(32.dp))
@@ -183,14 +201,14 @@ fun OrderDetailsScreenContent(
                             .fillMaxWidth()
                             .padding(bottom = 24.dp),
                         text = stringResource(R.string.order_payment_details),
-                        fontSize = 18
+                        fontSize = 18,
                     )
 
 
                     Row(
-                        Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
 
                         Text(
@@ -202,6 +220,7 @@ fun OrderDetailsScreenContent(
                             maxLines = 1,
                             color = Color.Black,
                         )
+
                         Text(
                             text = stringResource(R.string.price, totalPrice),
                             style = ProductPriceTextStyle,
@@ -213,11 +232,11 @@ fun OrderDetailsScreenContent(
                     }
 
                     Row(
-                        Modifier
+                        modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 12.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
 
                         Text(
@@ -241,7 +260,9 @@ fun OrderDetailsScreenContent(
                     Spacer(modifier = Modifier.height(32.dp))
 
                     HorizontalDivider(
-                        modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = CoolGray
+                        modifier = Modifier.fillMaxWidth(),
+                        thickness = 1.dp,
+                        color = CoolGray,
                     )
 
                     Spacer(modifier = Modifier.height(32.dp))
@@ -254,9 +275,8 @@ fun OrderDetailsScreenContent(
                         fontSize = 18
                     )
 
-
                     Row(
-                        Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -295,7 +315,7 @@ fun OrderDetailsScreenContent(
                 .align(Alignment.BottomCenter),
             price = totalPrice
         ) {
-            // Proceed to payment logic
+            proceedToPayment()
         }
     }
 }

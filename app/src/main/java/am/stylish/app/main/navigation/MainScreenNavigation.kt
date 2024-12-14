@@ -28,7 +28,7 @@ fun MainScreenNavigation(
     modifier: Modifier = Modifier,
     navigateToProductDetails: (Product) -> Unit = {},
     navigateToSpecialOffer: (SpecialOffer) -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {},
+    onSnackBarShown: (SnackbarState) -> Unit = {},
     navigateToOrderDetails: (List<String>) -> Unit = {}
 ) {
     val navController = rememberNavController()
@@ -55,21 +55,21 @@ fun MainScreenNavigation(
                 HomeScreen(
                     onSpecialOfferClick = navigateToSpecialOffer,
                     onProductClick = navigateToProductDetails,
-                    onSnackbarShown = onSnackbarShown,
+                    onSnackbarShown = onSnackBarShown,
                 )
             }
 
             composable<MainScreenDestination.Wishlist> {
                 WishlistScreen(
                     onProductClick = navigateToProductDetails,
-                    onSnackbarShown = onSnackbarShown
+                    onSnackbarShown = onSnackBarShown
                 )
             }
 
             composable<MainScreenDestination.Cart> {
                 CartScreen(
                     onProductClick = navigateToProductDetails,
-                    onSnackbarShown = onSnackbarShown,
+                    onSnackbarShown = onSnackBarShown,
                     onBackClick = { navController.navigateUp() },
                     navigateToOrderDetails = navigateToOrderDetails
                 )

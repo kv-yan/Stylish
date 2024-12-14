@@ -2,7 +2,7 @@ package am.stylish.app.auth.forgot_password.presentation
 
 import am.stylish.app.R
 import am.stylish.app.common_presentation.components.button.SolidButton
-import am.stylish.app.common_presentation.components.text.AuthTextField
+import am.stylish.app.common_presentation.components.text.InputTextField
 import am.stylish.app.common_presentation.components.text.AuthTitle
 import am.stylish.app.common_presentation.ui.theme.DarkGrayText
 import am.stylish.app.common_presentation.ui.theme.RoseRed
@@ -41,7 +41,7 @@ fun ForgotPasswordScreen(modifier: Modifier = Modifier, navigateToMain: () -> Un
             title = stringResource(R.string.forgot_password_title)
         )
 
-        AuthTextField(modifier = Modifier.fillMaxWidth(),
+        InputTextField(modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.enter_your_email_address),
             leadingIcon = {
                 Icon(
