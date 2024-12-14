@@ -56,7 +56,7 @@ fun OrderItem(
 
         Image(
             modifier = Modifier
-                .size(90.dp)
+                .size(92.dp)
                 .clip(Shape4),
             painter = rememberAsyncImagePainter(product.imageUrl),
             contentDescription = product.name,
@@ -64,7 +64,7 @@ fun OrderItem(
         )
         Column(
             modifier = Modifier
-                .heightIn(min = 90.dp)
+                .heightIn(min = 92.dp)
                 .weight(1f)
         ) {
 
@@ -93,13 +93,13 @@ fun OrderItem(
                 style = ProductTitleTextStyle,
                 maxLines = 2,
                 fontSize = 10.sp,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
             )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
-                verticalAlignment = Alignment.Bottom, // Align content to the bottom
+                verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
@@ -123,7 +123,7 @@ fun OrderItem(
                             .padding(
                                 horizontal = 4.dp, vertical = 2.dp
                             ),
-                        text = "-$it %",
+                        text = stringResource(R.string.percent, it),
                         style = ProductPriceTextStyle,
                         fontSize = 12.sp,
                         color = RoseRed,
