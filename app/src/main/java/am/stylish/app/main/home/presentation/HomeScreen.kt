@@ -22,6 +22,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,7 +43,15 @@ fun HomeScreen(
 
     when (val state = screenState) {
         is HomeScreenState.Error -> {
-            onSnackbarShown(SnackbarState.Error(state.message))
+            LaunchedEffect(screenState) {
+                onSnackbarShown(
+                    SnackbarState.Error(
+                        _message = R.string.something_went_wrong,
+                        _icon = R.drawable.ic_error,
+                    )
+                )
+            }
+
         }
 
         HomeScreenState.Loading -> {

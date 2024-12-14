@@ -25,6 +25,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,12 +52,14 @@ fun SpecialOfferDetailsScreen(
 
     when (screenState) {
         is SpecialOfferDetailsScreenState.Error -> {
-            onSnackbarShown(
-                SnackbarState.Error(
-                    R.string.something_went_wrong,
-                    _icon = R.drawable.ic_error
+            LaunchedEffect(screenState) {
+                onSnackbarShown(
+                    SnackbarState.Error(
+                        _message = R.string.something_went_wrong,
+                        _icon = R.drawable.ic_error,
+                    )
                 )
-            )
+            }
         }
 
         SpecialOfferDetailsScreenState.Loading -> {

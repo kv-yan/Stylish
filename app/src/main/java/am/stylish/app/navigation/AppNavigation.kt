@@ -10,6 +10,7 @@ import am.stylish.app.main.get_started.GetStarted
 import am.stylish.app.main.navigation.MainScreenNavigation
 import am.stylish.app.navigation.destination.AppDestination
 import am.stylish.app.navigation.nav_type.ListStringNavType
+import am.stylish.app.order_details_screen.presentation.OrderDetailsScreen
 import am.stylish.app.product_details.presentation.ProductDetailsScreen
 import am.stylish.app.special_offer_details.presentation.SpecialOfferDetailsScreen
 import androidx.compose.animation.core.tween
@@ -109,13 +110,18 @@ private fun AppNavigationContent(
                 exitTransition = { null },
                 popEnterTransition = { null },
             ) {
-                MainScreenNavigation(onSnackbarShown = onSnackbarShown,
+                MainScreenNavigation(
+                    onSnackbarShown = onSnackbarShown,
                     navigateToSpecialOffer = { offer ->
                         navController.navigate(AppDestination.SpecialOfferDetails(offer.offerId))
                     },
                     navigateToProductDetails = {
                         navController.navigate(AppDestination.ProductDetails(it.id))
-                    })
+                    },
+                    navigateToOrderDetails = {
+                        navController.navigate(AppDestination.OrderDetails(it))
+                    }
+                )
             }
 
             composable<AppDestination.GetStarted>(
@@ -222,6 +228,19 @@ private fun AppNavigationContent(
                 }
             }
 
+            composable<AppDestination.OrderDetails>(
+                typeMap = mapOf(
+                    typeOf<List<String>>() to ListStringNavType.listStringType,
+                )
+
+            ) {
+                val productIds = it.toRoute<AppDestination.OrderDetails>().productIds
+                OrderDetailsScreen(
+                    products = productIds,
+                    onBackClick = { navController.navigateUp() },
+                    onSnackbarShown = onSnackbarShown,
+                )
+            }
         }
     }
 }

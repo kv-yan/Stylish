@@ -179,7 +179,7 @@ val mockProductsData = listOf(
 )
 
 
-val productsShortMockData = listOf(
+val mockProductsShortData = listOf(
     Product(
         id = "1",
         name = "HRX by Hrithik Roshan",
@@ -216,3 +216,27 @@ val productsShortMockData = listOf(
         imageUrl = "https://s3-alpha-sig.figma.com/img/743f/0181/31926f97294be302b7272fa7fbd8ddcc?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FXYQH6yG5ZFPluY1GggefItqIHPFLQSH0ddXjsPRjkSnYyoNf8YAulIVfvbC06WwsQTAPfyOiPPP34uSgQh30GT1icpDBas7bQdJ9KfPF-iwkAi5C14aGa3v~sj9txOwRo5h~JgrqCgH-PbbK0dz~cvstonZ743fPjix29LAp3VMlLG-rjX2-f1u45I8y2-DyvKnMqSDA3AEbkLWuWbTSiK40iBbZedCce1qqCNMPO7xWxnndwBOCxKtArbS3rMgAVH3wJHCLfq6TsPsP7ok0KcW32yLyBE8Lus5iHWjEgMmiZpB3B7g5qBXGl689s6Dp8T5y2P3Ki0WiZVVlOxKCA__"
     )
 )
+
+val mockProductsDataIds = listOf(
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+)
+val mockProductsShortDataIds = listOf("1", "2", "3", "4")

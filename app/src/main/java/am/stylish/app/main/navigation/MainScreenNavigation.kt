@@ -28,7 +28,8 @@ fun MainScreenNavigation(
     modifier: Modifier = Modifier,
     navigateToProductDetails: (Product) -> Unit = {},
     navigateToSpecialOffer: (SpecialOffer) -> Unit = {},
-    onSnackbarShown: (SnackbarState) -> Unit = {}
+    onSnackbarShown: (SnackbarState) -> Unit = {},
+    navigateToOrderDetails: (List<String>) -> Unit = {}
 ) {
     val navController = rememberNavController()
 
@@ -48,7 +49,7 @@ fun MainScreenNavigation(
                 .background(Color.White)
                 .padding(it),
             navController = navController,
-            startDestination = MainScreenDestination.Wishlist,
+            startDestination = MainScreenDestination.Cart,
         ) {
             composable<MainScreenDestination.Home> {
                 HomeScreen(
@@ -70,6 +71,7 @@ fun MainScreenNavigation(
                     onProductClick = navigateToProductDetails,
                     onSnackbarShown = onSnackbarShown,
                     onBackClick = { navController.navigateUp() },
+                    navigateToOrderDetails = navigateToOrderDetails
                 )
             }
 

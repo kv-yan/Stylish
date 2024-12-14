@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -46,7 +47,9 @@ fun ButtonViewAll(
                 modifier = Modifier.padding(start = 8.dp, end = 8.dp),
                 text = stringResource(id = R.string.view_all),
                 color = contentColor,
-                style = SpecialOfferTitleTextStyle
+                style = SpecialOfferTitleTextStyle,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
             Icon(
                 imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
