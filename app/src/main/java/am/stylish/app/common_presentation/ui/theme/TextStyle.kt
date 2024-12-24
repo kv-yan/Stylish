@@ -22,7 +22,7 @@ val RegularDescriptionTextStyle = TextStyle(
     lineHeight = 24.sp,
     fontFamily = FontFamily(Font(R.font.montserrat_regular)),
     fontWeight = FontWeight.W600,
-    color = descriptionColor,
+    color = DescriptionColor,
     textAlign = TextAlign.Center,
     letterSpacing = 0.28.sp,
 )

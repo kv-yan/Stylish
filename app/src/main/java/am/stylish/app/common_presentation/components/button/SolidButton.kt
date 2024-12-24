@@ -22,14 +22,18 @@ fun SolidButton(
     modifier: Modifier = Modifier,
     text: String,
     fontSize: Int = 20,
+    isEnabled: Boolean = true,
     onClick: () -> Unit = {}
 ) {
     Button(
+        enabled = isEnabled,
         modifier = modifier, onClick = { onClick() },
         shape = Shape4,
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
             containerColor = RoseRed,
-            contentColor = Color.White
+            contentColor = Color.White,
+            disabledContainerColor = RoseRed.copy(alpha = 0.5f),
+            disabledContentColor = Color.White
         )
     ) {
         Text(

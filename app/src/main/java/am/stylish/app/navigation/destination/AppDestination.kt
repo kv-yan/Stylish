@@ -32,4 +32,11 @@ sealed class AppDestination {
         val productIds: List<String>,
     ) : AppDestination()
 
+    @Serializable
+    data class Checkout(val totalPrice: Int) : AppDestination()
+
+    @Serializable
+    data object AddPaymentMethod : AppDestination()
+
+
 }

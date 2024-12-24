@@ -6,6 +6,8 @@ import am.stylish.app.common_presentation.ui.theme.DarkGrayText
 import am.stylish.app.common_presentation.ui.theme.LightGrayBackground
 import am.stylish.app.common_presentation.ui.theme.MediumGrayBorder
 import am.stylish.app.common_presentation.ui.theme.Shape10
+import am.stylish.app.common_presentation.utils.GeneralTags
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -17,8 +19,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
@@ -45,35 +47,33 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun AuthTextField(
+fun InputTextField(
     modifier: Modifier = Modifier,
     text: String = "Enter text here",
     isPasswordField: Boolean = false,
     leadingIcon: @Composable (() -> Unit)? = null,
-    trailingIcon: @Composable (() -> Unit)? = null
+    trailingIcon: @Composable (() -> Unit)? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    visualTransformation: VisualTransformation? = null,
+    limit: Int? = null,
+    onValueChange: (String) -> Unit = {}
 ) {
     var textFieldValue by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
     var isPasswordVisible by remember { mutableStateOf(false) }
+    val focusManager = androidx.compose.ui.platform.LocalFocusManager.current
 
     Box(
         modifier = modifier
             .border(
                 width = 1.dp,
-                color = if (isFocused)
-                    MediumGrayBorder
-                else
-                    MediumGrayBorder.copy(alpha = 0.5f),
+                color = if (isFocused) MediumGrayBorder else MediumGrayBorder.copy(alpha = 0.5f),
                 shape = Shape10
             )
             .clip(Shape10)
             .background(
-                if (isFocused)
-                    LightGrayBackground
-                else
-                    LightGrayBackground.copy(alpha = 0.3f)
+                if (isFocused) LightGrayBackground else LightGrayBackground.copy(alpha = 0.3f)
             )
-
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (leadingIcon != null) {
@@ -83,15 +83,31 @@ fun AuthTextField(
 
             BasicTextField(
                 modifier = Modifier
-                    .padding(horizontal = 12.dp, vertical = 16.dp)
+                    .padding(
+                        horizontal = 12.dp,
+                        vertical = 16.dp
+                    )
                     .weight(1f)
                     .onFocusChanged { isFocused = it.isFocused },
                 value = textFieldValue,
-                onValueChange = { textFieldValue = it },
+                onValueChange = {
+                    if (limit == null || it.length <= limit) {
+                        textFieldValue = it
+                        onValueChange(it)
+                    } else {
+                        focusManager.clearFocus()
+                        Log.e(GeneralTags.ERROR_TAG, "InputTextField: cleared")
+                    }
+                },
                 singleLine = true,
-                visualTransformation = if (isPasswordField && !isPasswordVisible) PasswordVisualTransformation() else VisualTransformation.None,
+                visualTransformation = when {
+                    isPasswordField && !isPasswordVisible -> PasswordVisualTransformation()
+                    visualTransformation != null -> visualTransformation
+                    else -> VisualTransformation.None
+                },
                 cursorBrush = SolidColor(DarkGrayText),
                 textStyle = TextStyle(color = DarkGrayText),
+                keyboardOptions = keyboardOptions, // Use passed keyboard options
                 decorationBox = { innerTextField ->
                     if (textFieldValue.isEmpty()) {
                         Text(
@@ -132,7 +148,7 @@ private fun AuthTextFieldPreview() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        AuthTextField(modifier = Modifier.fillMaxWidth(),
+        InputTextField(modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.username_or_email),
             leadingIcon = {
                 Icon(
@@ -142,7 +158,7 @@ private fun AuthTextFieldPreview() {
                 )
             })
 
-        AuthTextField(modifier = Modifier.fillMaxWidth(),
+        InputTextField(modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.password),
             isPasswordField = true,
             leadingIcon = {

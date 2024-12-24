@@ -10,7 +10,7 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val descriptionColor = Color(0xFFA8A8A9)
+val DescriptionColor = Color(0xFFA8A8A9)
 val RoseRed = Color(0xFFF83758)
 val LightGray = Color(0xFFC4C4C4)
 val DarkBlue = Color(0xFF17223B)
@@ -19,7 +19,7 @@ val LightGrayBackground = Color(0xFFF3F3F3)
 val MediumGrayBorder = Color(0xFFA8A8A9)
 val DarkGrayText = Color(0xFF626262)
 val LightGrayText = Color(0xFF575757)
-val gradientColors = listOf(
+val GradientColors = listOf(
     Color.Transparent,
     Color.Black.copy(alpha = 0.5f),
     Color.Black.copy(alpha = 0.7f),
@@ -45,3 +45,4 @@ val ForestGreen = Color(0xFF31B769)
 val PastelPink = Color(0xFFFFCCD5)
 val CloudGray = Color(0xFFD9D9D9)
 val SoftGray = Color(0xFFF8F8F8)
+val WildSand = Color(0xFFF4F4F4)
