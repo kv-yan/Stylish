@@ -39,7 +39,7 @@ val mockPageProductData = listOf(
             offerType = SpecialOfferType.IMAGE_WITH_TEXT,
             contentTitle = "New Arrivals",
             contentDescription = "Summer’ 25 Collections",
-            imageUrl = listOf("https://s3-alpha-sig.figma.com/img/f3ea/6b0e/b8c7849710cbe962e5c0069216c1d0ac?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fGxamSEIW3r30i7db-oyNIIiAj2xV0RbruViJnzm-FT1eqlKc2hpXo3VlPFB5Dn7arRxpUugtFS6Te0LyAqd-ZjC5igEymrZvq4rvFsm-~d4qjwoLUcmEbSgXQO-RpwsPnjTcNaR7wkRRgCzzXztHdp48WBA9BFDbAlFnmdoE6KtGZU79CgLleV1vNKDUX6520FkiQdabZl7AublpK71p03rgCXc6C-OEl46OD1uG2lX7EDmPPwWj7aut02t~YnIk-042md3-~k-OiqhpZww2RHurpG7ZeBPZYDSFXSYdCVaH148Pg2KH1LE2aSMhVnL6aU6ZS4bC195KZZyR~19Lw__"),
+            imageUrl = listOf("https://s3-alpha-sig.figma.com/img/f3ea/6b0e/b8c7849710cbe962e5c0069216c1d0ac?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HgIjamOet841H92a7rG7YzGExIaZEgzxk73FJem7beej8Vtpu8a1Gf38BTkpzfwN-WiyZ8KeDIqLO3yv075upRPKk74UD4LKU9GSz3TfvBFyvE8otCrtRZCJRYjxRB3plZY05KtoXC~mrhRVIf2tJ-eMDaHLmJrm8~5evCdWhkY7CwCuWnu~UOlBEpDMkW0vb7j8MX-mpBxH~Oun1tHoI1X2eK6HriDwHKLyd3diy6eKKwz6gsVEJfGRY3bQbXYJ~N0424imveOlHyoPpomC6SNs9dqi4vCAN8AFRBAkBE1IFi9ya2tnMS7YijwrZxluQemNBcppJO1Yh-1VhNG94g__"),
             products = mockProductsData
         )
     ),
@@ -52,7 +52,7 @@ val mockPageProductData = listOf(
             offerType = SpecialOfferType.IMAGE_WITH_TEXT,
             contentTitle = "Up to 50% Off",
             contentDescription = "",
-            imageUrl = listOf("https://s3-alpha-sig.figma.com/img/7332/768b/30b075af733efdfac968c94f0be6768b?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=I9ZNBoNp~XQ5oQgnh4FCJG7QWGZiMfnQlz6O6DeC5cKRAi6UEDhXmqaXFzBB1KSita5njvS9wAokWSPzgZ3bJ33Q6XkAM8tEAId9gSY2BFuBNYRfopLTWyu0fmtygSQaK~rX5Gc4DeEQmOxxePIFPyhL90lQqiZJ25EsuusqkDSCY9FId-JGh2VQq~7EvaArXR9VN99uqWe-aDmrtLPLBm07DrdRRVI45v4YwXU4ZXfVZ5pt9kLcwhcGREKaGK-lxYMN0pBIt7TlQzQQjjCT94DPEl8lL4hR8eLBRrJN74luyc~jM-NDKSuIH2blLVqQLwTf2lCqCpvEdj1dQLTGEg__"),
+            imageUrl = listOf("https://s3-alpha-sig.figma.com/img/7332/768b/30b075af733efdfac968c94f0be6768b?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=j22Xb4vc0i8Eh26t9Bdv5HMosCXCIz8UtAqB1U98VrdWRwY9fTopWmk93onIfSgd1JHP9zjf7AzL7I6KEPQur38FxaaLFPls5Ra9hqIeq6phNdfflO1bp-3-Jt6qD9I2W0JRzo2r7fugjC-hHb-H8WGCXobIh7~xPyII6Vip6C716CZza9RLTTVV~tZhxrAOydoid23FfU-FFU6S0pOZ5PC6ZkRMNG1SMHM1~HGl0u5tQUmqsLgrmIIrdfTXw9mnAt63vrFsCvpPFCWvVb1EyAYgQm9F7fPU5lYm9Xe6RjfqAjekZnBZrJc2D~L-Q2iC~LE6k3I7pOEH7MiLQBL9UQ__"),
             products = mockProductsData
         )
     )

@@ -10,7 +10,7 @@ private val defaultSizeList = listOf("6 UK", "7 UK", "8 UK", "9 UK", "10 UK")
 val mockProductDetails = listOf(
     ProductDetails(
         productId = "1",
-        title = "HRX by Hrithik Roshan",
+        title = "Nike SB Dunk Low Pro Premium",
         shortDescription = COMMON_DESCRIPTION,
         longDescription = "Crafted for modern style enthusiasts, this product combines elegance and comfort seamlessly. Ideal for everyday wear or special occasions. Elevate your wardrobe with this timeless addition.Crafted for modern style enthusiasts, this product combines elegance and comfort seamlessly. Ideal for everyday wear or special occasions. Elevate your wardrobe with this timeless addition.Crafted for modern style enthusiasts, this product combines elegance and comfort seamlessly. Ideal for everyday wear or special occasions. Elevate your wardrobe with this timeless addition.Crafted for modern style enthusiasts, this product combines elegance and comfort seamlessly. Ideal for everyday wear or special occasions. Elevate your wardrobe with this timeless addition.",
         size = defaultSizeList,
@@ -19,11 +19,16 @@ val mockProductDetails = listOf(
             ProductColor("Blue", "#0000FF"),
             ProductColor("Black", "#000000")
         ),
-        price = "2499",
+        price = "125",
         imageUrl = listOf(
-            "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__",
-            "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__",
-            "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5e5e9811-9098-466c-a54a-360e0031539b/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/16932771-4d86-4050-9153-4f3342714987/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/427defe6-de52-4c56-9a14-276882f2edcf/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f3d31b55-6795-41b6-9d93-22a36a6ef06f/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d8b8ea7a-0913-4971-8959-89b4dc9a3f0b/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6e8ee372-c9b9-40bc-a0bb-7eebf4974ec2/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/85425384-7403-4eab-98d9-f8bb031eeff7/NIKE+SB+DUNK+LOW+PRO+PRM.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6bba652e-f4e1-4b57-a420-5dcb79db95ff/NIKE+SB+DUNK+LOW+PRO+PRM.png",
         ),
         rating = 4.5f,
         reviewsCount = 52157
@@ -70,8 +75,8 @@ val mockProductDetails = listOf(
     ), ProductDetails(
         productId = "4",
         title = "Pink Embroidered Dress",
-        shortDescription = "Casual pink dress with beautiful embroidery details",
-        longDescription = "This casual pink embroidered dress is a perfect choice for everyday wear or special occasions. Crafted with premium materials, it combines comfort and elegance effortlessly.",
+        shortDescription = "An '80s b-ball icon returns with classic details and throwback hoops flair.",
+        longDescription = "An '80s b-ball icon returns with classic details and throwback hoops flair. Channeling vintage style back onto the streets, its padded low-cut collar lets you comfortably take your game anywhere.",
         size = defaultSizeList, // Standard sizes as requested
         color = listOf(
             ProductColor(colorName = "Pink", colorCode = "#FFC0CB"),
@@ -81,11 +86,14 @@ val mockProductDetails = listOf(
         price = "₹699",
         oldPrice = null, // No old price provided in input
         imageUrl = listOf(
-            "https://s3-alpha-sig.figma.com/img/ce8f/5f59/6f4bc239eaaba2d48652d030bce31853?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H0QApAyaa0gjkqBwMfY2f-q7IJSmO7UNk2Ajfo2GmaN1N8RbHXW~bUGk2wlaPqGhd1v252x9R5WHN0y627HVFI-DROLLDFqUwpwjjxizmbpIziiByvo7jUizZ8J6L9i2mPGJPD2KndXFy2XdClTtnLRXhRJ0QSfw1w841YeWVXdeTTCd1ix09Y4ABEi8cq5ebZc-viOKzd-8N53jhgLACo1Mdy5YB9890LiVtqFgGHfuUyhFULoOGeXbitkD4VuLTqYcaTZryWcMxhqNwYoSFz2kbgv95kPipOf7g-CdhGc2fqbDrCY0s2IlJcy61rKjaCPibdDgX1ivANAjQyoLUQ__",
-            "https://s3-alpha-sig.figma.com/img/ce8f/5f59/6f4bc239eaaba2d48652d030bce31853?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H0QApAyaa0gjkqBwMfY2f-q7IJSmO7UNk2Ajfo2GmaN1N8RbHXW~bUGk2wlaPqGhd1v252x9R5WHN0y627HVFI-DROLLDFqUwpwjjxizmbpIziiByvo7jUizZ8J6L9i2mPGJPD2KndXFy2XdClTtnLRXhRJ0QSfw1w841YeWVXdeTTCd1ix09Y4ABEi8cq5ebZc-viOKzd-8N53jhgLACo1Mdy5YB9890LiVtqFgGHfuUyhFULoOGeXbitkD4VuLTqYcaTZryWcMxhqNwYoSFz2kbgv95kPipOf7g-CdhGc2fqbDrCY0s2IlJcy61rKjaCPibdDgX1ivANAjQyoLUQ__"
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ed8d46c0-d433-467c-a72a-c850d6380c85/NIKE+SB+DUNK+LOW+PRO.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/35b8a643-85bf-40f3-a853-592269056cba/NIKE+SB+DUNK+LOW+PRO.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b11bf5b4-33bd-4ea3-b14c-aa614fb96827/NIKE+SB+DUNK+LOW+PRO.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/52d006b8-cece-4fd9-9b21-cfea67883c57/NIKE+SB+DUNK+LOW+PRO.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f464ec09-665a-42cd-88c9-02eb32fc7224/NIKE+SB+DUNK+LOW+PRO.png",
         ),
         rating = 4.2f,
-        reviewsCount = 0 // No reviews count provided in input
+        reviewsCount = 150_000
     ), ProductDetails(
         productId = "5",
         title = "Casual Denim Jacket",
@@ -247,9 +255,9 @@ val mockProductDetails = listOf(
         reviewsCount = 100_152_157
     ), ProductDetails(
         productId = "14",
-        title = "Pink Embroidered Dress",
-        shortDescription = "Casual pink dress with beautiful embroidery details",
-        longDescription = "This casual pink dress features intricate embroidery details, making it a stylish and comfortable choice for everyday wear.",
+        title = "Nike Heritage",
+        shortDescription = "Take your gear to go with the Nike Heritage Backpack.",
+        longDescription = "Take your gear to go with the Nike Heritage Backpack. Its spacious main compartment features a sleeve that holds up to a 15\" laptop, so your computer is never out of reach. 2 zippered accessories pockets help keep your gear organized and easy to grab. This product is made with at least 65% recycled polyester fibers.",
         size = defaultSizeList,
         color = listOf(
             ProductColor(colorName = "Pink", colorCode = "#FFC0CB")
