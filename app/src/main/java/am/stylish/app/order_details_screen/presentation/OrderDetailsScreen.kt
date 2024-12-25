@@ -4,6 +4,7 @@ import am.stylish.app.R
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.card.CheckoutSummaryCard
 import am.stylish.app.common_presentation.components.items.OrderItem
+import am.stylish.app.common_presentation.components.loading.AppLoadingAnimation
 import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.components.text.AppSubTitle
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
@@ -27,7 +28,6 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -78,15 +78,9 @@ fun OrderDetailsScreen(
         }
 
         OrderDetailsScreenState.Loading -> {
-            Box(
-                modifier = modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center,
-            ) {
-                CircularProgressIndicator(
-                    color = RoseRed,
-                    strokeWidth = 4.dp,
-                )
-            }
+            AppLoadingAnimation(
+                modifier = Modifier.fillMaxSize()
+            )
         }
 
         is OrderDetailsScreenState.Success -> {

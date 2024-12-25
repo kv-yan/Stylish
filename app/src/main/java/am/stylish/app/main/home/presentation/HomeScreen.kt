@@ -6,6 +6,7 @@ import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_domain.model.special_offer.SpecialOffer
 import am.stylish.app.common_presentation.components.action_bar.ItemsSummaryHeaderWithActions
 import am.stylish.app.common_presentation.components.action_bar.MainMenuActionBarContent
+import am.stylish.app.common_presentation.components.loading.AppLoadingAnimation
 import am.stylish.app.common_presentation.components.product_list.ProductListWithSpecialOffers
 import am.stylish.app.common_presentation.components.search.SearchBar
 import am.stylish.app.common_presentation.components.snackbars.SnackbarState
@@ -20,7 +21,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -55,15 +55,9 @@ fun HomeScreen(
         }
 
         HomeScreenState.Loading -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center,
-            ) {
-                CircularProgressIndicator(
-                    color = CoralRed,
-                    strokeWidth = 4.dp,
-                )
-            }
+            AppLoadingAnimation(
+                modifier = Modifier.fillMaxSize()
+            )
         }
 
         is HomeScreenState.Success -> {

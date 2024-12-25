@@ -5,6 +5,7 @@ import am.stylish.app.common_domain.model.product.Product
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.address.AddressSection
 import am.stylish.app.common_presentation.components.card.CheckoutSummaryCard
+import am.stylish.app.common_presentation.components.loading.AppLoadingAnimation
 import am.stylish.app.common_presentation.components.product_list.CartProductList
 import am.stylish.app.common_presentation.components.snackbars.SnackbarState
 import am.stylish.app.common_presentation.components.text.AppSubTitle
@@ -24,7 +25,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -74,9 +74,9 @@ fun CartScreen(
         }
 
         CartScreenState.Loading -> {
-            Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator(color = RoseRed, strokeWidth = 4.dp)
-            }
+            AppLoadingAnimation(
+                modifier = Modifier.fillMaxSize()
+            )
         }
 
         is CartScreenState.Success -> {
