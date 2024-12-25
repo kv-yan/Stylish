@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -53,7 +52,7 @@ fun AppActionBar(
 
 @Preview
 @Composable
-fun AppActionBarPrev(modifier: Modifier = Modifier) {
+private fun AppActionBarPrev(modifier: Modifier = Modifier) {
     // main screen action bar
     AppActionBar(
         modifier = Modifier.fillMaxWidth(),

@@ -8,6 +8,7 @@ import am.stylish.app.main.cart.presentation.CartScreen
 import am.stylish.app.main.home.presentation.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
+import am.stylish.app.main.search.presentation.SearchScreen
 import am.stylish.app.main.wishlist.presentation.WishlistScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -75,7 +76,7 @@ fun MainScreenNavigation(
                 )
             }
 
-            composable<MainScreenDestination.Search> { Text("Search") }
+            composable<MainScreenDestination.Search> { SearchScreen() }
 
             composable<MainScreenDestination.Settings> { Text("Settings") }
         }
