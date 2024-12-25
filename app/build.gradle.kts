@@ -90,5 +90,8 @@ dependencies {
     implementation(libs.androidx.room.paging)
 
     // datastore
-    implementation (libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.preferences)
+
+    // lottie
+    implementation(libs.android.lottie.compose)
 }

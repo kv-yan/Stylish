@@ -4,6 +4,7 @@ import am.stylish.app.R
 import am.stylish.app.add_payment_method.presentation.PaymentViewModel
 import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.button.SolidButton
+import am.stylish.app.common_presentation.components.dialog.PaymentDialog
 import am.stylish.app.common_presentation.components.items.PaymentMethodItem
 import am.stylish.app.common_presentation.components.text.AppSubTitle
 import am.stylish.app.common_presentation.ui.theme.AuthTitleTextStyle
@@ -63,6 +64,12 @@ fun CheckoutScreen(
     val selectedPaymentMethod by paymentViewModel.selectedPaymentMethod.collectAsState()
     val totalPrice by viewModel.totalPrice.collectAsState()
     val shippingPrice by viewModel.shippingPrice.collectAsState()
+    val showingPaymentResultDialog by viewModel.showingPaymentResultDialog.collectAsState()
+    val paymentDialogState by viewModel.paymentDialogState.collectAsState()
+
+    PaymentDialog(isExpanded = showingPaymentResultDialog, dialogState = paymentDialogState) {
+        viewModel.hidePaymentResultDialog()
+    }
 
     Column(
         modifier = modifier
@@ -229,7 +236,9 @@ fun CheckoutScreen(
                     .padding(horizontal = 22.dp),
                 text = stringResource(R.string.continue_to_checkout),
                 isEnabled = selectedPaymentMethod != null,
-            )
+            ) {
+                viewModel.showPaymentResultDialog()
+            }
         }
     }
 }
