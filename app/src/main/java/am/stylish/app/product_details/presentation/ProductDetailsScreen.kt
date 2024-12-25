@@ -8,6 +8,7 @@ import am.stylish.app.common_presentation.components.action_bar.AppActionBar
 import am.stylish.app.common_presentation.components.button.IconTextButton
 import am.stylish.app.common_presentation.components.button.PurchaseButton
 import am.stylish.app.common_presentation.components.items.RatingBar
+import am.stylish.app.common_presentation.components.loading.AppLoadingAnimation
 import am.stylish.app.common_presentation.components.pager.ProductImagePager
 import am.stylish.app.common_presentation.components.product_components.ProductSizeSection
 import am.stylish.app.common_presentation.components.product_list.ProductListGrid
@@ -33,7 +34,6 @@ import am.stylish.app.common_presentation.utils.test_mock_data.mockProductsData
 import am.stylish.app.common_presentation.view_model.CartViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -46,7 +46,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.rounded.ShoppingCart
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -97,7 +96,10 @@ fun ProductDetailsScreen(
         }
 
         DetailsScreenState.Loading -> {
-            Box(Modifier.fillMaxSize()) { CircularProgressIndicator() }
+            AppLoadingAnimation(
+                modifier = Modifier.fillMaxSize()
+            )
+
         }
 
         is DetailsScreenState.Success -> {

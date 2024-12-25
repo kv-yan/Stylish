@@ -99,13 +99,8 @@ private fun PaymentDialogPrev() {
     LaunchedEffect(Unit) {
         isExpanded.value = true
         dialogState.value = DialogState.Loading
-        println(dialogState)
-        delay(2000)
-        dialogState.value = DialogState.Error("Something went wrong")
-        println(dialogState)
         delay(2000)
         dialogState.value = DialogState.Success("Payment done successfully")
-        println(dialogState)
     }
     PaymentDialog(
         isExpanded = isExpanded.value, dialogState = dialogState.value
