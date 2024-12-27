@@ -15,21 +15,21 @@ val mockProductsData = listOf(
         imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5e5e9811-9098-466c-a54a-360e0031539b/NIKE+SB+DUNK+LOW+PRO+PRM.png"
     ), Product(
         id = "2",
-        name = "Men's Starry Shirt",
-        description = "Men's Starry Sky Printed Shirt 100% Cotton Fabric",
-        price = 399,
+        name = "Nike Air Max 90 Drift",
+        description = "The Air Max 90 Drift adds a more durable option to your shoe rotation. Its color-blocked design helps accentuate the different textures and layers,",
+        price = 136,
         rating = 4.5f,
-        imageUrl = "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7a0371bb-5c81-4042-9802-28c249c096a3/AIR+MAX+90+DRIFT.png"
     ), Product(
         id = "3",
-        name = "Elegant Black Dress",
+        name = "Air Jordan 1 Mid SE",
         description = "Beautiful sleeveless evening dress perfect for parties",
-        price = 799,
-        oldPrice = 599,
-        discount = 10,
+        price = 130,
+        oldPrice = 260,
+        discount = 50,
         reviewsCount = 100_152_157,
         rating = 4.7f,
-        imageUrl = "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c5ddb74a-80ea-4238-ad82-d95dfddb6fef/AIR+JORDAN+1+MID+SE.png"
     ), Product(
         id = "4",
         name = "Nike SB Dunk Low Pro",
@@ -39,21 +39,21 @@ val mockProductsData = listOf(
         imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ed8d46c0-d433-467c-a72a-c850d6380c85/NIKE+SB+DUNK+LOW+PRO.png"
     ), Product(
         id = "5",
-        name = "Casual Denim Jacket",
-        description = "Classic blue denim jacket for all seasons",
-        price = 599,
+        name = "Samba XLG Shoes",
+        description = "Take your style to new places with the Samba XLG from adidas. Upgraded with premium suede and a gum rubber sole with finely textured sidewalls and a varied-tread traction pattern, it offers a brilliant mix of sporty sophistication and casual cool. The iconic quilted heel tab matches the material on the serrated 3-Stripes, while the ribbed, molded tongue is as comfortable as ever over the top of your foot. Big-letter Samba branding on the side lets everyone know how you step. A longtime streetwear staple, wear the XLG casually with track pants or fleece, or pair it with fashion jeans or chinos and wear it to work.",
+        price = 110,
         rating = 4.1f,
-        imageUrl = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+        imageUrl = "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/921e014556e74027bca600c618fe7583_9366/Samba_XLG_Shoes_Green_JI3198_01_standard_hover.jpg"
     ), Product(
         id = "6",
-        name = "Comfy Sneakers",
+        name = "Samba XLG Shoes",
         description = "Lightweight and comfortable sneakers for daily wear",
-        price = 499,
-        oldPrice = 599,
-        discount = 10,
+        price = 110,
+        oldPrice = 220,
+        discount = 50,
         reviewsCount = 100_152_157,
         rating = 4.6f,
-        imageUrl = "https://i0.wp.com/picjumbo.com/wp-content/uploads/amazing-stone-path-in-forest-free-image.jpg?w=600&quality=80"
+        imageUrl = "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/018194de07a540ffbf73c8137f79abd3_9366/Samba_XLG_Shoes_Brown_JI3196_01_00_standard.jpg"
     ), Product(
         id = "7",
         name = "Trendy Sunglasses",
@@ -192,21 +192,21 @@ val mockProductsShortData = listOf(
         imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5e5e9811-9098-466c-a54a-360e0031539b/NIKE+SB+DUNK+LOW+PRO+PRM.png"
     ), Product(
         id = "2",
-        name = "Men's Starry Shirt",
-        description = "Men's Starry Sky Printed Shirt 100% Cotton Fabric",
-        price = 399,
+        name = "Nike Air Max 90 Drift",
+        description = "The Air Max 90 Drift adds a more durable option to your shoe rotation. Its color-blocked design helps accentuate the different textures and layers,",
+        price = 136,
         rating = 4.5f,
-        imageUrl = "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7a0371bb-5c81-4042-9802-28c249c096a3/AIR+MAX+90+DRIFT.png"
     ), Product(
         id = "3",
-        name = "Elegant Black Dress",
+        name = "Air Jordan 1 Mid SE",
         description = "Beautiful sleeveless evening dress perfect for parties",
-        price = 799,
-        oldPrice = 599,
-        discount = 10,
+        price = 130,
+        oldPrice = 260,
+        discount = 50,
         reviewsCount = 100_152_157,
         rating = 4.7f,
-        imageUrl = "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c5ddb74a-80ea-4238-ad82-d95dfddb6fef/AIR+JORDAN+1+MID+SE.png"
     ), Product(
         id = "4",
         name = "Nike SB Dunk Low Pro",

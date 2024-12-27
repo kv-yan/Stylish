@@ -34,9 +34,9 @@ val mockProductDetails = listOf(
         reviewsCount = 52157
     ), ProductDetails(
         productId = "2",
-        title = "Men's Starry Shirt",
-        shortDescription = "Men's Starry Sky Printed Shirt 100% Cotton Fabric",
-        longDescription = "This stylish Men's Starry Sky Printed Shirt is made from 100% cotton fabric, offering comfort and durability. Perfect for casual outings and gatherings.",
+        title = "Nike Air Max 90 Drift",
+        shortDescription = "The Air Max 90 Drift adds a more durable option to your shoe rotation. Its color-blocked design helps accentuate the different textures and layers, including tough ripstop and rubber paired with real and synthetic leather. Meanwhile, Max Air cushioning and a Waffle outsole keep it comfortable enough for the street or trail.",
+        longDescription = "The Air Max 90 Drift adds a more durable option to your shoe rotation. Its color-blocked design helps accentuate the different textures and layers, including tough ripstop and rubber paired with real and synthetic leather. Meanwhile, Max Air cushioning and a Waffle outsole keep it comfortable enough for the street or trail.",
         size = defaultSizeList,
         color = listOf(
             ProductColor("Red", "#FF0000"),
@@ -46,15 +46,20 @@ val mockProductDetails = listOf(
         price = "399",
         oldPrice = null,
         imageUrl = listOf(
-            "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp",
-            "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp",
-            "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7a0371bb-5c81-4042-9802-28c249c096a3/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d8aec4e7-5db3-4799-a3dc-ba7c8e43eac2/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/94d59a22-acba-44e3-a914-fd98a9072919/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2fe4fb2f-578e-4b66-8ac6-75f6a32d51e3/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d65fc10e-c68a-4d49-a2a1-cac9294483e6/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/585b7d80-0c70-4962-9f5a-2848c9330fb1/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/674dd738-19be-4e95-b2ed-5c5127d13bb4/AIR+MAX+90+DRIFT.png",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/da4d227e-d9e6-49e8-8455-5441853de2f1/AIR+MAX+90+DRIFT.png",
         ),
         rating = 4.5f,
         reviewsCount = 0
     ), ProductDetails(
         productId = "3",
-        title = "Elegant Black Dress",
+        title = "Air Jordan 1 Mid SE",
         shortDescription = "Beautiful sleeveless evening dress perfect for parties",
         longDescription = "This elegant sleeveless black dress is the perfect choice for evening parties, weddings, and special occasions. Crafted with high-quality fabric, it combines style and comfort for a stunning look.",
         size = defaultSizeList, // Placeholder for sizes
@@ -66,7 +71,7 @@ val mockProductDetails = listOf(
         price = "₹799",
         oldPrice = "₹599", // Old price provided in the input
         imageUrl = listOf(
-            "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp",
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c5ddb74a-80ea-4238-ad82-d95dfddb6fef/AIR+JORDAN+1+MID+SE.png",
             "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp",
             "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp",
         ),
@@ -96,26 +101,32 @@ val mockProductDetails = listOf(
         reviewsCount = 150_000
     ), ProductDetails(
         productId = "5",
-        title = "Casual Denim Jacket",
-        shortDescription = "Classic blue denim jacket for all seasons",
-        longDescription = "This versatile casual denim jacket is perfect for any season. Made from durable denim, it's both stylish and practical, offering a timeless look for everyday wear.",
+        title = "Samba XLG Shoes",
+        shortDescription = "Take your style to new places with the Samba XLG from adidas. Upgraded with premium suede and a gum rubber sole with finely textured sidewalls and a varied-tread traction pattern, it offers a brilliant mix of sporty sophistication and casual cool. The iconic quilted heel tab matches the material on the serrated 3-Stripes, while the ribbed, molded tongue is as comfortable as ever over the top of your foot. Big-letter Samba branding on the side lets everyone know how you step. A longtime streetwear staple, wear the XLG casually with track pants or fleece, or pair it with fashion jeans or chinos and wear it to work.",
+        longDescription = "Take your style to new places with the Samba XLG from adidas. Upgraded with premium suede and a gum rubber sole with finely textured sidewalls and a varied-tread traction pattern, it offers a brilliant mix of sporty sophistication and casual cool. The iconic quilted heel tab matches the material on the serrated 3-Stripes, while the ribbed, molded tongue is as comfortable as ever over the top of your foot. Big-letter Samba branding on the side lets everyone know how you step. A longtime streetwear staple, wear the XLG casually with track pants or fleece, or pair it with fashion jeans or chinos and wear it to work.",
         size = defaultSizeList, // Standard sizes as requested
         color = listOf(
             ProductColor(colorName = "Blue", colorCode = "#0000FF"),
             ProductColor(colorName = "Dark Blue", colorCode = "#00008B"),
             ProductColor(colorName = "Light Blue", colorCode = "#ADD8E6")
         ),
-        price = "₹599",
+        price = "110",
         oldPrice = null, // No old price provided in input
         imageUrl = listOf(
-            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/921e014556e74027bca600c618fe7583_9366/Samba_XLG_Shoes_Green_JI3198_01_standard_hover.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/9df140a45fdb481cb043bd186896c939_9366/Samba_XLG_Shoes_Green_JI3198_02_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/9df140a45fdb481cb043bd186896c939_9366/Samba_XLG_Shoes_Green_JI3198_03_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cc68d38a02a40489c503cd499966688_9366/Samba_XLG_Shoes_Green_JI3198_04_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fc5eeffe475d40f698bcb542124d5c58_9366/Samba_XLG_Shoes_Green_JI3198_05_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/492449ef428d4046863261b5f0117ec0_9366/Samba_XLG_Shoes_Green_JI3198_06_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/492449ef428d4046863261b5f0117ec0_9366/Samba_XLG_Shoes_Green_JI3198_07_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/a089c1d4385b4ff3b719004725029040_9366/Samba_XLG_Shoes_Green_JI3198_09_standard.jpg",
         ),
         rating = 4.1f,
         reviewsCount = 0 // No reviews count provided in input
     ), ProductDetails(
         productId = "6",
-        title = "Comfy Sneakers",
+        title = "Samba XLG Shoes",
         shortDescription = "Lightweight and comfortable sneakers for daily wear",
         longDescription = "These sneakers are perfect for daily wear, offering lightweight comfort and a stylish design. Ideal for long walks and casual outings.",
         size = defaultSizeList, // Standard sizes as requested
@@ -126,8 +137,11 @@ val mockProductDetails = listOf(
         price = "₹499",
         oldPrice = "₹599", // Old price provided in input
         imageUrl = listOf(
-            "https://i0.wp.com/picjumbo.com/wp-content/uploads/amazing-stone-path-in-forest-free-image.jpg?w=600&quality=80",
-            "https://i0.wp.com/picjumbo.com/wp-content/uploads/amazing-stone-path-in-forest-free-image.jpg?w=600&quality=80"
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/018194de07a540ffbf73c8137f79abd3_9366/Samba_XLG_Shoes_Brown_JI3196_01_00_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e6b126665c7e426a9c1d7eaae710c937_9366/Samba_XLG_Shoes_Brown_JI3196_02_standard_hover.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/9cef31fc3fd44a8a8c3e3be5e5233bc7_9366/Samba_XLG_Shoes_Brown_JI3196_03_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/9ac12919a33e40fe9520769345504bdc_9366/Samba_XLG_Shoes_Brown_JI3196_04_standard.jpg",
+            "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/9ac12919a33e40fe9520769345504bdc_9366/Samba_XLG_Shoes_Brown_JI3196_04_standard.jpg",
         ),
         rating = 4.6f,
         reviewsCount = 100_152_157 // Large review count as provided
