@@ -30,7 +30,8 @@ fun MainScreenNavigation(
     navigateToProductDetails: (Product) -> Unit = {},
     navigateToSpecialOffer: (SpecialOffer) -> Unit = {},
     onSnackBarShown: (SnackbarState) -> Unit = {},
-    navigateToOrderDetails: (List<String>) -> Unit = {}
+    navigateToOrderDetails: (List<String>) -> Unit = {},
+    navigateToCategoryDetails: (String) -> Unit = {}
 ) {
     val navController = rememberNavController()
 
@@ -76,7 +77,7 @@ fun MainScreenNavigation(
                 )
             }
 
-            composable<MainScreenDestination.Search> { SearchScreen() }
+            composable<MainScreenDestination.Search> { SearchScreen(onCategoryClick = navigateToCategoryDetails) }
 
             composable<MainScreenDestination.Settings> { Text("Settings") }
         }

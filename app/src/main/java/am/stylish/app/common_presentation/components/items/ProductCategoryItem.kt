@@ -1,14 +1,13 @@
 package am.stylish.app.common_presentation.components.items
 
 import am.stylish.app.R
-import am.stylish.app.common_presentation.components.image.NetworkImage
-import am.stylish.app.main.search.domain.ProductCategory
+import am.stylish.app.main.search.domain.model.ProductCategory
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,16 +30,17 @@ import androidx.compose.ui.unit.sp
 fun ProductCategoryItem(
     modifier: Modifier = Modifier,
     productCategory: ProductCategory,
+    onClick: () -> Unit = {}
 ) {
 
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier
+        modifier = modifier.clickable { onClick() },
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
 
         Image(
             modifier = Modifier
-                .size(112.dp)
+                .size(90.dp)
                 .padding(8.dp)
                 .clip(RoundedCornerShape(16.dp)),
             painter = painterResource(id = productCategory.image),

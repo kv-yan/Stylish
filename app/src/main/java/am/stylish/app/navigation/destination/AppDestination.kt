@@ -33,6 +33,11 @@ sealed class AppDestination {
     ) : AppDestination()
 
     @Serializable
+    data class CategoryDetails(
+        val categoryId: String
+    ) : AppDestination()
+
+    @Serializable
     data class Checkout(val totalPrice: Int) : AppDestination()
 
     @Serializable

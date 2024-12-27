@@ -15,7 +15,8 @@ class SpecialOfferDetailsViewModel(
     specialOfferId: String,
     private val getSpecialOfferDetailsUseCase: GetSpecialOfferDetailsUseCase
 ) : ViewModel() {
-    private val _screenState = MutableStateFlow<SpecialOfferDetailsScreenState>(SpecialOfferDetailsScreenState.Loading)
+    private val _screenState =
+        MutableStateFlow<SpecialOfferDetailsScreenState>(SpecialOfferDetailsScreenState.Loading)
     val screenState: StateFlow<SpecialOfferDetailsScreenState> = _screenState
 
     init {
