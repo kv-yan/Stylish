@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.koinViewModel
@@ -33,7 +34,6 @@ fun SearchScreen(
     modifier: Modifier = Modifier,
     searchViewModel: SearchViewModel = koinViewModel(),
     onCategoryClick: (String) -> Unit = {},
-    onBackClick: () -> Unit = {},
     onSnackBarShown: (SnackbarState) -> Unit = {}
 ) {
     val screenState by searchViewModel.screenState.collectAsState()
@@ -77,8 +77,11 @@ fun SearchScreenContent(modifier: Modifier = Modifier, onCategoryClick: (String)
         SearchBar(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            text = "Search for products"
+                .padding(
+                    horizontal = 16.dp,
+                    vertical = 8.dp,
+                ),
+            text = stringResource(id = R.string.search_any_product),
         )
 
         LazyVerticalGrid(
@@ -94,7 +97,8 @@ fun SearchScreenContent(modifier: Modifier = Modifier, onCategoryClick: (String)
                 ProductCategoryItem(
                     modifier = Modifier.fillMaxSize(),
                     productCategory = ProductCategory(
-                        name = category.name, image = category.image
+                        name = category.name,
+                        image = category.image,
                     ),
                 ) {
                     onCategoryClick(category.id)

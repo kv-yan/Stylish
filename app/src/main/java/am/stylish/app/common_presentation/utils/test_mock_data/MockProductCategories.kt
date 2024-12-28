@@ -7,18 +7,22 @@ val mockProductCategories = listOf(
     ProductCategory(
         name = "Beauty",
         image = R.drawable.ic_beauty,
+        products = mockProductsData
     ),
     ProductCategory(
         name = "Fashion",
         image = R.drawable.ic_fashion,
+        products = mockProductsData
     ),
     ProductCategory(
         name = "Kids",
         image = R.drawable.ic_kids,
+        products = mockProductsData
     ),
     ProductCategory(
         name = "Mens",
         image = R.drawable.ic_mens,
+        products = mockProductsData
     ),
     ProductCategory(
         name = "Womens",

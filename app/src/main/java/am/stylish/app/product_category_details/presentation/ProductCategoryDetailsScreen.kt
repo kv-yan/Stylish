@@ -116,7 +116,9 @@ private fun ProductCategoryDetailsScreenContent(
                             )
                         }
                         Text(
-                            text = category.name, style = AuthTitleTextStyle, fontSize = 21.sp
+                            text = category.name,
+                            style = AuthTitleTextStyle,
+                            fontSize = 21.sp,
                         )
                     }
                 })
@@ -127,10 +129,9 @@ private fun ProductCategoryDetailsScreenContent(
                 modifier = Modifier.fillMaxSize(),
                 products = category.products,
                 onProductClick = onProductClick,
-                onAddToCart = { id, quantity -> onAddToCart(id, quantity) },
-                onRemoveFromCart = { _, _ -> },
                 onWishlistClick = onWishlistClick,
-                isItemInCart = isItemInCart
+                isItemInCart = isItemInCart,
+                onAddToCart = { id, quantity -> onAddToCart(id, quantity) }
             )
         }
     }

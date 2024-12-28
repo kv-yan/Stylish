@@ -6,6 +6,4 @@ sealed class SearchScreenState {
     data object Loading : SearchScreenState()
     data class Success(val products: List<ProductCategory>) : SearchScreenState()
     data class Error(val message: String) : SearchScreenState()
-
-
 }
