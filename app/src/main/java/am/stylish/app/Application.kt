@@ -12,10 +12,14 @@ import am.stylish.app.main.cart.domain.di.cartDomainModule
 import am.stylish.app.main.cart.presentation.di.cartPresentationModule
 import am.stylish.app.main.home.domain.di.homeDomainModule
 import am.stylish.app.main.home.presentation.di.homePresentationModule
+import am.stylish.app.main.search.domain.di.searchDomainModule
+import am.stylish.app.main.search.presentation.di.searchPresentationModule
 import am.stylish.app.main.wishlist.data.di.wishlistDataModule
 import am.stylish.app.main.wishlist.domain.di.wishlistDomainModule
 import am.stylish.app.main.wishlist.presentation.di.wishlistPresentationModule
 import am.stylish.app.order_details_screen.presentation.di.orderDetailsPresentationModule
+import am.stylish.app.product_category_details.domain.di.productCategoryDetailsDomainModule
+import am.stylish.app.product_category_details.presentation.di.productCategoryDetailsPresentationModule
 import am.stylish.app.product_details.presentation.di.productDetailsPresentationModule
 import am.stylish.app.special_offer_details.domain.di.specialOfferDetailsDomainModule
 import am.stylish.app.special_offer_details.presentation.di.specialOfferDetailsPresentationModule
@@ -48,7 +52,11 @@ class Application : Application() {
                 addPaymentMethodsPresentationModule,
                 addPaymentMethodsDomainModule,
                 addPaymentMethodsDataModule,
-                checkoutPresentationModule
+                checkoutPresentationModule,
+                productCategoryDetailsPresentationModule,
+                productCategoryDetailsDomainModule,
+                searchPresentationModule,
+                searchDomainModule,
             )
         }
     }

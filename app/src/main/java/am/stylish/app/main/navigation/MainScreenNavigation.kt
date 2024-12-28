@@ -8,6 +8,7 @@ import am.stylish.app.main.cart.presentation.CartScreen
 import am.stylish.app.main.home.presentation.HomeScreen
 import am.stylish.app.main.navigation.domain.MainScreenDestination
 import am.stylish.app.main.navigation.presentation.component.bottom_bar.BottomNavigationBar
+import am.stylish.app.main.search.presentation.SearchScreen
 import am.stylish.app.main.wishlist.presentation.WishlistScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,7 +30,8 @@ fun MainScreenNavigation(
     navigateToProductDetails: (Product) -> Unit = {},
     navigateToSpecialOffer: (SpecialOffer) -> Unit = {},
     onSnackBarShown: (SnackbarState) -> Unit = {},
-    navigateToOrderDetails: (List<String>) -> Unit = {}
+    navigateToOrderDetails: (List<String>) -> Unit = {},
+    navigateToCategoryDetails: (String) -> Unit = {}
 ) {
     val navController = rememberNavController()
 
@@ -49,7 +51,7 @@ fun MainScreenNavigation(
                 .background(Color.White)
                 .padding(it),
             navController = navController,
-            startDestination = MainScreenDestination.Cart,
+            startDestination = MainScreenDestination.Home,
         ) {
             composable<MainScreenDestination.Home> {
                 HomeScreen(
@@ -75,7 +77,7 @@ fun MainScreenNavigation(
                 )
             }
 
-            composable<MainScreenDestination.Search> { Text("Search") }
+            composable<MainScreenDestination.Search> { SearchScreen(onCategoryClick = navigateToCategoryDetails) }
 
             composable<MainScreenDestination.Settings> { Text("Settings") }
         }

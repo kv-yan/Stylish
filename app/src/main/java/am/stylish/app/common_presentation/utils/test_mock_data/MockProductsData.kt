@@ -5,55 +5,55 @@ import am.stylish.app.common_domain.model.product.Product
 val mockProductsData = listOf(
     Product(
         id = "1",
-        name = "HRX by Hrithik Roshan",
+        name = "Nike SB Dunk Low Pro Premium",
         description = "Neque porro quisquam est qui dolorem ipsum quia",
-        price = 2499,
-        oldPrice = 4999,
+        price = 125,
+        oldPrice = 250,
         discount = 50,
         reviewsCount = 52_157,
         rating = 4.0f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5e5e9811-9098-466c-a54a-360e0031539b/NIKE+SB+DUNK+LOW+PRO+PRM.png"
     ), Product(
         id = "2",
-        name = "Men's Starry Shirt",
-        description = "Men's Starry Sky Printed Shirt 100% Cotton Fabric",
-        price = 399,
+        name = "Nike Air Max 90 Drift",
+        description = "The Air Max 90 Drift adds a more durable option to your shoe rotation. Its color-blocked design helps accentuate the different textures and layers,",
+        price = 136,
         rating = 4.5f,
-        imageUrl = "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7a0371bb-5c81-4042-9802-28c249c096a3/AIR+MAX+90+DRIFT.png"
     ), Product(
         id = "3",
-        name = "Elegant Black Dress",
+        name = "Air Jordan 1 Mid SE",
         description = "Beautiful sleeveless evening dress perfect for parties",
-        price = 799,
-        oldPrice = 599,
-        discount = 10,
+        price = 130,
+        oldPrice = 260,
+        discount = 50,
         reviewsCount = 100_152_157,
         rating = 4.7f,
-        imageUrl = "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c5ddb74a-80ea-4238-ad82-d95dfddb6fef/AIR+JORDAN+1+MID+SE.png"
     ), Product(
         id = "4",
-        name = "Pink Embroidered Dress",
-        description = "Casual pink dress with beautiful embroidery details",
-        price = 699,
+        name = "Nike SB Dunk Low Pro",
+        description = "An '80s b-ball icon returns with classic details and throwback hoops flair.",
+        price = 125,
         rating = 4.2f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/ce8f/5f59/6f4bc239eaaba2d48652d030bce31853?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H0QApAyaa0gjkqBwMfY2f-q7IJSmO7UNk2Ajfo2GmaN1N8RbHXW~bUGk2wlaPqGhd1v252x9R5WHN0y627HVFI-DROLLDFqUwpwjjxizmbpIziiByvo7jUizZ8J6L9i2mPGJPD2KndXFy2XdClTtnLRXhRJ0QSfw1w841YeWVXdeTTCd1ix09Y4ABEi8cq5ebZc-viOKzd-8N53jhgLACo1Mdy5YB9890LiVtqFgGHfuUyhFULoOGeXbitkD4VuLTqYcaTZryWcMxhqNwYoSFz2kbgv95kPipOf7g-CdhGc2fqbDrCY0s2IlJcy61rKjaCPibdDgX1ivANAjQyoLUQ__"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ed8d46c0-d433-467c-a72a-c850d6380c85/NIKE+SB+DUNK+LOW+PRO.png"
     ), Product(
         id = "5",
-        name = "Casual Denim Jacket",
-        description = "Classic blue denim jacket for all seasons",
-        price = 599,
+        name = "Samba XLG Shoes",
+        description = "Take your style to new places with the Samba XLG from adidas. Upgraded with premium suede and a gum rubber sole with finely textured sidewalls and a varied-tread traction pattern, it offers a brilliant mix of sporty sophistication and casual cool. The iconic quilted heel tab matches the material on the serrated 3-Stripes, while the ribbed, molded tongue is as comfortable as ever over the top of your foot. Big-letter Samba branding on the side lets everyone know how you step. A longtime streetwear staple, wear the XLG casually with track pants or fleece, or pair it with fashion jeans or chinos and wear it to work.",
+        price = 110,
         rating = 4.1f,
-        imageUrl = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+        imageUrl = "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/921e014556e74027bca600c618fe7583_9366/Samba_XLG_Shoes_Green_JI3198_01_standard_hover.jpg"
     ), Product(
         id = "6",
-        name = "Comfy Sneakers",
+        name = "Samba XLG Shoes",
         description = "Lightweight and comfortable sneakers for daily wear",
-        price = 499,
-        oldPrice = 599,
-        discount = 10,
+        price = 110,
+        oldPrice = 220,
+        discount = 50,
         reviewsCount = 100_152_157,
         rating = 4.6f,
-        imageUrl = "https://i0.wp.com/picjumbo.com/wp-content/uploads/amazing-stone-path-in-forest-free-image.jpg?w=600&quality=80"
+        imageUrl = "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/018194de07a540ffbf73c8137f79abd3_9366/Samba_XLG_Shoes_Brown_JI3196_01_00_standard.jpg"
     ), Product(
         id = "7",
         name = "Trendy Sunglasses",
@@ -119,11 +119,11 @@ val mockProductsData = listOf(
         imageUrl = "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp"
     ), Product(
         id = "14",
-        name = "Pink Embroidered Dress",
-        description = "Casual pink dress with beautiful embroidery details",
-        price = 699,
+        name = "Nike Heritage",
+        description = "Take your gear to go with the Nike Heritage Backpack. Its spacious main compartment features a sleeve that holds up to a 15\" laptop, so your computer is never out of reach. 2 zippered accessories pockets help keep your gear organized and easy to grab. This product is made with at least 65% recycled polyester fibers.",
+        price = 37,
         rating = 4.2f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/ce8f/5f59/6f4bc239eaaba2d48652d030bce31853?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H0QApAyaa0gjkqBwMfY2f-q7IJSmO7UNk2Ajfo2GmaN1N8RbHXW~bUGk2wlaPqGhd1v252x9R5WHN0y627HVFI-DROLLDFqUwpwjjxizmbpIziiByvo7jUizZ8J6L9i2mPGJPD2KndXFy2XdClTtnLRXhRJ0QSfw1w841YeWVXdeTTCd1ix09Y4ABEi8cq5ebZc-viOKzd-8N53jhgLACo1Mdy5YB9890LiVtqFgGHfuUyhFULoOGeXbitkD4VuLTqYcaTZryWcMxhqNwYoSFz2kbgv95kPipOf7g-CdhGc2fqbDrCY0s2IlJcy61rKjaCPibdDgX1ivANAjQyoLUQ__"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/04e4bc48-354d-4795-b7fc-44c654ce63d3/NK+HERITAGE+BKPK.png"
     ), Product(
         id = "15",
         name = "Casual Denim Jacket",
@@ -182,38 +182,38 @@ val mockProductsData = listOf(
 val mockProductsShortData = listOf(
     Product(
         id = "1",
-        name = "HRX by Hrithik Roshan",
+        name = "Nike SB Dunk Low Pro Premium",
         description = "Neque porro quisquam est qui dolorem ipsum quia",
-        price = 2499,
-        oldPrice = 4999,
+        price = 125,
+        oldPrice = 250,
         discount = 50,
         reviewsCount = 52_157,
         rating = 4.0f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/e8d7/a7e6/19ceee35411c96d9d02429c0907f549c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IciLD-h3lSX7-TxZq5a5lJThitToRr1PQjX2xd-1Cw1ehFwXNr3di8ARHHhPDPm7uKQpVVq3j01sIoVFBH7Bo2ckTmJ~e-XmAmCiYollHcRelIP9XcwmJLMwjVnZBNwlR1es4y9LSMBG5U0pJmO9tpRXSfpj9KaMtl-lMHrMBfpzqvFviEQKOmROv2ITvzGhZ1qguBXKZlWUNNDT~dHpa9EinRuF1bdRP50Ubeg25tEaCGk8i8EJa4WF5-Bc6HlRBmqZ2Q1OyG2-XY2egqpIHxDGC4p-xrwOkO1g5G~iSv4D8VEsgaUAyWBm7WIYOVRMMsZcJ0QRKYu2czKcZhzX2w__"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5e5e9811-9098-466c-a54a-360e0031539b/NIKE+SB+DUNK+LOW+PRO+PRM.png"
     ), Product(
         id = "2",
-        name = "Men's Starry Shirt",
-        description = "Men's Starry Sky Printed Shirt 100% Cotton Fabric",
-        price = 399,
+        name = "Nike Air Max 90 Drift",
+        description = "The Air Max 90 Drift adds a more durable option to your shoe rotation. Its color-blocked design helps accentuate the different textures and layers,",
+        price = 136,
         rating = 4.5f,
-        imageUrl = "https://basket-10.wbbasket.ru/vol1560/part156075/156075698/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7a0371bb-5c81-4042-9802-28c249c096a3/AIR+MAX+90+DRIFT.png"
     ), Product(
         id = "3",
-        name = "Elegant Black Dress",
+        name = "Air Jordan 1 Mid SE",
         description = "Beautiful sleeveless evening dress perfect for parties",
-        price = 799,
-        oldPrice = 599,
-        discount = 10,
+        price = 130,
+        oldPrice = 260,
+        discount = 50,
         reviewsCount = 100_152_157,
         rating = 4.7f,
-        imageUrl = "https://basket-15.wbbasket.ru/vol2223/part222311/222311401/images/big/1.webp"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c5ddb74a-80ea-4238-ad82-d95dfddb6fef/AIR+JORDAN+1+MID+SE.png"
     ), Product(
         id = "4",
-        name = "Pink Embroidered Dress",
-        description = "Casual pink dress with beautiful embroidery details",
-        price = 699,
+        name = "Nike SB Dunk Low Pro",
+        description = "An '80s b-ball icon returns with classic details and throwback hoops flair.",
+        price = 125,
         rating = 4.2f,
-        imageUrl = "https://s3-alpha-sig.figma.com/img/743f/0181/31926f97294be302b7272fa7fbd8ddcc?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FXYQH6yG5ZFPluY1GggefItqIHPFLQSH0ddXjsPRjkSnYyoNf8YAulIVfvbC06WwsQTAPfyOiPPP34uSgQh30GT1icpDBas7bQdJ9KfPF-iwkAi5C14aGa3v~sj9txOwRo5h~JgrqCgH-PbbK0dz~cvstonZ743fPjix29LAp3VMlLG-rjX2-f1u45I8y2-DyvKnMqSDA3AEbkLWuWbTSiK40iBbZedCce1qqCNMPO7xWxnndwBOCxKtArbS3rMgAVH3wJHCLfq6TsPsP7ok0KcW32yLyBE8Lus5iHWjEgMmiZpB3B7g5qBXGl689s6Dp8T5y2P3Ki0WiZVVlOxKCA__"
+        imageUrl = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/ed8d46c0-d433-467c-a72a-c850d6380c85/NIKE+SB+DUNK+LOW+PRO.png"
     )
 )
 

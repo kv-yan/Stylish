@@ -13,6 +13,7 @@ import am.stylish.app.main.navigation.MainScreenNavigation
 import am.stylish.app.navigation.destination.AppDestination
 import am.stylish.app.navigation.nav_type.ListStringNavType
 import am.stylish.app.order_details_screen.presentation.OrderDetailsScreen
+import am.stylish.app.product_category_details.presentation.ProductCategoryDetailsScreen
 import am.stylish.app.product_details.presentation.ProductDetailsScreen
 import am.stylish.app.special_offer_details.presentation.SpecialOfferDetailsScreen
 import androidx.compose.animation.core.tween
@@ -122,6 +123,9 @@ private fun AppNavigationContent(
                     },
                     navigateToOrderDetails = {
                         navController.navigate(AppDestination.OrderDetails(it))
+                    },
+                    navigateToCategoryDetails = {
+                        navController.navigate(AppDestination.CategoryDetails(it))
                     }
                 )
             }
@@ -267,6 +271,22 @@ private fun AppNavigationContent(
                     onBackClick = { navController.navigateUp() }
                 )
             }
+
+            composable<AppDestination.CategoryDetails>() {
+                val categoryId = it.toRoute<AppDestination.CategoryDetails>().categoryId
+                ProductCategoryDetailsScreen(
+                    categoryId = categoryId,
+                    onBackClick = { navController.navigateUp() },
+                    onSnackBarShown = onSnackBarShown,
+                    onProductClick = {
+                        navController.navigate(AppDestination.ProductDetails(it.id))
+                    },
+                )
+            }
+
+
         }
+
+
     }
 }

@@ -1,10 +1,11 @@
 import am.stylish.app.R
+import am.stylish.app.common_presentation.ui.theme.DarkBlue
 import am.stylish.app.common_presentation.ui.theme.LightGray
 import am.stylish.app.common_presentation.ui.theme.RegularTextStyle
 import am.stylish.app.common_presentation.ui.theme.RoseRed
-import am.stylish.app.common_presentation.ui.theme.DarkBlue
 import am.stylish.app.common_presentation.ui.theme.TransparentGreen
 import am.stylish.app.landing.domain.model.LandingUiItem
+import am.stylish.app.landing.presentation.pager.LandingPagerItem
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,7 +28,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import am.stylish.app.landing.presentation.pager.LandingPagerItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -44,8 +44,7 @@ fun LandingPager(
         PagerTopCounter(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 17.dp),
-            pagerState = pagerState
+                .padding(horizontal = 17.dp), pagerState = pagerState
         ) {
             navigateToAuth()
         }
@@ -74,17 +73,14 @@ fun LandingPager(
 
 @Composable
 private fun PagerTopCounter(
-    modifier: Modifier = Modifier,
-    pagerState: PagerState,
-    onSkipClick: () -> Unit = {}
+    modifier: Modifier = Modifier, pagerState: PagerState, onSkipClick: () -> Unit = {}
 ) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
-            text = "${pagerState.currentPage + 1}/${pagerState.pageCount}",
-            style = RegularTextStyle
+            text = "${pagerState.currentPage + 1}/${pagerState.pageCount}", style = RegularTextStyle
         )
         TextButton(onClick = {
             onSkipClick()
@@ -111,12 +107,13 @@ fun PagerBottomController(
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (pagerState.currentPage != 0) {
-            TextButton(onClick = {
+            TextButton(modifier = Modifier.weight(1f), onClick = {
                 scope.launch {
                     pagerState.animateScrollToPage(pagerState.currentPage - 1)
                 }
             }) {
                 Text(
+                    modifier = Modifier.weight(1f),
                     text = stringResource(R.string.prev),
                     style = RegularTextStyle,
                     color = LightGray,
@@ -124,31 +121,31 @@ fun PagerBottomController(
                 )
             }
         } else {
-            Text(text = stringResource(R.string.empty_string))
+            Text(modifier = Modifier.weight(1f), text = stringResource(R.string.empty_string))
         }
 
         PagerDotIndicator(
-            modifier = Modifier.fillMaxWidth(0.5f),
+            modifier = Modifier.weight(1f),
             pagerState = pagerState,
             totalPages = 3,
             selectedIndicator = DarkBlue,
             unselectedIndicator = TransparentGreen
         )
-        TextButton(onClick = {
-            scope.launch {
-                if (pagerState.currentPage == pagerState.pageCount - 1) {
-                    navigateToAuth()
-                } else {
-                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
+        TextButton(
+            modifier = Modifier.weight(1f),
+            onClick = {
+                scope.launch {
+                    if (pagerState.currentPage == pagerState.pageCount - 1) {
+                        navigateToAuth()
+                    } else {
+                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                    }
                 }
-            }
-
-        }) {
+            },
+        ) {
             Text(
-                text =
-                if (pagerState.currentPage == pagerState.pageCount - 1)
-                    stringResource(R.string.get_started)
-                else stringResource(R.string.next),
+                modifier = Modifier.weight(1f),
+                text = stringResource(if (pagerState.currentPage == pagerState.pageCount - 1) R.string.get_started else R.string.next),
                 style = RegularTextStyle,
                 color = RoseRed,
                 textAlign = TextAlign.End

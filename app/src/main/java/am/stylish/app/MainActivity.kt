@@ -25,8 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val activity = LocalContext.current as Activity
             val window = WindowInsetsControllerCompat(
-                activity.window,
-                activity.window.decorView
+                activity.window, activity.window.decorView
             )
 
             window.isAppearanceLightStatusBars = true
@@ -46,7 +45,7 @@ class MainActivity : ComponentActivity() {
             if (showSplashScreen) {
                 SplashScreen()
             } else {
-                AppNavigation(startDestination = AppDestination.Main)
+                AppNavigation(startDestination = AppDestination.Landing)
             }
         }
     }
